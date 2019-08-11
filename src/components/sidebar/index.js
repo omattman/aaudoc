@@ -77,6 +77,7 @@ const Sidebar = styled("aside")`
   position: -moz-sticky;
   position: sticky;
   top: calc(8.4rem);
+  margin-top: 84px;
   padding-right: 0;
   overflow-x: hidden;
 
