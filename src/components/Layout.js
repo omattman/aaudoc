@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "react-emotion";
 import { MDXProvider } from "@mdx-js/react";
-import ThemeProvider from "./ThemeProvider";
-import mdxComponents from "./Mdx/Index";
-import Sidebar from "./Sidebar/Index";
-import RightSidebar from "./RightSidebar";
+import ThemeProvider from "./themeProvider";
+import mdxComponents from "./mdxComponents";
+import Sidebar from "./sidebar";
+import RightSidebar from "./rightSidebar";
 import "../styles/style.scss";
-import "katex/dist/katex.min.css";
+require(`katex/dist/katex.min.css`);
 
 const Wrapper = styled("div")`
   display: flex;
   justify-content: space-between;
+
   @media only screen and (max-width: 767px) {
     display: block;
   }
@@ -21,6 +22,7 @@ const Content = styled("main")`
   flex-grow: 1;
   margin: 0px 88px;
   margin-top: 3rem;
+
   @media only screen and (max-width: 1023px) {
     padding-left: 0;
     margin: 0 10px;

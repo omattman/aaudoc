@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/templates/Docs.js`)
+        component: require.resolve(`./src/templates/docs.js`)
       }
     },
     {

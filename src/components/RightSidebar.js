@@ -1,8 +1,10 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "react-emotion";
-import Link from "./Link";
+import Link from "./link";
 import config from "../../config";
+
+const forcedNavOrder = config.sidebar.forcedNavOrder;
 
 const Sidebar = styled("aside")`
   width: 100%;
@@ -31,6 +33,7 @@ const ListItem = styled(({ className, active, level, ...props }) => {
   );
 })`
   list-style: none;
+
   a {
     color: #5c6975;
     text-decoration: none;
@@ -38,9 +41,11 @@ const ListItem = styled(({ className, active, level, ...props }) => {
     padding: 0.45rem 0 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
     display: block;
     position: relative;
+
     &:hover {
       color: rgb(116, 76, 188) !important;
     }
+
     ${props =>
       props.active &&
       `
@@ -119,7 +124,7 @@ const SidebarLayout = ({ location }) => (
       } else {
         return (
           <Sidebar>
-            <ul />
+            <ul></ul>
           </Sidebar>
         );
       }

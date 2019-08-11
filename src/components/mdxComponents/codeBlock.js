@@ -3,7 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/vsDark";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 
-import Pre from "./Pre";
+import Pre from "./pre";
 
 /** Removes the last token from a code example if it's empty. */
 function cleanTokens(tokens) {

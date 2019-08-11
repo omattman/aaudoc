@@ -1,9 +1,11 @@
 import React from "react";
-import Tree from "./Tree";
+import Tree from "./tree";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "react-emotion";
 import { ExternalLink } from "react-feather";
 import config from "../../../config";
+
+const forcedNavOrder = config.sidebar.forcedNavOrder;
 
 // eslint-disable-next-line no-unused-vars
 const ListItem = styled(({ className, active, level, ...props }) => {
@@ -50,13 +52,13 @@ const ListItem = styled(({ className, active, level, ...props }) => {
     ${props =>
       props.active &&
       `
-      color: #663399;
-      border-color: rgb(230,236,241) !important;
-      border-style: solid none solid solid;
-      border-width: 1px 0px 1px 1px;
-      background-color: #fff;
-    `} // external link icon
-    svg {
+    color: #663399;
+    border-color: rgb(230,236,241) !important;
+    border-style: solid none solid solid;
+    border-width: 1px 0px 1px 1px;
+    background-color: #fff;
+  `} // external link icon
+  svg {
       float: right;
       margin-right: 1rem;
     }
@@ -76,6 +78,7 @@ const Sidebar = styled("aside")`
   position: sticky;
   top: 0;
   padding-right: 0;
+
   @media only screen and (max-width: 767px) {
     padding-left: 0px;
     background-color: #372476;
@@ -98,6 +101,7 @@ const Divider = styled(props => (
 ))`
   list-style: none;
   padding: 0.5rem 0;
+
   hr {
     margin: 0;
     padding: 0;

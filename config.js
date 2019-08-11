@@ -1,12 +1,12 @@
 const config = {
   gatsby: {
     pathPrefix: "/",
-    siteUrl: "https://learn.hasura.io",
+    siteUrl: "https://ad1-aau.netlify.com/",
     gaTrackingId: null
   },
   header: {
     logo: "https://upload.wikimedia.org/wikipedia/en/b/b9/AAU_logo_2012.png",
-    logoLink: "https://learn.hasura.io",
+    logoLink: "/",
     title: "AAU AD1 Docs",
     githubUrl: "https://github.com/omattman/aau-ad1-docs",
     helpUrl: "",
@@ -20,12 +20,12 @@ const config = {
     ignoreIndex: true
   },
   siteMetadata: {
-    title: "Gatsby Gitbook Boilerplate | Hasura",
-    description: "Documentation built with mdx. Powering learn.hasura.io ",
+    title: "AAU AD1 Problem Solutions",
+    description: "Documentation built with GatsbyJS + MDX + GraphQL",
     ogImage: null,
     docsLocation:
       "https://github.com/omattman/aau-ad1-docs/blob/master/content",
-    favicon: "https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg"
+    favicon: "https://upload.wikimedia.org/wikipedia/en/b/b9/AAU_logo_2012.png"
   }
 };
 

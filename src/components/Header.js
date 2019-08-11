@@ -1,14 +1,14 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import GitHubButton from "react-github-btn";
-import Link from "./Link";
+import Link from "./link";
 
-import Sidebar from "./Sidebar/Index";
+import Sidebar from "./sidebar";
 
 const Header = ({ location }) => (
   <StaticQuery
     query={graphql`
-      query {
+      query headerTitleQuery {
         site {
           siteMetadata {
             headerTitle
@@ -56,9 +56,9 @@ const Header = ({ location }) => (
                 aria-controls="navbar"
               >
                 <span className={"sr-only"}>Toggle navigation</span>
-                <span className={"icon-bar"} />
-                <span className={"icon-bar"} />
-                <span className={"icon-bar"} />
+                <span className={"icon-bar"}></span>
+                <span className={"icon-bar"}></span>
+                <span className={"icon-bar"}></span>
               </button>
               <Link to={finalLogoLink} className={"navbar-brand navBarBrand"}>
                 {logo.image !== "" ? (
@@ -106,7 +106,6 @@ const Header = ({ location }) => (
                   </li>
                 ) : null}
               </ul>
-              }
               <ul className={"nav navbar-nav navBarUL navbar-right"}>
                 {tweetText !== "" ? (
                   <li>
