@@ -1,31 +1,8 @@
 @import "./settings/partials";
 @import "./utilities/partials";
 @import "./base/partials";
-
-.video-responsive {
-  position: relative;
-  padding-bottom: 56.2%;
-}
-.video-responsive iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.diffNewLine {
-  color: #22863a;
-  background-color: #f0fff4;
-}
-
-.diffRemoveLine {
-  color: red;
-  background-color: #ffcccc;
-}
-
-.githubIcon {
-  width: 15px;
-  margin-right: 5px;
-}
+@import "./components/partials";
+@import "./layout/partials";
 
 .githubSection {
   display: flex;
@@ -56,7 +33,7 @@
 }
 
 .headerTitle a {
-  color: #fff;
+  color: #010101;
 }
 
 .headerTitle a:hover,
@@ -99,10 +76,11 @@
 
 .navBarBrand {
   height: auto;
-  font-size: 28px;
+  font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 500;
-  color: #fff !important;
+  font-weight: 700;
+  color: #010101 !important;
   padding: 0px 0px;
   display: flex;
   align-items: center;
@@ -131,7 +109,7 @@
 }
 .mainWrapper {
   color: rgb(59, 69, 78);
-  max-width: 750px;
+  max-width: 850px;
 }
 .navBarUL li a:hover {
   opacity: 0.7;
@@ -203,15 +181,13 @@ pre {
 }
 
 .rightSideTitle {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1;
-  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   padding: 7px 24px 7px 16px;
-  border-left: 1px solid #e6ecf1;
-  border-left-color: rgb(230, 236, 241);
-  color: #9daab6;
+  font-weight: 600;
+  color: #36313d;
 }
 
 .rightSideBarUL {
@@ -220,8 +196,6 @@ pre {
 
 .rightSideBarUL li {
   list-style-type: none;
-  border-left: 1px solid #e6ecf1;
-  border-left-color: rgb(230, 236, 241);
 }
 
 .rightSideBarUL li a {
@@ -246,7 +220,7 @@ pre {
   color: #fff !important;
 }
 .firstLevel ul li .collapser svg path {
-  fill: #fff !important;
+  fill: #78757a !important;
 }
 .active .collapser > svg > path {
   fill: #663399 !important;
