@@ -7,7 +7,18 @@ metaDescription: "This is the meta description for this page"
 The following is a code block with JavaScript language syntax highlighting.
 
 ```javascript
-import React from 'react';
+MAX-SUBARRAY-BRUTE-FORCE(A)
+    n = A.length
+    max = -∞
+    for l = 1 to n
+        sum = 0
+        for h = l to n
+            sum = sum + A[h]
+            if sum > max
+                max = sum
+                low = l
+                high = h
+    return (low, high)
 ```
 
 Supports multiple languages.
@@ -22,5 +33,5 @@ The following is a code block with diff. Lines with `+` highlighted in green sha
 ## Live Editing example
 
 ```javascript react-live=true
-<button className={'btn btn-default'}>Change my text</button>
+<button className={"btn btn-default"}>Change my text</button>
 ```
