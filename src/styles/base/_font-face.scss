@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Graphik";
+  src: url("../styles/base/fonts/Graphik/Graphik-700-Bold.otf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Graphik";
+  src: url("../styles/base/fonts/Graphik/Graphik-600-Semibold.otf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Graphik";
+  src: url("../styles/base/fonts/Graphik/Graphik-400-Regular.otf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Body-Text";
+  src: url("../styles/base/fonts/body/body-text.woff") format("woff");
+}
