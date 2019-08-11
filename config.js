@@ -23,8 +23,7 @@ const config = {
     title: "AAU AD1 Problem Solutions",
     description: "Documentation built with GatsbyJS + MDX + GraphQL",
     ogImage: null,
-    docsLocation:
-      "https://github.com/omattman/aau-ad1-docs/blob/master/content",
+    docsLocation: "https://github.com/omattman/aau-ad1-docs/blob/master/docs",
     favicon: "https://upload.wikimedia.org/wikipedia/en/b/b9/AAU_logo_2012.png"
   }
 };
