@@ -7,7 +7,7 @@ const config = {
   header: {
     logo: "https://upload.wikimedia.org/wikipedia/en/b/b9/AAU_logo_2012.png",
     logoLink: "/",
-    title: "AAU AD1 Docs",
+    title: "AAU / AD1",
     githubUrl: "https://github.com/omattman/aau-ad1-docs",
     helpUrl: "",
     tweetText: "",
