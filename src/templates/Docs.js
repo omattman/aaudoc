@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled, { injectGlobal } from "react-emotion";
-import { Layout, Link } from "$components";
+import { Layout, Link } from "../components/Index";
 import NextPrevious from "../components/NextPrevious";
 import config from "../../config";
 

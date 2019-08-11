@@ -1,5 +1,5 @@
 export theme from "./Theme";
-export mdxComponents from "./MdxComponents";
+export mdxComponents from "./Mdx";
 export ThemeProvider from "./ThemeProvider";
 export Layout from "./Layout";
 export Container from "./Container";
