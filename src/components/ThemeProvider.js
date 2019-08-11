@@ -3,7 +3,7 @@ import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 import { default as defaultTheme } from "./theme";
 import Header from "./Header";
 
-export default function ThemeProvider({ children, theme = {}, location }) {
+export default function themeProvider({ children, theme = {}, location }) {
   return (
     <div>
       <Header location={location} />
