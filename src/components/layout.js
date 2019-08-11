@@ -20,7 +20,8 @@ const Wrapper = styled("div")`
 const Content = styled("main")`
   display: flex;
   flex-grow: 1;
-  margin: 8.4rem 0 0 20rem;
+  justify-content: center;
+  margin: 8.4rem 10rem 0;
 
   @media only screen and (max-width: 1023px) {
     padding-left: 0;
@@ -30,7 +31,7 @@ const Content = styled("main")`
 `;
 
 const MaxWidth = styled("div")`
-  max-width: 850px;
+  max-width: 750px;
   width: 100%;
 
   @media only screen and (max-width: 50rem) {

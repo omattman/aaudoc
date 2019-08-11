@@ -6,7 +6,7 @@ const Heading = system(
     fontSize: 5,
     fontWeight: "700",
     lineHeight: 1.5,
-    mt: 4,
+    mt: 5,
     mb: 3
   },
   "fontFamily",
