@@ -1,23 +1,20 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "react-emotion";
-import Link from "./link";
 import config from "../../config";
 
 const forcedNavOrder = config.sidebar.forcedNavOrder;
 
 const Sidebar = styled("aside")`
   width: 100%;
-  background-color: #fff;
-  border-right: 1px solid #ede7f3;
-  height: 100vh;
+  top: calc(9.25rem);
+  max-height: calc(100vh - 3.75rem - 2.5rem - 3rem - 3rem);
   overflow: auto;
   position: fixed;
-  padding-left: 24px;
+  margin-left: 5.4rem;
   position: -webkit-sticky;
   position: -moz-sticky;
   position: sticky;
-  top: 0;
   @media only screen and (max-width: 50rem) {
     width: 100%;
     position: relative;
@@ -73,6 +70,9 @@ const SidebarLayout = ({ location }) => (
                 slug
               }
               tableOfContents
+              frontmatter {
+                metaTitle
+              }
             }
           }
         }
@@ -116,7 +116,7 @@ const SidebarLayout = ({ location }) => (
         return (
           <Sidebar>
             <ul className={"rightSideBarUL"}>
-              <div className={"rightSideTitle"}>CONTENTS</div>
+              <div className={"rightSideTitle"}>TABLE OF CONTENTS</div>
               {finalNavItems}
             </ul>
           </Sidebar>

@@ -20,8 +20,7 @@ const Wrapper = styled("div")`
 const Content = styled("main")`
   display: flex;
   flex-grow: 1;
-  margin: 0px 88px;
-  margin-top: 3rem;
+  margin: 8.4rem 0 0 20rem;
 
   @media only screen and (max-width: 1023px) {
     padding-left: 0;
@@ -31,6 +30,9 @@ const Content = styled("main")`
 `;
 
 const MaxWidth = styled("div")`
+  max-width: 850px;
+  width: 100%;
+
   @media only screen and (max-width: 50rem) {
     width: 100%;
     position: relative;
@@ -51,10 +53,10 @@ const Layout = ({ children, location }) => (
         </LeftSideBarWidth>
         <Content>
           <MaxWidth>{children}</MaxWidth>
+          <RightSideBarWidth className={"hidden-xs"}>
+            <RightSidebar location={location} />
+          </RightSideBarWidth>
         </Content>
-        <RightSideBarWidth className={"hidden-xs"}>
-          <RightSidebar location={location} />
-        </RightSideBarWidth>
       </Wrapper>
     </MDXProvider>
   </ThemeProvider>

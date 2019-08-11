@@ -76,8 +76,9 @@ const Sidebar = styled("aside")`
   position: -webkit-sticky;
   position: -moz-sticky;
   position: sticky;
-  top: 0;
+  top: calc(8.4rem);
   padding-right: 0;
+  overflow-x: hidden;
 
   @media only screen and (max-width: 767px) {
     padding-left: 0px;
