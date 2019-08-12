@@ -14,9 +14,9 @@ const config = {
     links: [{ text: "", link: "" }]
   },
   sidebar: {
-    forcedNavOrder: ["/introduction", "/codeblock"],
+    forcedNavOrder: [],
     links: [{ text: "Moodle page", link: "https://www.moodle.aau.dk/my/" }],
-    frontline: false,
+    frontline: true,
     ignoreIndex: true
   },
   siteMetadata: {
