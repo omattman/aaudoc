@@ -95,7 +95,7 @@ export default class MDXRuntimeTest extends Component {
       });
 
     // meta tags
-    const metaTitle = mdx.frontmatter.metaTitle;
+    const metaTitle = mdx.frontmatter.metaTitle + " | AD1";
     const metaDescription = mdx.frontmatter.metaDescription;
     let canonicalUrl = config.gatsby.siteUrl;
     canonicalUrl =
