@@ -127,7 +127,7 @@ const Navigation = ({ pathname }) => {
         </nav>
         <div css={styles.searchAndSocialContainer}>
           <SocialNavItem
-            href="https://github.com/omattman/aau-ad1-docs"
+            href="https://github.com/omattman/aaudoc"
             title="GitHub"
           >
             <GithubIcon style={{ verticalAlign: `text-top` }} />

@@ -18,7 +18,7 @@ export default class MarkdownPageFooter extends React.Component {
         {this.props.page && (
           <a
             css={{ ...linkStyles }}
-            href={`https://github.com/omattman/aau-ad1-docs/blob/master/docs/${
+            href={`https://github.com/omattman/aaudoc/blob/master/docs/${
               this.props.page ? this.props.page.parent.relativePath : ``
             }`}
           >
