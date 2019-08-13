@@ -76,7 +76,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#0032FC`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/assets/aaudoc-icon.png`,
       },
     },
