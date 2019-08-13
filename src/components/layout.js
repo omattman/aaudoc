@@ -1,66 +1,181 @@
-import React from "react";
-import styled from "react-emotion";
-import { MDXProvider } from "@mdx-js/react";
-import ThemeProvider from "./themeProvider";
-import mdxComponents from "./mdxComponents";
-import Sidebar from "./sidebar";
-import RightSidebar from "./rightSidebar";
-import "../styles/style.scss";
-require(`katex/dist/katex.min.css`);
+import React from "react"
+import { navigate, PageRenderer } from "gatsby"
+import mousetrap from "mousetrap"
+import Modal from "react-modal"
+import { SkipNavLink } from "@reach/skip-nav"
+import MdClose from "react-icons/lib/md/close"
 
-const Wrapper = styled("div")`
-  display: flex;
-  justify-content: space-between;
+import {
+  colors,
+  radii,
+  space,
+  shadows,
+  sizes,
+  fontSizes,
+  zIndices,
+} from "../utils/presets"
+import { breakpointGutter } from "../utils/styles"
+import Banner from "../components/banner"
+import Navigation from "../components/navigation"
+import PageWithSidebar from "../components/page-with-sidebar"
+import SiteMetadata from "../components/site-metadata"
 
-  @media only screen and (max-width: 767px) {
-    display: block;
+import { skipLink } from "../utils/styles"
+
+let windowWidth
+
+class DefaultLayout extends React.Component {
+  constructor() {
+    super()
+    this.handleCloseModal = this.handleCloseModal.bind(this)
   }
-`;
 
-const Content = styled("main")`
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  margin: 8.4rem 10rem 0;
-
-  @media only screen and (max-width: 1023px) {
-    padding-left: 0;
-    margin: 0 10px;
-    margin-top: 3rem;
+  handleCloseModal() {
+    navigate(this.props.modalBackgroundPath)
   }
-`;
 
-const MaxWidth = styled("div")`
-  max-width: 750px;
-  width: 100%;
+  componentDidMount() {
+    Modal.setAppElement(`#___gatsby`)
 
-  @media only screen and (max-width: 50rem) {
-    width: 100%;
-    position: relative;
+    if (this.props.isModal && window.innerWidth > 750) {
+      mousetrap.bind(`left`, this.props.modalPrevious)
+      mousetrap.bind(`right`, this.props.modalNext)
+      mousetrap.bind(`spacebar`, this.props.modalNext)
+
+      document.querySelector(`html`).style.overflowY = `hidden`
+    }
   }
-`;
-const LeftSideBarWidth = styled("div")`
-  width: 298px;
-`;
-const RightSideBarWidth = styled("div")`
-  width: 224px;
-`;
-const Layout = ({ children, location }) => (
-  <ThemeProvider location={location}>
-    <MDXProvider components={mdxComponents}>
-      <Wrapper>
-        <LeftSideBarWidth className={"hidden-xs"}>
-          <Sidebar location={location} />
-        </LeftSideBarWidth>
-        <Content>
-          <MaxWidth>{children}</MaxWidth>
-          <RightSideBarWidth className={"hidden-xs"}>
-            <RightSidebar location={location} />
-          </RightSideBarWidth>
-        </Content>
-      </Wrapper>
-    </MDXProvider>
-  </ThemeProvider>
-);
 
-export default Layout;
+  componentWillUnmount() {
+    if (this.props.isModal && window.innerWidth > 750) {
+      mousetrap.unbind(`left`)
+      mousetrap.unbind(`right`)
+      mousetrap.unbind(`spacebar`)
+
+      document.querySelector(`html`).style.overflowY = `auto`
+    }
+  }
+
+  render() {
+    // SEE: template-docs-markdown for why this.props.isSidebarDisabled is here
+    const isSidebarDisabled =
+      this.props.isSidebarDisabled || !this.props.itemList
+    let isModal = false
+    if (!windowWidth && typeof window !== `undefined`) {
+      windowWidth = window.innerWidth
+    }
+    if (this.props.isModal && windowWidth > 750) {
+      isModal = true
+    }
+
+    if (isModal && window.innerWidth > 750) {
+      return (
+        <>
+          <PageRenderer
+            location={{ pathname: this.props.modalBackgroundPath }}
+          />
+          <Modal
+            isOpen={true}
+            style={{
+              content: {
+                top: `inherit`,
+                left: `inherit`,
+                right: `inherit`,
+                bottom: `inherit`,
+                margin: `0 auto`,
+                width: `750px`,
+                background: `none`,
+                border: `none`,
+                padding: `${space[8]} 0`,
+                overflow: `visible`,
+              },
+              overlay: {
+                position: `absolute`,
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: `unset`,
+                minHeight: `100%`,
+                minWidth: `100%`,
+                zIndex: zIndices.modal,
+                overflowY: `auto`,
+                backgroundColor: `rgba(255, 255, 255, 0.95)`,
+              },
+            }}
+            onRequestClose={() => navigate(this.props.modalBackgroundPath)}
+            contentLabel="Site Details Modal"
+          >
+            <div
+              css={{
+                backgroundColor: colors.white,
+                borderRadius: radii[2],
+                boxShadow: shadows.dialog,
+                position: `relative`,
+              }}
+            >
+              <button
+                onClick={this.handleCloseModal}
+                css={{
+                  background: colors.white,
+                  border: 0,
+                  borderRadius: radii[6],
+                  color: colors.text.secondary,
+                  cursor: `pointer`,
+                  position: `absolute`,
+                  left: `auto`,
+                  right: space[7],
+                  top: space[8],
+                  height: 40,
+                  width: 40,
+                  fontSize: fontSizes[4],
+                  "&:hover": {
+                    background: colors.blue[5],
+                    color: colors.blue[90],
+                  },
+                }}
+              >
+                <MdClose />
+              </button>
+              {this.props.children}
+              {this.props.modalPreviousLink}
+              {this.props.modalNextLink}
+            </div>
+          </Modal>
+        </>
+      )
+    }
+
+    return (
+      <>
+        <SiteMetadata pathname={this.props.location.pathname} />
+        <SkipNavLink css={skipLink}>Skip to main content</SkipNavLink>
+        <Banner />
+        <Navigation pathname={this.props.location.pathname} />
+        <div
+          className={`main-body`}
+          css={{
+            paddingLeft: `env(safe-area-inset-left)`,
+            paddingRight: `env(safe-area-inset-right)`,
+            paddingTop: sizes.bannerHeight,
+            // make room for the mobile navigation
+            paddingBottom: sizes.headerHeight,
+            [breakpointGutter]: {
+              paddingTop: `calc(${sizes.bannerHeight} + ${sizes.headerHeight})`,
+              paddingBottom: 0,
+            },
+          }}
+        >
+          <PageWithSidebar
+            disable={isSidebarDisabled}
+            itemList={this.props.itemList}
+            location={this.props.location}
+            enableScrollSync={this.props.enableScrollSync}
+            renderContent={() => this.props.children}
+          />
+        </div>
+      </>
+    )
+  }
+}
+
+export default DefaultLayout
