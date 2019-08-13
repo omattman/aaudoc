@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.15",
+    "@emotion/styled-base": "^10.0.15",
     "@mdx-js/mdx": "^1.2.2",
     "@mdx-js/react": "^1.2.2",
     "@reach/skip-nav": "^0.1.3",
