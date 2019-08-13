@@ -1,91 +1,103 @@
-require("dotenv").config();
-const config = require("./config");
+const path = require(`path`)
+
+require(`dotenv`).config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const GA = {
+  identifier: `G-FGXPR9N8VW`,
+}
+
 module.exports = {
-  pathPrefix: config.gatsby.pathPrefix,
   siteMetadata: {
-    title: config.siteMetadata.title,
-    description: config.siteMetadata.description,
-    docsLocation: config.siteMetadata.docsLocation,
-    ogImage: config.siteMetadata.ogImage,
-    favicon: config.siteMetadata.favicon,
-    logo: {
-      link: config.header.logoLink ? config.header.logoLink : "/",
-      image: config.header.logo
-    }, // backwards compatible
-    headerTitle: config.header.title,
-    githubUrl: config.header.githubUrl,
-    helpUrl: config.header.helpUrl,
-    tweetText: config.header.tweetText,
-    headerLinks: config.header.links,
-    siteUrl: config.gatsby.siteUrl
+    title: `AAU Docs`,
+    siteUrl: `https://ad1-aau.netlify.com`,
+    description: `Shared Note-Taking platform for lecture notes and course solutions`,
+    twitter: ``,
   },
   plugins: [
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/templates/docs.js`)
-      }
-    },
-    {
-      resolve: "gatsby-plugin-mdx",
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 1035,
-              sizeByPixelDensity: true
-            }
-          },
-          {
-            resolve: "gatsby-remark-copy-linked-files"
-          },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`
-            }
-          },
-          "gatsby-remark-embed-video",
-          "gatsby-remark-responsive-iframe"
-        ],
-        extensions: [".mdx", ".md"]
-      }
-    },
-    "gatsby-plugin-emotion",
-    "gatsby-plugin-remove-trailing-slashes",
-    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "docs",
-        path: `${__dirname}/docs/`
-      }
+        path: `${__dirname}/docs/`,
+      },
     },
     {
-      resolve: `gatsby-plugin-gtag`,
+      resolve: "gatsby-plugin-mdx",
       options: {
-        // your google analytics tracking id
-        trackingId: config.gatsby.gaTrackingId,
-        // Puts tracking script in the head instead of the body
-        head: true,
-        // enable ip anonymization
-        anonymize: false
-      }
+        extensions: [".md", ".mdx"],
+        gatsbyRemarkPlugins: [
+          "gatsby-remark-embed-video",
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 750,
+              sizeByPixelDensity: true,
+              backgroundColor: `#ffffff`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.5rem`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+            },
+          },
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    "gatsby-plugin-emotion",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-layout`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `AAU Docs`,
+        short_name: `AAU Docs`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#0032FC`,
+        display: `minimal-ui`,
+        icon: `src/assets/aaudoc-icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: GA.identifier,
+        anonymize: true,
+        allowLinker: true,
+      },
     },
     {
       resolve: "gatsby-plugin-crisp-chat",
       options: {
         websiteId: "26add838-bc14-4980-90a5-903e9c5d91c2",
-        enableDuringDevelop: true, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
-        defer: true, // Optional. Sets the Crisp loading script to defer instead of async. Defaults to false.
-        enableImprovedAccessibility: true // Optional. Sets aria-label attribute on pop-up icon for screen readers. Defaults to true.
-      }
-    }
-  ]
-};
+        enableDuringDevelop: true,
+        defer: true,
+      },
+    },
+  ],
+}
