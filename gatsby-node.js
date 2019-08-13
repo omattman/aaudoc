@@ -1,9 +1,16 @@
-const componentWithMDXScope = require("gatsby-plugin-mdx/component-with-mdx-scope");
-const path = require("path");
-const startCase = require("lodash.startcase");
+const _ = require(`lodash`)
+const Promise = require(`bluebird`)
+const path = require("path")
+const fs = require(`fs-extra`)
+const slash = require(`slash`)
+const yaml = require(`js-yaml`)
+const docLinksData = yaml.load(fs.readFileSync(`./src/data/doc-links.yaml`))
+const solutionLinksData = yaml.load(
+  fs.readFileSync(`./src/data/solution-links.yaml`)
+)
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+exports.createPages = ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
@@ -13,11 +20,11 @@ exports.createPages = ({ graphql, actions }) => {
               edges {
                 node {
                   fields {
-                    id
                     slug
                   }
-                  tableOfContents
-                  body
+                  frontmatter {
+                    title
+                  }
                 }
               }
             }
@@ -25,67 +32,131 @@ exports.createPages = ({ graphql, actions }) => {
         `
       ).then(result => {
         if (result.errors) {
-          console.log(result.errors); // eslint-disable-line no-console
-          reject(result.errors);
+          return reject(result.errors)
         }
 
-        // Create blog posts pages.
-        result.data.allMdx.edges.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug ? node.fields.slug : "/",
-            component: path.resolve("./src/templates/docs.js"),
-            context: {
-              id: node.fields.id
+        const docsTemplate = path.resolve(
+          `src/templates/template-docs-markdown.js`
+        )
+
+        // Create docs pages.
+        const docPages = result.data.allMdx.edges
+        const docLinks = docLinksData[0].items
+        const solutionLinks = solutionLinksData[0].items
+
+        // flatten sidebar links trees for easier next/prev link calculation
+        function flattenList(itemList) {
+          return itemList.reduce((reducer, { items, ...rest }) => {
+            reducer.push(rest)
+            if (items) reducer.push(...flattenList(items))
+            return reducer
+          }, [])
+        }
+
+        const flattenedDocs = flattenList(docLinks)
+        const flattenedSolutions = flattenList(solutionLinks)
+
+        // with flattened tree object finding next and prev is just getting the next index
+        function getSibling(index, list, direction) {
+          if (direction === `next`) {
+            const next = index === list.length - 1 ? null : list[index + 1]
+            // for tutorial links that use subheadings on the same page skip the link and try the next item
+            if (next && next.link && next.link.includes(`#`)) {
+              return getSibling(index + 1, list, `next`)
             }
-          });
-        });
+            return next
+          } else if (direction === `prev`) {
+            const prev = index === 0 ? null : list[index - 1]
+            if (prev && prev.link && prev.link.includes(`#`)) {
+              return getSibling(index - 1, list, `prev`)
+            }
+            return prev
+          } else {
+            reporter.warn(
+              `Did not provide direction to sibling function for building next and prev links`
+            )
+            return null
+          }
+        }
+
+        function findDoc(doc) {
+          if (!doc.link) return null
+          return (
+            doc.link === this.link ||
+            doc.link === this.link.substring(0, this.link.length - 1)
+          )
+        }
+
+        docPages.forEach(({ node }) => {
+          const slug = _.get(node, `fields.slug`)
+          if (!slug) return
+
+          const docIndex = flattenedDocs.findIndex(findDoc, {
+            link: slug,
+          })
+
+          const solutionIndex = flattenedSolutions.findIndex(findDoc, {
+            link: slug,
+          })
+
+          // add values to page context for next and prev page
+          let nextAndPrev = {}
+          if (docIndex > -1) {
+            nextAndPrev.prev = getSibling(docIndex, flattenedDocs, `prev`)
+            nextAndPrev.next = getSibling(docIndex, flattenedDocs, `next`)
+          }
+          if (solutionIndex > -1) {
+            nextAndPrev.prev = getSibling(
+              solutionIndex,
+              flattenedSolutions,
+              `prev`
+            )
+            nextAndPrev.next = getSibling(
+              solutionIndex,
+              flattenedSolutions,
+              `next`
+            )
+          }
+          // console.log(nextAndPrev)
+
+          createPage({
+            path: `${node.fields.slug}`, // required
+            component: slash(docsTemplate),
+            context: {
+              slug: node.fields.slug,
+              ...nextAndPrev,
+            },
+          })
+        })
       })
-    );
-  });
-};
+    )
+  })
+}
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
-      alias: { $components: path.resolve(__dirname, "src/components") }
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+  let slug
+
+  if (
+    [`MarkdownRemark`, `Mdx`].includes(node.internal.type) &&
+    getNode(node.parent).internal.type === `File`
+  ) {
+    const fileNode = getNode(node.parent)
+    const parsedFilePath = path.parse(fileNode.relativePath)
+
+    // Add slugs for docs pages
+    if (fileNode.sourceInstanceName === `docs`) {
+      if (parsedFilePath.name !== `index` && parsedFilePath.dir !== ``) {
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`
+      } else if (parsedFilePath.dir === ``) {
+        slug = `/${parsedFilePath.name}/`
+      } else {
+        slug = `/${parsedFilePath.dir}/`
+      }
     }
-  });
-};
-
-exports.onCreateBabelConfig = ({ actions }) => {
-  actions.setBabelPlugin({
-    name: "@babel/plugin-proposal-export-default-from"
-  });
-};
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-
-  if (node.internal.type === `Mdx`) {
-    const parent = getNode(node.parent);
-    let value = parent.relativePath.replace(parent.ext, "");
-
-    if (value === "index") {
-      value = "";
-    }
-
-    createNodeField({
-      name: `slug`,
-      node,
-      value: `/${value}`
-    });
-
-    createNodeField({
-      name: "id",
-      node,
-      value: node.id
-    });
-
-    createNodeField({
-      name: "title",
-      node,
-      value: node.frontmatter.title || startCase(parent.name)
-    });
   }
-};
+
+  if (slug) {
+    createNodeField({ node, name: `slug`, value: slug })
+  }
+}
