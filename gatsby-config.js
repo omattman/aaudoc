@@ -24,12 +24,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [".md", ".mdx"],
@@ -62,30 +56,11 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-typography`,
       options: {
-        plugins: [
-          `gatsby-remark-embed-video`,
-          `gatsby-remark-code-titles`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 750,
-              backgroundColor: `#ffffff`,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.5rem`,
-            },
-          },
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
+        pathToConfigModule: `src/utils/typography`,
       },
     },
     "gatsby-plugin-emotion",
