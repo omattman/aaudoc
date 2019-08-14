@@ -34,7 +34,13 @@ class IndexRoute extends React.Component {
                     links
                     <ul>
                       <li>
-                        <Link to="/docs/">Docs</Link>
+                        <Link to="/software/">Software</Link>
+                      </li>
+                      <li>
+                        <Link to="/tutorial/">Tutorials</Link>
+                      </li>
+                      <li>
+                        <Link to="/contributing/">Contributing</Link>
                       </li>
                     </ul>
                   </li>

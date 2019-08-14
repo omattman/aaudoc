@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
 
 import Layout from "../../components/layout"
-import { itemListDocs } from "../../utils/sidebar/item-list"
+import { itemListContributing } from "../../utils/sidebar/item-list"
 import { space } from "../../utils/presets"
 import Container from "../../components/container"
 import DocSearchContent from "../../components/docsearch-content"
@@ -12,19 +12,19 @@ import Breadcrumb from "../../components/docs-breadcrumb"
 class IndexRoute extends React.Component {
   render() {
     return (
-      <Layout location={this.props.location} itemList={itemListDocs}>
+      <Layout location={this.props.location} itemList={itemListContributing}>
         <DocSearchContent>
           <Container>
             <Helmet>
-              <title>Docs</title>
+              <title>contributing</title>
               <meta name="description" content="insert meta description" />
             </Helmet>
             <Breadcrumb
-              itemList={itemListDocs}
+              itemList={itemListContributing}
               location={this.props.location}
             />
-            <h1 id="aau-doc" css={{ marginTop: 0 }}>
-              AAU Doc
+            <h1 id="aau-contributing" css={{ marginTop: 0 }}>
+              contributing
             </h1>
           </Container>
         </DocSearchContent>

@@ -5,7 +5,11 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { mediaQueries, space, sizes } from "../utils/presets"
 
 import Layout from "../components/layout"
-import { itemListDocs } from "../utils/sidebar/item-list"
+import {
+  itemListSoftware,
+  itemListTutorial,
+  itemListContributing,
+} from "../utils/sidebar/item-list"
 import MarkdownPageFooter from "../components/markdown-page-footer"
 import DocSearchContent from "../components/docsearch-content"
 import TableOfContents from "../components/docs-table-of-contents"
@@ -30,7 +34,9 @@ const containerStyles = {
 const getDocsData = location => {
   const [urlSegment] = location.pathname.split(`/`).slice(1)
   const itemListLookup = {
-    docs: itemListDocs,
+    software: itemListSoftware,
+    tutorial: itemListTutorial,
+    contributing: itemListContributing,
   }
 
   return [urlSegment, itemListLookup[urlSegment]]
@@ -56,7 +62,7 @@ function DocsTemplate({ data, location, pageContext: { next, prev } }) {
       <Layout
         location={location}
         itemList={itemList}
-        enableScrollSync={urlSegment === `docs` ? false : true}
+        enableScrollSync={urlSegment === `software` ? false : true}
       >
         <DocSearchContent>
           <Container
