@@ -4,7 +4,9 @@ const path = require("path")
 const fs = require(`fs-extra`)
 const slash = require(`slash`)
 const yaml = require(`js-yaml`)
-const docLinksData = yaml.load(fs.readFileSync(`./src/data/doc-links.yaml`))
+const docLinksData = yaml.load(
+  fs.readFileSync(`./src/data/software-links.yaml`)
+)
 
 exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions
