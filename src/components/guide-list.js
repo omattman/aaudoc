@@ -1,9 +1,10 @@
 import React from "react"
 
 import softwareHierarchy from "../data/software-links.yaml"
+import tutorialHierarchy from "../data/tutorial-links.yaml"
 
 // Search through tree, which may be 2, 3 or more levels deep
-const childItemsBySlug = (softwareHierarchy, slug) => {
+const childItemsBySlug = (softwareHierarchy, tutorialHierarchy, slug) => {
   let result
 
   const iter = a => {
@@ -15,11 +16,13 @@ const childItemsBySlug = (softwareHierarchy, slug) => {
   }
 
   softwareHierarchy.some(iter)
+  tutorialHierarchy.some(iter)
   return result && result.items
 }
 
 const GuideList = ({ slug }) => {
-  const subitemsForPage = childItemsBySlug(softwareHierarchy, slug) || []
+  const subitemsForPage =
+    childItemsBySlug(softwareHierarchy, tutorialHierarchy, slug) || []
 
   const subitemList = subitemsForPage.map((subitem, i) => (
     <li key={i}>

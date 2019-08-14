@@ -4,8 +4,11 @@ const path = require("path")
 const fs = require(`fs-extra`)
 const slash = require(`slash`)
 const yaml = require(`js-yaml`)
-const docLinksData = yaml.load(
+const softwareLinksData = yaml.load(
   fs.readFileSync(`./src/data/software-links.yaml`)
+)
+const tutorialLinksData = yaml.load(
+  fs.readFileSync(`./src/data/tutorial-links.yaml`)
 )
 
 exports.createPages = ({ graphql, actions, reporter }) => {
@@ -40,7 +43,8 @@ exports.createPages = ({ graphql, actions, reporter }) => {
 
         // Create docs pages.
         const docPages = result.data.allMdx.edges
-        const docLinks = docLinksData[0].items
+        const softwareLinks = softwareLinksData[0].items
+        const tutorialLinks = tutorialLinksData[0].items
 
         // flatten sidebar links trees for easier next/prev link calculation
         function flattenList(itemList) {
@@ -51,7 +55,8 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           }, [])
         }
 
-        const flattenedDocs = flattenList(docLinks)
+        const flattenedSoftwareDocs = flattenList(softwareLinks)
+        const flattenedTutorialDocs = flattenList(tutorialLinks)
 
         // with flattened tree object finding next and prev is just getting the next index
         function getSibling(index, list, direction) {
@@ -88,15 +93,38 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           const slug = _.get(node, `fields.slug`)
           if (!slug) return
 
-          const docIndex = flattenedDocs.findIndex(findDoc, {
+          const softwareIndex = flattenedSoftwareDocs.findIndex(findDoc, {
+            link: slug,
+          })
+          const tutorialIndex = flattenedTutorialDocs.findIndex(findDoc, {
             link: slug,
           })
 
           // add values to page context for next and prev page
           let nextAndPrev = {}
-          if (docIndex > -1) {
-            nextAndPrev.prev = getSibling(docIndex, flattenedDocs, `prev`)
-            nextAndPrev.next = getSibling(docIndex, flattenedDocs, `next`)
+          if (softwareIndex > -1) {
+            nextAndPrev.prev = getSibling(
+              softwareIndex,
+              flattenedSoftwareDocs,
+              `prev`
+            )
+            nextAndPrev.next = getSibling(
+              softwareIndex,
+              flattenedSoftwareDocs,
+              `next`
+            )
+          }
+          if (tutorialIndex > -1) {
+            nextAndPrev.prev = getSibling(
+              tutorialIndex,
+              flattenedTutorialDocs,
+              `prev`
+            )
+            nextAndPrev.next = getSibling(
+              tutorialIndex,
+              flattenedTutorialDocs,
+              `next`
+            )
           }
 
           createPage({
