@@ -5,7 +5,11 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { mediaQueries, space, sizes } from "../utils/presets"
 
 import Layout from "../components/layout"
-import { itemListSoftware, itemListTutorial } from "../utils/sidebar/item-list"
+import {
+  itemListSoftware,
+  itemListTutorial,
+  itemListContributing,
+} from "../utils/sidebar/item-list"
 import MarkdownPageFooter from "../components/markdown-page-footer"
 import DocSearchContent from "../components/docsearch-content"
 import TableOfContents from "../components/docs-table-of-contents"
@@ -32,6 +36,7 @@ const getDocsData = location => {
   const itemListLookup = {
     software: itemListSoftware,
     tutorial: itemListTutorial,
+    contributing: itemListContributing,
   }
 
   return [urlSegment, itemListLookup[urlSegment]]

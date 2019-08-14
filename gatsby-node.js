@@ -10,6 +10,9 @@ const softwareLinksData = yaml.load(
 const tutorialLinksData = yaml.load(
   fs.readFileSync(`./src/data/tutorial-links.yaml`)
 )
+const contributingLinksData = yaml.load(
+  fs.readFileSync(`./src/data/contributing-links.yaml`)
+)
 
 exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -45,6 +48,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
         const docPages = result.data.allMdx.edges
         const softwareLinks = softwareLinksData[0].items
         const tutorialLinks = tutorialLinksData[0].items
+        const contributingLinks = contributingLinksData[0].items
 
         // flatten sidebar links trees for easier next/prev link calculation
         function flattenList(itemList) {
@@ -57,6 +61,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
 
         const flattenedSoftwareDocs = flattenList(softwareLinks)
         const flattenedTutorialDocs = flattenList(tutorialLinks)
+        const flattenedContributingDocs = flattenList(contributingLinks)
 
         // with flattened tree object finding next and prev is just getting the next index
         function getSibling(index, list, direction) {
@@ -89,6 +94,15 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           )
         }
 
+        function addContextNextPrev(index, flattenedLinks, context) {
+          if (index > -1) {
+            context.prev = getSibling(index, flattenedLinks, `prev`)
+            context.next = getSibling(index, flattenedLinks, `next`)
+          }
+
+          return context
+        }
+
         docPages.forEach(({ node }) => {
           const slug = _.get(node, `fields.slug`)
           if (!slug) return
@@ -99,33 +113,22 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           const tutorialIndex = flattenedTutorialDocs.findIndex(findDoc, {
             link: slug,
           })
+          const contributingIndex = flattenedContributingDocs.findIndex(
+            findDoc,
+            {
+              link: slug,
+            }
+          )
 
           // add values to page context for next and prev page
           let nextAndPrev = {}
-          if (softwareIndex > -1) {
-            nextAndPrev.prev = getSibling(
-              softwareIndex,
-              flattenedSoftwareDocs,
-              `prev`
-            )
-            nextAndPrev.next = getSibling(
-              softwareIndex,
-              flattenedSoftwareDocs,
-              `next`
-            )
-          }
-          if (tutorialIndex > -1) {
-            nextAndPrev.prev = getSibling(
-              tutorialIndex,
-              flattenedTutorialDocs,
-              `prev`
-            )
-            nextAndPrev.next = getSibling(
-              tutorialIndex,
-              flattenedTutorialDocs,
-              `next`
-            )
-          }
+          addContextNextPrev(softwareIndex, flattenedSoftwareDocs, nextAndPrev)
+          addContextNextPrev(tutorialIndex, flattenedTutorialDocs, nextAndPrev)
+          addContextNextPrev(
+            contributingIndex,
+            flattenedContributingDocs,
+            nextAndPrev
+          )
 
           createPage({
             path: `${node.fields.slug}`, // required

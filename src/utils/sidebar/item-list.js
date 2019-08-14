@@ -1,5 +1,6 @@
 import softwareSidebar from "../../data/software-links.yaml"
 import tutorialSidebar from "../../data/tutorial-links.yaml"
+import contributingSidebar from "../../data/contributing-links.yaml"
 
 const createHash = link => {
   let index = -1
@@ -38,5 +39,6 @@ const extendSidebarData = item => {
 
 const itemListSoftware = extendSidebarData(softwareSidebar)
 const itemListTutorial = extendSidebarData(tutorialSidebar)
+const itemListContributing = extendSidebarData(contributingSidebar)
 
-export { itemListSoftware, itemListTutorial }
+export { itemListSoftware, itemListTutorial, itemListContributing }
