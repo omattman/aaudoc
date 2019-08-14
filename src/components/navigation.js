@@ -139,7 +139,7 @@ const Navigation = ({ pathname }) => {
               [mediaQueries.lg]: { display: `flex` },
             }}
           >
-            <SocialNavItem href="https://discordapp.com/" title="Discord">
+            <SocialNavItem href="https://discord.gg/bgBacJd" title="Discord">
               <DiscordIcon overrideCSS={{ verticalAlign: `text-top` }} />
             </SocialNavItem>
           </div>
