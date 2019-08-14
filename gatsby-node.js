@@ -5,9 +5,6 @@ const fs = require(`fs-extra`)
 const slash = require(`slash`)
 const yaml = require(`js-yaml`)
 const docLinksData = yaml.load(fs.readFileSync(`./src/data/doc-links.yaml`))
-const solutionLinksData = yaml.load(
-  fs.readFileSync(`./src/data/solution-links.yaml`)
-)
 
 exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -42,7 +39,6 @@ exports.createPages = ({ graphql, actions, reporter }) => {
         // Create docs pages.
         const docPages = result.data.allMdx.edges
         const docLinks = docLinksData[0].items
-        const solutionLinks = solutionLinksData[0].items
 
         // flatten sidebar links trees for easier next/prev link calculation
         function flattenList(itemList) {
@@ -54,7 +50,6 @@ exports.createPages = ({ graphql, actions, reporter }) => {
         }
 
         const flattenedDocs = flattenList(docLinks)
-        const flattenedSolutions = flattenList(solutionLinks)
 
         // with flattened tree object finding next and prev is just getting the next index
         function getSibling(index, list, direction) {
@@ -95,29 +90,12 @@ exports.createPages = ({ graphql, actions, reporter }) => {
             link: slug,
           })
 
-          const solutionIndex = flattenedSolutions.findIndex(findDoc, {
-            link: slug,
-          })
-
           // add values to page context for next and prev page
           let nextAndPrev = {}
           if (docIndex > -1) {
             nextAndPrev.prev = getSibling(docIndex, flattenedDocs, `prev`)
             nextAndPrev.next = getSibling(docIndex, flattenedDocs, `next`)
           }
-          if (solutionIndex > -1) {
-            nextAndPrev.prev = getSibling(
-              solutionIndex,
-              flattenedSolutions,
-              `prev`
-            )
-            nextAndPrev.next = getSibling(
-              solutionIndex,
-              flattenedSolutions,
-              `next`
-            )
-          }
-          // console.log(nextAndPrev)
 
           createPage({
             path: `${node.fields.slug}`, // required

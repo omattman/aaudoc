@@ -1,5 +1,4 @@
 import docsSidebar from "../../data/doc-links.yaml"
-import solutionsSidebar from "../../data/solution-links.yaml"
 
 const createHash = link => {
   let index = -1
@@ -37,6 +36,5 @@ const extendSidebarData = item => {
 }
 
 const itemListDocs = extendSidebarData(docsSidebar)
-const itemListSolutions = extendSidebarData(solutionsSidebar)
 
-export { itemListDocs, itemListSolutions }
+export { itemListDocs }

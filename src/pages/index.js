@@ -36,9 +36,6 @@ class IndexRoute extends React.Component {
                       <li>
                         <Link to="/docs/">Docs</Link>
                       </li>
-                      <li>
-                        <Link to="/solutions/">Solutions</Link>
-                      </li>
                     </ul>
                   </li>
                 </ol>

@@ -122,7 +122,6 @@ const Navigation = ({ pathname }) => {
         >
           <ul css={styles.ulContainer}>
             <NavItem linkTo="/docs/">Docs</NavItem>
-            <NavItem linkTo="/solutions/">Solutions</NavItem>
           </ul>
         </nav>
         <div css={styles.searchAndSocialContainer}>

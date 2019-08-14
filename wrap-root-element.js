@@ -1,6 +1,6 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
-import GuideList from "./src/components/mdxComponents/guide-list"
+import GuideList from "./src/components/guide-list"
 
 const components = {
   GuideList,
