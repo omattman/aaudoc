@@ -55,7 +55,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -88,14 +87,6 @@ module.exports = {
         trackingId: GA.identifier,
         anonymize: true,
         allowLinker: true,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-crisp-chat",
-      options: {
-        websiteId: "26add838-bc14-4980-90a5-903e9c5d91c2",
-        enableDuringDevelop: true,
-        defer: true,
       },
     },
   ],
