@@ -4,5 +4,14 @@
   items:
     - title: Introduction
       link: /contributing/
-    - title: Start here
-      link: /contributing/start-here/
+    - title: Community
+      link: /contributing/community/
+      items:
+        - title: Why Contribute to aaudoc?
+          link: /contributing/why-contribute-to-aaudoc/
+        - title: Where to Participate
+          link: /contributing/where-to-participate/
+        - title: How to Pitch aaudoc
+          link: /contributing/how-to-pitch-aaudoc/
+    - title: Code of Conduct
+      link: /contributing/code-of-conduct/
