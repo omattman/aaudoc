@@ -10,7 +10,7 @@ const GA = {
 
 module.exports = {
   siteMetadata: {
-    title: `AAU Docs`,
+    title: `aaudoc`,
     siteUrl: `https://ad1-aau.netlify.com`,
     description: `Shared Note-Taking platform for lecture notes and course solutions`,
     twitter: ``,
@@ -33,7 +33,6 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 750,
-              sizeByPixelDensity: true,
               backgroundColor: `#ffffff`,
             },
           },
@@ -71,8 +70,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `AAU Docs`,
-        short_name: `AAU Docs`,
+        name: `AAU Doc`,
+        short_name: `AAU Doc`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#0032FC`,

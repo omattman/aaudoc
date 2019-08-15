@@ -7,7 +7,7 @@ import { itemListContributing } from "../../utils/sidebar/item-list"
 import { space } from "../../utils/presets"
 import Container from "../../components/container"
 import DocSearchContent from "../../components/docsearch-content"
-import Breadcrumb from "../../components/docs-breadcrumb"
+import PrevAndNext from "../../components/prev-and-next"
 
 class IndexRoute extends React.Component {
   render() {
@@ -16,16 +16,27 @@ class IndexRoute extends React.Component {
         <DocSearchContent>
           <Container>
             <Helmet>
-              <title>contributing</title>
-              <meta name="description" content="insert meta description" />
+              <title>Contributing</title>
+              <meta
+                name="description"
+                content="Learn about contributing to the biggest collection of lecture notes and improve learning"
+              />
             </Helmet>
-            <Breadcrumb
-              itemList={itemListContributing}
-              location={this.props.location}
-            />
-            <h1 id="aau-contributing" css={{ marginTop: 0 }}>
-              contributing
+            <h1 id="contributing-gatsby" css={{ marginTop: 0 }}>
+              Contributing to aaudoc
             </h1>
+            <p>
+              Thanks for being interested in contributing! We're so glad you
+              want to help!
+            </p>
+            <p>
+              Below you'll find guides on the aaudoc community, code of conduct,
+              and how to get started contributing:
+            </p>
+            <PrevAndNext
+              css={{ marginTop: space[9] }}
+              next={{ title: `Community`, link: `/contributing/community/` }}
+            />
           </Container>
         </DocSearchContent>
       </Layout>
