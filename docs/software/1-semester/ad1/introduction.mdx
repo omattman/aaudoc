@@ -1,0 +1,56 @@
+# Introduction
+
+## Exercises
+
+### Two smallest numbers
+
+> Write a pseudocode of an algorithm to find the two smallest numbers in a sequence of numbers (given as an array, and not sorted). What is the worst-case running time of your algorithm? Be careful to precisely define the input and the output of the algorithm.
+
+```text
+FIND-TWO-SMALLEST-NUMBERS(arr, arrSize)
+1.  initialize i to 0
+2.  initialize first & second to INT_MAX
+3.  for i < arrSize
+4.    if i in arr < first
+5.      set second equal to first
+6.      set first equal to i
+7.    else if  i < second and i is not equal to first
+8.      set second equal to i
+9.  print first and second
+```
+
+Due to fact that the algorithm can find the two numbers in **one** traversal the worst-case running time is $\mathcal{O}(n)$
+
+### Reverse an array of numbers
+
+> Write a pseudocode of an algorithm to reverse an array of numbers, i.e., the last element should become the first, next to last should become the second, etc. The algorithm should use only constant amount of extra space. What is the worst-case running time of your algorithm?
+
+```text
+REVERSE-ARRAY-OF-NUMBERS(arr, arrSize)
+1.  initialize start to 0
+2.  initialize end to arrSize-1
+3.  while start < end do
+4.    swap arr[start] with arr[end]
+5.    increment start with 1
+6.    decrement end with 1
+7.  return arr
+```
+
+Worst-case complexity of this algorithm is $\mathcal{O}(n)$ since we are editing the elements of the input array to swap in order to get the desired output array.
+
+### Check equality of sets
+
+> Let A and B be two arrays sorted in non-decreasing order, each containing n numbers. Write a pseudocode of an algorithm to check whether the set of elements in A is equal to the set of elements in B, i.e., all elements of A are contained in B and vice versa. What is the worst-case running time of your algorithm?
+
+### 1-1 Comparison of running times
+
+> For each function $f(n)$ and time $t$ in the following table, determine the largest
+size $n$ of a problem that can be solved in time $t$, assuming that the algorithm to
+solve the problem takes \$f(n) microseconds.
+
+### 1.2-2 Smallest value of $$n$$
+
+> Suppose we are comparing implementations of insertion sort and merge sort on the
+same machine. For inputs of size n, insertion sort runs in $8n^2$ steps, while merge
+sort runs in $64n*lg*n$ steps. For which values of n does insertion sort beat merge
+sort?

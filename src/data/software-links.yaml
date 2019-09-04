@@ -8,8 +8,13 @@
         - title: 1. Semester
           link: /software/1-semester/
           items:
-          - title: SU
-            link: /software/1-semester/su/introduktion/
-            items:
-            - title: Introduktion
-              link: /software/1-semester/su/introduction/
+            - title: SU
+              link: /software/1-semester/su/
+              items:
+                - title: 1. Introduction and System Choice
+                  link: /software/1-semester/su/introduction/
+            - title: AD1
+              link: /software/1-semester/ad1/
+              items:
+                - title: 1. Introduction
+                  link: /software/1-semester/ad1/introduction/

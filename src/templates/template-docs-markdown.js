@@ -17,6 +17,7 @@ import TableOfContents from "../components/docs-table-of-contents"
 import Breadcrumb from "../components/docs-breadcrumb"
 import Container from "../components/container"
 import PrevAndNext from "../components/prev-and-next"
+require(`katex/dist/katex.min.css`)
 
 const containerStyles = {
   // we need to account for <Container>'s horizontal padding of
