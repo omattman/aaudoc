@@ -4,5 +4,12 @@
   items:
     - title: Introduction
       link: /software/
-    - title: Start here
-      link: /software/start-here/
+      items:
+        - title: 1. Semester
+          link: /software/1-semester/
+          items:
+          - title: SU
+            link: /software/1-semester/su/introduktion/
+            items:
+            - title: Introduktion
+              link: /software/1-semester/su/introduction/
