@@ -1,5 +1,66 @@
 # Classes
 
+<details>
+  <summary>Show Lecture Slides</summary>
+  <iframe src="https://www.moodle.aau.dk/pluginfile.php/1627023/mod_resource/content/4/Systems%20Development%20Lecture%202%20-%20before%20lecture.pdf" width="100%" height="500px"></iframe>
+</details>
+
+## Event table
+
+![Classes Event Table](classes-event-table.png)
+
+The result of well researched entities is a **Event Table**, which
+clearly clarifies the major classes and events in the problem domain.
+
+It functions as a checklist, to indicate the different events of the defined classes.
+
+## Key Concepts
+* Object and Class
+* Event
+  * An instantaneous incident involving one or more objects.
+  * Its atomic, which means it can not be divided into sub-events.
+
+## Activities regarding classes
+![Activities regarding classes](classes-activities.png)
+
+### Example from IKEA
+> What are relevant events?
+
+* Vare modtaget
+* Vare solgt
+* Vare skadet
+
+Based on the above events it would be sufficient to define a class
+**Vare**. There's many things which can define a product(vare) but
+for this system will the above mentioned events be the most important.
+We abstract from any other instances which are not defined.
+
+## Find Candidates for Classes and Events
+For classes:
+* Look at nouns.
+* Eliminate nouns.
+* Describe a single instance (object).
+
+For events:
+* Look at verbs.
+* Eliminate verbs related to the way users carry out their job.
+* Indicate a single event. Avoid adding sub-events.
+
+### Example: Hair Salon
+![Example Hair Salon](classes-example-hair-salon-factor.png)
+
+**Classes**
+* Frisør
+* Elev
+* Kunde
+* Aftale
+
+**Events**
+* Kunde behandlet
+* Kunde aflyst
+* Kunde ankommet
+* Betalt
+* Ansat sygemeldt
 
 
 ## Quiz 2
