@@ -64,6 +64,12 @@ module.exports = {
     },
     "gatsby-plugin-emotion",
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [ `gatsby-remark-images` ],
+      }
+    },
     "gatsby-plugin-sharp",
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-layout`,
