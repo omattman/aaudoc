@@ -20,3 +20,8 @@
               items:
                 - title: 1. Introduction
                   link: /software/1-semester/ad1/introduction/
+            - title: DEB
+              link: /software/1-semester/deb/
+              items:
+                - title: 1. Introduction
+                  link: /software/1-semester/deb/introduction/
