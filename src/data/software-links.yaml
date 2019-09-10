@@ -20,6 +20,8 @@
               items:
                 - title: 1. Introduction
                   link: /software/1-semester/ad1/introduction/
+                - title: 2. Analyzing Algorithms
+                  link: /software/1-semester/ad1/analyzing-algorithms/
             - title: DEB
               link: /software/1-semester/deb/
               items:
