@@ -8,26 +8,34 @@ such as big-O, big-Omega, and theta.
 
 <details>
   <summary>Show Lecture Slides</summary>
-  <iframe src="https://www.moodle.aau.dk/pluginfile.php/1570708/mod_resource/content/10/Lecture-2.pdf" width="100%" height="500px"></iframe>
+  <iframe
+    src="https://www.moodle.aau.dk/pluginfile.php/1570708/mod_resource/content/10/Lecture-2.pdf"
+    width="100%"
+    height="500px"
+  ></iframe>
 </details>
 
 ## ILO of Lecture 2
+
 After this lecture, you should be able to:
-* Analyze algorithms using the RAM model
-* Understand worst-case, average-case, and best-case running time
-* Understand asymptotic notation
+
+- Analyze algorithms using the RAM model
+- Understand worst-case, average-case, and best-case running time
+- Understand asymptotic notation
 
 ## Agenda
-* Analyzing algorithms using the RAM model
-* Three kinds of analyses
-  * Worst-case, average-case, and best-case
-* Asymptotic notation
-  * Theta, Big-O, Big-Omega
+
+- Analyzing algorithms using the RAM model
+- Three kinds of analyses
+  - Worst-case, average-case, and best-case
+- Asymptotic notation
+  - Theta, Big-O, Big-Omega
 
 ## Analyzing algorithms using the RAM model
 
 ### Insertion Sort
-![Insertion Sort](analyzing-algorithms-insertion-sort.png)
+
+![Insertion Sort](/images/analyzing-algorithms-insertion-sort.png)
 
 Best-case is when everything is sorted already, so no movements
 have to be made.
@@ -37,19 +45,22 @@ That every integer has to be shifted one position to the right to insert
 the smallest number to the left.
 
 #### Analyzing Insertion Sort
+
 In this course, we care about **relative speed**.
 
 The relationship between the running time and input size.
-* $T(n)$: running time being a function of input size $n$.
+
+- $T(n)$: running time being a function of input size $n$.
 
 ### Analysis of Insertion Sort
-![Analysis of Insertion Sort](analyzing-algorithms-analysis-insertion-sort.png)
-![Analysis of Insertion Sort](analyzing-algorithms-analysis-insertion-sort-2.png)
 
+![Analysis of Insertion Sort](/images/analyzing-algorithms-analysis-insertion-sort.png)
+![Analysis of Insertion Sort](/images/analyzing-algorithms-analysis-insertion-sort-2.png)
 
 ## Three kinds of analyses
 
 ### Best/Worst/Average Case
+
 For a specific input size _n_, investigate running times $T(n)$ for different
 input instances.
 
@@ -58,21 +69,28 @@ Let $T_i(n)$ be the time complexity of $P$ on the $i$-th input instance, for $1<
 being the probability that this instance occurs.
 
 #### Worst case
+
 Worst case time complexity: $W(n)=max_{1 \leq i \leq k}T_i(n)$
-* The **maximum** running time over all $k$ inputs of size $n$
-* It is the most important!
+
+- The **maximum** running time over all $k$ inputs of size $n$
+- It is the most important!
 
 #### Average case
+
 Average case time complexity: $A(n)=\sum_{1 \leq i \leq k}p_iT_i(n)$
-* The **expected** running time over all $k$ inputs of size $n$
+
+- The **expected** running time over all $k$ inputs of size $n$
 
 #### Best case
+
 Best case time complexity: $B(n)=min_{1 \leq i \leq k}T_i(n)$
-* The **minimum** running time over all $k$ inputs of size $n$
+
+- The **minimum** running time over all $k$ inputs of size $n$
 
 ## Asymptotic notation
 
 ### Compare Algorithms Efficiencies
+
 How do we compare two algorithms in terms of efficiency? This could be
 linear search vs. binary search.
 
@@ -81,6 +99,7 @@ To answer this we look at how fast $T(n)$ grows as $n$ grows to a very large num
 This is called **asymptotic complexity**.
 
 ### Asymptotic Analysis
+
 This is the **big idea** of algorithmic analysis.
 
 The primary goal is to simplify analysis of running time by getting rid of the
@@ -91,57 +110,64 @@ the growth of the running time with the size of the input **in the limit**, inst
 of the actual running time.
 
 ### Asymptotic notation
+
 #### Theta notation $\theta$
+
 It is a 2-step process:
 
 1. Ignore its leading constant
 2. Drop its lower order terms
 
 How do we identify lower order terms?
-* Constant < poly-logarithm < polynomial < exponential
-* c, $lg^kn$, $n^a$, $b^n$
 
-![Analysis of Insertion Sort](analyzing-algorithms-theta-notation.png)
+- Constant < poly-logarithm < polynomial < exponential
+- c, $lg^kn$, $n^a$, $b^n$
+
+![Analysis of Insertion Sort](/images/analyzing-algorithms-theta-notation.png)
 
 ##### Proof
-![Analysis of Insertion Sort](analyzing-algorithms-proof-engineering-way.png)
+
+![Analysis of Insertion Sort](/images/analyzing-algorithms-proof-engineering-way.png)
 
 #### Big-O Notation $\mathcal{O}$
-![Analysis of Insertion Sort](analyzing-algorithms-big-o-notation.png)
+
+![Analysis of Insertion Sort](/images/analyzing-algorithms-big-o-notation.png)
 
 #### Big-Omega notation $\Omega$
-![Analysis of Insertion Sort](analyzing-algorithms-big-omega-notation.png)
+
+![Analysis of Insertion Sort](/images/analyzing-algorithms-big-omega-notation.png)
 
 ## Exercises
 
-
 ### 3.1-1
+
 > Let $f(n)$ and $g(n)$ be asymptotically nonnegative functions.
 > Using the basic definition of $\theta$-notation, prove that
-> max$(f(n), g(n)) = \theta(f(n) + g(n))
+> max\$(f(n), g(n)) = \theta(f(n) + g(n))
 
 $max(f(n), g(n)) = \theta(f(n) + g(n))$
 
 With $c_1 = n^2$ og $c_2 = 100$
 
-![Analysis of Insertion Sort](analyzing-algorithms-exercise-3-1-1.png)
-
+![Analysis of Insertion Sort](/images/analyzing-algorithms-exercise-3-1-1.png)
 
 ### 3.1-4
+
 Is $2^{n+1} = \mathcal{O}(2^n)$
 
 True. Note that $2^{n+1} = 2 x 2n$.
 
 ### Asymptotic tight bounds
+
 > By getting rid of the asymptotically insignificant parts of the expressions,
 > give a simplified asymptotic tight bounds (theta notation) for the following
 > running times. Here $k \neq 1, e > 0$, and $c > 1$ are constants.
 
-![Exercises](analyzing-algorithms-exercise-2.png)
+![Exercises](/images/analyzing-algorithms-exercise-2.png)
 
 ### Extra questions
 
-Solve questions in this [file](https://www.moodle.aau.dk/pluginfile.php/373593/mod_resource/content/1/exercises2.pdf)
+Solve questions in this [file](/images/https://www.moodle.aau.dk/pluginfile.php/373593/mod_resource/content/1/exercises2.pdf)
 
 #### Exercise 2.1
 
@@ -162,4 +188,4 @@ DoSomething(n:int):int
 
 > What is `DoSomething(8)`? What is the asymptotic running time?
 
-![Exercises](analyzing-algorithms-exercise-2-1.png)
+![Exercises](/images/analyzing-algorithms-exercise-2-1.png)
