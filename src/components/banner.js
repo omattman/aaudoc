@@ -46,7 +46,7 @@ const Content = styled(`div`)`
 const Banner = () => (
   <BannerContainer className="banner">
     <InnerContainer>
-      <Content>{`Important messages are displayed here`}</Content>
+      <Content>{`Get hyper`}</Content>
     </InnerContainer>
   </BannerContainer>
 )

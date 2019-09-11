@@ -6,6 +6,103 @@ more precisely you will get:
 - A detailed presentation of the Structure activity (Chapter 4)
 - A discussion of the different means for describing structure
 
+## Summary of structures
+
+### Purpose
+To describe structural relations between classes and objects in a problem
+domain.
+
+### Concepts
+Class structures
+* Generalization: A general class (the super class) describes properties
+common to a group of specialized classes (the subclasses).
+* Cluster: A collection of related classes
+
+Object structures
+* Aggregation: A puperior object (the whole) consists of a number of
+objects (the parts).
+* Association: A meaningful relation between a number of objects.
+
+### Principles
+* Study abstract, static relations between classes.
+* Study concrete, dynamic relations between objects.
+* Model only the necessary structual relations.
+
+### Results
+The result is a class diagram with classes and structures.
+![Class diagram](/images/structure-class-diagram.png)
+
+## Key Concepts
+The takeway from this section is that it is possible to have both a
+generalization class and aggregation class on a parent class. Take for
+instance a car. The `Car` class can consist of a generalization class
+`Passenger Car` to describe the type of car and a aggregation class `Engine`
+to specify, that the car has a engine. This is also visually shown in
+[Cluster](#cluster).
+
+### Generalization
+![Generalization](/images/structure-generalization.png)
+
+'is-a' relation.
+
+It describes the relation between two classes.
+
+### Cluster
+![Cluster](/images/structure-cluster.png)
+
+Clusters are a class structure to distinguish between the various
+types of classes.
+
+### Aggregation
+![Aggregation](/images/structure-aggregation.png)
+
+'has-a' or 'owns-a' relation.
+
+Aggregation is about looking at the specific objects, and how they are connected
+in relation to each other. This also specifies the amount of relations.
+
+Typical aggregations:
+* Whole - part
+  * Example: a project group, and the parts are the students
+* Container - contents
+* Union - member
+
+### Association
+![Association](/images/structure-association.png)
+
+Defines the relation between two objects, but is not as strongly described as
+aggregation. It is usually on the same level.
+
+## Activities
+![Activities](/images/structure-activities.png)
+
+## Evaluate Systematically
+You can read more about aggregation versus association on page 87.
+
+The structures must be simple, especially at the top levels. It is seen as good
+practice to avoid unnescessary generalization and aggregations to keep it as
+clean and descriptive as possible. This is also the reason for why one should
+avoid objects changing class, since this require a total rework of the structure.
+
+## Explore patterns
+
+### Role
+As en example it is possible for a person to have different roles. The roles for
+a poerson can change dynamically over time.
+
+![Activities](/images/structure-role.png)
+
+### Relation
+Used to identify if objects from to classes are related.
+
+![Activities](/images/structure-relation.png)
+
+### Hierarchy
+Used to identify how objects from different classes form a hierarchy.
+
+![Activities](/images/structure-hierarchy.png)
+
+
 ## Individual Exercises
 
 ### Quiz 3
