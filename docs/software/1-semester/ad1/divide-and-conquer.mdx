@@ -1,0 +1,83 @@
+# Divide-and-Conquer
+
+In this lecture, we look at the divide-and-conqure technique and
+how to analyze divide-and-conqure algorithms. In particular, we will
+look into Merge Sort, a sorting algorithm that follows the
+divide-and-conqure principle.
+
+## ILO of Lecture 3
+After this lecture, you should be able to
+* Understand the divide-and-conquer technique for algorithm design
+* Analyze divide-and-conquer algorithms
+
+## Divide-and-Conquer algorithms
+
+<Player url="https://www.youtube.com/watch?v=TzeBrDU-JaY" />
+
+### Basic idea of Divide-and-Conquer
+**Divide** the original **big** problem into several sub-problems that are
+similar to the original problem but **smaller** in size.
+
+**Conquer** recursively until the sub-problem is a small problem size
+that can be solved trivially.
+
+**Combine** the solutions to sub-problems to create a final solution to the
+original problem.
+
+## Analyzing Divide-and-Conquer algorithms
+
+### Recurrences
+A **recurrence** is an equation or inequality that describes a function in terms
+of its value on smaller inputs.
+
+Assume that the division of the problem yields **_a_** sub-problems and each
+subproblem is **_1/b_** the size of the original. This means we have:
+
+![Divide and Conquer](/images/divide-and-conquer.png)
+
+#### Recurrence on Binary Search
+
+![Recurrence](/images/divide-and-conquer-recurrence.png)
+
+If we to the complexity of recurrences we see that:
+* a = 1, since we need to find the middle index once.
+* b = 2, we split up the original array into two new arrays divided on the middle.
+* D(n) = $\theta (1)$, because we compute the middle index in constant time.
+* C(n) = 0, since there is no need to combine the two arrays into the original one again.
+
+This gives a time complexity of:
+* $T(n) = \theta (1)$    if n = 1
+* $T(\dfrac{n}{2}) + \theta (1)$    otherwise, i.e., if n > 1
+
+### The Repeated Substitution Method
+Solving recurrences with the repeated substitution method:
+* Substitute
+* Expand
+* Substitute
+* Expand
+* ...
+
+One should observe a **pattern** and write how your expression looks after the _i_-th
+substitution.
+
+![Recurrence Example](/images/divide-and-conquer-recurrence-example.png)
+
+### Lecture Exercise
+
+$$
+T(n) = 2T(n/2) + b \\
+  = 2(2T(\dfrac{n/2}{2}) + b) + b = 2^2T(\dfrac{n}{2^2}) + (2+1)b \\
+  = 2^2(2T(\dfrac{n}{2^3})) + b) + (2+1)b = 2^3T(\dfrac{n}{2^3}) + (2^2+2+1)b \\
+  ... \\
+$$
+
+## Merge Sort
+An algorithm that is able to solve the sorting problem and uses the Divide-and-Conquer
+technique. One should assume that we are going to sort a sequence of numbers in
+array A.
+
+![Merge Sort](/images/divide-and-conquer-merge-sort.png)
+
+
+
+## Exercises
