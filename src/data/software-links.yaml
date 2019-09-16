@@ -4,30 +4,31 @@
   items:
     - title: Introduction
       link: /software/
+    - title: 1. Semester
+      link: /software/1-semester/
       items:
-        - title: 1. Semester
-          link: /software/1-semester/
+        - title: SU
+          link: /software/1-semester/su/
           items:
-            - title: SU
-              link: /software/1-semester/su/
-              items:
-                - title: 1. Introduction and System Choice
-                  link: /software/1-semester/su/introduction/
-                - title: 2. Classes
-                  link: /software/1-semester/su/classes/
-                - title: 3. Structure
-                  link: /software/1-semester/su/structure/
-            - title: AD1
-              link: /software/1-semester/ad1/
-              items:
-                - title: 1. Introduction
-                  link: /software/1-semester/ad1/introduction/
-                - title: 2. Analyzing Algorithms
-                  link: /software/1-semester/ad1/analyzing-algorithms/
-                - title: 3. Divide-and-Conquer
-                  link: /software/1-semester/ad1/divide-and-conquer/
-            - title: DEB
-              link: /software/1-semester/deb/
-              items:
-                - title: 1. Introduction
-                  link: /software/1-semester/deb/introduction/
+            - title: 1. Introduction and System Choice
+              link: /software/1-semester/su/introduction/
+            - title: 2. Classes
+              link: /software/1-semester/su/classes/
+            - title: 3. Structure
+              link: /software/1-semester/su/structure/
+            - title: 4. Behavior
+              link: /software/1-semester/su/behavior/
+        - title: AD1
+          link: /software/1-semester/ad1/
+          items:
+            - title: 1. Introduction
+              link: /software/1-semester/ad1/introduction/
+            - title: 2. Analyzing Algorithms
+              link: /software/1-semester/ad1/analyzing-algorithms/
+            - title: 3. Divide-and-Conquer
+              link: /software/1-semester/ad1/divide-and-conquer/
+        - title: DEB
+          link: /software/1-semester/deb/
+          items:
+            - title: 1. Introduction
+              link: /software/1-semester/deb/introduction/

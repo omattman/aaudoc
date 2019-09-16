@@ -1,0 +1,84 @@
+# Behavior
+
+## Summary
+### Purpose
+To model the dynamics of a problem domain.
+
+### Concepts
+* Event trace: A sequence of events involving a specific object.
+* Behavioral pattern: A description of possible event traces
+for alle objects in a class.
+* Attribute: A descriptive property of a class or an event.
+
+### Principles
+* Create behavioral patterns from event traces.
+* Study common events.
+* Derive class attributes from behavioral patterns.
+
+### Results
+* A behavioral pattern with attributes for every class in a
+class diagram.
+
+
+## Result
+![Result](/images/behavior-result.png)
+
+For the class we add a behavioral diagram that describes the current behavior of
+the objects related to the class.
+
+## Activities
+![Activities](/images/behavior-activities.png)
+
+## Key concepts
+### Event Traces
+> A sequence of events involving a specific object.
+
+One should make event traces for each class. This means that we for each class asks:
+* Which event(s) cause the creaton of a problem-domain object?
+* Which event(s) cause the disappearence of a problem-domain object?
+
+Typical event traces includes:
+* Which events occur together in a sequence?
+* Are there any alternative events?
+* Can a given event occur more than once?
+* Is the overall form structured or unstructured.
+
+### Control Structures
+![Activities](/images/behavior-control-structures.png)
+
+### Event Traces to Behavioral Patterns
+![Event Traces to Behavioral Patterns](/images/behavior-traces-to-behavior-patterns.png)
+
+#### Common Events: Event Table
+![Event table](/images/behavior-event-table.png)
+
+A `*` indicates that the event can occur multiple times, whereas
+the `+` indicates that the event only happens once.
+
+## Modelling techniques
+
+### Consider Structures
+Aggregation and association
+* If two or more objects have common events, consider adding an aggregation
+or association structure between them.
+* If two classes are related by and aggregation or association structure,
+at least one common event should be considered.
+
+Generalization
+* If the same event is tied to two classes, consider whether one class is
+a generalization of the other.
+
+### Hierarchical States
+Consider using hierarchical states
+
+![Hierarchical states](/images/behavior-hierarchical-states.png)
+
+### Describe Attributes
+Class attributes:
+* What are the general characteristics of the class?
+* What basic data must be captured about objects from this class?
+* What results from an event trace must be captured?
+
+Event attributes:
+* What time did the event occur?
+* Which amount did it concern?
