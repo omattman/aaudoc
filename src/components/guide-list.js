@@ -29,7 +29,12 @@ const childItemsBySlug = (
 
 const GuideList = ({ slug }) => {
   const subitemsForPage =
-    childItemsBySlug(softwareHierarchy, tutorialHierarchy, slug) || []
+    childItemsBySlug(
+      softwareHierarchy,
+      tutorialHierarchy,
+      contributingHierarchy,
+      slug
+    ) || []
 
   const subitemList = subitemsForPage.map((subitem, i) => (
     <li key={i}>
@@ -38,7 +43,7 @@ const GuideList = ({ slug }) => {
   ))
   const toc = subitemList.length ? (
     <>
-      <h2>Index</h2>
+      <h2>In this course:</h2>
       <ul>{subitemList}</ul>
     </>
   ) : null
