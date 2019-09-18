@@ -6,13 +6,16 @@ look into Merge Sort, a sorting algorithm that follows the
 divide-and-conqure principle.
 
 ## ILO of Lecture 3
+
 After this lecture, you should be able to
-* Understand the divide-and-conquer technique for algorithm design
-* Analyze divide-and-conquer algorithms
+
+- Understand the divide-and-conquer technique for algorithm design
+- Analyze divide-and-conquer algorithms
 
 ## Divide-and-Conquer algorithms
 
 ### Basic idea of Divide-and-Conquer
+
 **Divide** the original **big** problem into several sub-problems that are
 similar to the original problem but **smaller** in size.
 
@@ -25,6 +28,7 @@ original problem.
 ## Analyzing Divide-and-Conquer algorithms
 
 ### Recurrences
+
 A **recurrence** is an equation or inequality that describes a function in terms
 of its value on smaller inputs.
 
@@ -38,22 +42,26 @@ subproblem is **_1/b_** the size of the original. This means we have:
 ![Recurrence](/images/divide-and-conquer-recurrence.png)
 
 If we to the complexity of recurrences we see that:
-* a = 1, since we need to find the middle index once.
-* b = 2, we split up the original array into two new arrays divided on the middle.
-* D(n) = $\theta (1)$, because we compute the middle index in constant time.
-* C(n) = 0, since there is no need to combine the two arrays into the original one again.
+
+- a = 1, since we need to find the middle index once.
+- b = 2, we split up the original array into two new arrays divided on the middle.
+- D(n) = $\theta (1)$, because we compute the middle index in constant time.
+- C(n) = 0, since there is no need to combine the two arrays into the original one again.
 
 This gives a time complexity of:
-* $T(n) = \theta (1)$    if n = 1
-* $T(\dfrac{n}{2}) + \theta (1)$    otherwise, i.e., if n > 1
+
+- $T(n) = \theta (1)$ if n = 1
+- $T(\dfrac{n}{2}) + \theta (1)$ otherwise, i.e., if n > 1
 
 ### The Repeated Substitution Method
+
 Solving recurrences with the repeated substitution method:
-* Substitute
-* Expand
-* Substitute
-* Expand
-* ...
+
+- Substitute
+- Expand
+- Substitute
+- Expand
+- ...
 
 One should observe a **pattern** and write how your expression looks after the _i_-th
 substitution.
@@ -70,6 +78,7 @@ T(n) = 2T(n/2) + b \\
 $$
 
 ## Merge Sort
+
 An algorithm that is able to solve the sorting problem and uses the Divide-and-Conquer
 technique. One should assume that we are going to sort a sequence of numbers in
 array A.
@@ -77,7 +86,9 @@ array A.
 ![Merge Sort](/images/divide-and-conquer-merge-sort.png)
 
 ## Exercises
+
 ### Merge-Sort
+
 > Run the merge sort algorithm on the following array of numbers:
 > (3, 41, 52, 26, 38, 57, 49, 9). Give the state of the array
 > after five calls of the algorithm Merge are performed during
@@ -86,6 +97,7 @@ array A.
 ![Exercise 1](/images/divide-and-conquer-exercise-1.png)
 
 ### Divide-and-Conquer
+
 > Consider an array $A[l..r]$ of integers, where $r - l + 1 = 2^k$; for some $k > 0$.
 > Write a divide-and-conquer algorithm to find the two smallest numbers in this
 > array.
@@ -120,8 +132,8 @@ $$
 The asymptotic worst-case running time is $\theta (n)$, which is the same as
 that of the algorithm given for the same problem in lecture 1 exercises.
 
-
 ### Repeated substitution
+
 > Try to write the recurrence for the recursive version of the factorial
 > algorithm shown in the lecture. Try to use the repeated substitution method
 > to solve the recurrence that you wrote.
