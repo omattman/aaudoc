@@ -29,6 +29,8 @@
               link: /software/1-semester/ad1/analyzing-algorithms/
             - title: 3. Divide-and-Conquer
               link: /software/1-semester/ad1/divide-and-conquer/
+            - title: 4. Solving recurrences and Correctness of algorithms
+              link: /software/1-semester/ad1/solving-recurrences/
         - title: DEB
           link: /software/1-semester/deb/
           items:
