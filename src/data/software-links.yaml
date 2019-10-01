@@ -20,6 +20,8 @@
               link: /software/1-semester/su/behavior/
             - title: 5. Usage
               link: /software/1-semester/su/usage/
+            - title: 7. OOA&D in Practice
+              link: /software/1-semester/su/ooad/
         - title: AD1
           link: /software/1-semester/ad1/
           items:

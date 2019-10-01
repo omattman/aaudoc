@@ -33,5 +33,140 @@ comes in to organize and plan the above mentioned sequence of decisions.
 The particularly problematic areas should be focused and tackled first. As these are
 the primary problem areas one should make critical decisions about these areas first
 and delay the less important ones until later. As we discuss the problematic areas
-we may receal conditions that make it difficult or impossible to arrive at a
+we may reveal conditions that make it difficult or impossible to arrive at a
 satisfactory system. The earlier we tackle them, the better.
+
+## Group Exercises
+
+### Exercise 8 (page 299)
+> Consider one of your recents projects. First, describe the strategy
+> followed in the project.
+
+Starting from our previous P1 project we made an outline containing headlines
+for what the program should include and consist of. Based on this outline we
+brainstormed the functions and made a vague time estimation. We also made a
+flowchart for the program logic and constructed a Gantt-diagram to act as a
+overview, time schedule and bearing. The workload was split and perfomed
+according to the waterfall method.
+
+> Characterize the task
+
+| Problem domain:                                                                 |       |
+|---------------------------------------------------------------------------------|-------|
+| 1. Has the level of ambition been agreed upon with the customer?                | No    |
+| 2. Is the model of the object system clear and simple?                          | Yes   |
+| 3. Is the problem domain stable                                                 | Yes   |
+
+| Application domain:                                                             |       |
+|---------------------------------------------------------------------------------|-------|
+| 4. Are the requirements to the system's use complete, clear, and simple?        | No    |
+| 5. Do the users have experience with this type of computerized system?          | Maybe |
+| 6. Is the system's functionality well known to the system developers?           | Yes   |
+| 7. Is the application domain and user group clear and uniform?                  | No    |
+| 8. Are there existing procedures or traditions for using the system?            | Yes   |
+| 9. Are the requirements for the system's response time and security manageable? | Yes   |
+| 10. Will it be possible to introduce the system without major changes?          | Yes   |
+
+| Technical platform:                                                                      |     |
+|------------------------------------------------------------------------------------------|-----|
+| 11. Is the technical platform, including libraries, etc., tested, simple, and available? | No  |
+| 12. Can the requirements be realized on the technical platform?                          | Yes |
+| 13. Can the technical platform be established independently of other projects?           | Yes |
+| 14. Is the relation to other systems well defined and simple?                            | Yes |
+
+| Project organization:                                                     |     |
+|---------------------------------------------------------------------------|-----|
+| 15. Do the system developers have insight into the problem domain?        | Yes |
+| 16. Do the system developers have insight into the application domain?    | Yes |
+| 17. Are the system developers experienced on the technical platform?      | No  |
+| 18. Is there close contact with the users during development?             | No  |
+| 19. Are the system developers experienced in object-oriented development? | Yes |
+
+| Special aspects:                                              |     |
+|---------------------------------------------------------------|-----|
+| 20. Is there experience with similar systems?                 | No  |
+| 21. Does the project look like previous development projects? | No  |
+| 22. Are there only a few special conditions?                  | Yes |
+
+> Evaluate the difficulties. According to how much the item contributes
+> to the total difficulties: "0" for yes, "1" for perhaps, and "2" for
+> no or unknown.
+
+| Analysis of the problem domain:                                                    |          |
+|------------------------------------------------------------------------------------|----------|
+| 1. Has the level of ambition been agreed upon with the customer?                   | 2        |
+| 2. Is the model of the object system clear and simple?                             | 1        |
+| 3. Is the problem domain stable?                                                   | 0        |
+| 5. Do the users have experience with this type of computerized system?             | 1        |
+| 15. Are the system developers experienced in object-oriented development projects? | 0        |
+| 18. Is there close contact with the users during development?                      | 1        |
+| 19. Are the system developers have insight into the problem domain?                | 0        |
+| 20. Is there experience with similar systems?                                      | 1        |
+| 21. Does the project look like previous development projects?                      | 0        |
+| 22. Are there only a few special conditions?                                       | 0        |
+| **Total difficulty in analysis of the problem domain:**                            | **6/20** |
+
+| Analysis of the application domain:                                             |          |
+|---------------------------------------------------------------------------------|----------|
+| 1. Has the level of ambition been agreed upon with the customer?                | 1        |
+| 4. Are the requirements to the system's use complete, clear, and simple?        | 2        |
+| 5. Do the users have experience with this type of computerized system?          | 0        |
+| 7. Is the application domain and user group clear and uniform?                  | 2        |
+| 8. Are there existing procedures or traditions for using the system?            | 0        |
+| 9. Are the requirements for the system's response time and security manageable? | 0        |
+| 10. Will it be possible to introduce the system without major changes?          | 0        |
+| 16. Do the system developers have insight into the application domain?          | 0        |
+| 18. Is there close contact with the users during development?                   | 1        |
+| 20. Is there experience with similar systems?                                   | 1        |
+| 21. Does the project look like previous development projects?                   | 2        |
+| 22. Are there only a few special conditions?                                    | 0        |
+| **Total difficulty in analysis of the application domain:**                     | **9/24** |
+
+| Design of the system's architecture:                                                     |          |
+|------------------------------------------------------------------------------------------|----------|
+| 9. Are the requirements for the system's response time and security manageable?          | 0        |
+| 10. Will it be possible to introduce the system without major changes?                   | 0        |
+| 11. Is the technical platform, including libraries, etc., tested, simple, and available? | 1        |
+| 12. Can the requirements be realized on the technical platform?                          | 0        |
+| 13. Can the technical platform be established independently of other projects?           | 0        |
+| 14. Is the relation to other systems well defined and simple?                            | 0        |
+| 17. Are the system developers experienced on the technical platform?                     | 1        |
+| 19. Are the system developers experienced in object-oriented development?                | 0        |
+| 20. Is there experience with similar systems?                                            | 2        |
+| 21. Does the project look like previous development projects?                            | 2        |
+| 22. Are there only a few special conditions?                                             | 0        |
+| **Total difficulty in the design of the architecture:**                                  | **6/22** |
+
+> Design a strategy using the approach offered in the chapter.
+
+**Guidelines for designing a strategy**
+- Put highest emphasis on areas with great difficulty.
+- Initiate activities in difficult areas early in the process.
+- Make critical decisions first and less critical decisions later in the process.
+- Design the strategt to ensure coordination of decisions.
+- Include requirements management in the strategy.
+- When necessary, attempt to alter development conditions to ensure
+  a satisfactory system.
+
+The strategy will put great emphasis on problematic areas with high difficulty.
+- Database
+- Interaction between orders
+- Generate events for order checkout
+- Intuitive user interface tailored to the userbase's different levels of competence
+- Handling feedback from the prototype-phase
+
+Focus lies on the application domain where the greatest challenges was found.
+However, we will at first analyze the application domain and system architecture
+to determine requirements.
+
+Phase 1: Analysis of problem- and application domain.
+Phase 2: Design system architecture and kernel components.
+Phase 3: Implementation and development.
+Phase 4: Continuous usability tests and redesign if necessary.
+Phase 5: System development.
+
+### Exercise 9 (page 299)
+> The Unified Software Development Process is use-case driven,
+> architecture-centric, iterative, and incremental. Which types of system
+> development projects is the strategy suited for? Describe projects for
+> which the method would not be the optimal strategy.
