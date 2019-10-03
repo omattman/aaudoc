@@ -117,3 +117,42 @@ All of the below mentioned operations take constant time.
 - Insert only to the top
 - Remove only from the top
 - Remove follows the reverse order of insert
+
+
+## Exercises
+
+### Exercise BuildMaxHeap
+> Run the heapsort algorithm on the following array of numbers:
+> (5, 13, 2, 25, 7, 17, 20, 8, 4). Give the state of the array (a)
+> after the _BuildMaxHeap_ operation, and (b) after three
+> iterations of the loop.
+
+After the `BuildMaxHeap` operation the state of the array is:
+`[25, 20, 13, 17, 8, 7, 4, 2, 5]`
+
+After three iterations of the loop we have:
+`[13, 8, 5, 2, 7, 4, 2, 20, 25]`
+
+### Exercise 6.1-1
+> What are the minimum and maximum number of elements in a heap
+> of height _h_?
+
+For minimum it is $2^{h-1}$
+
+For maximum it is $2^h-1$
+
+__SOLUTION FROM CLRS__
+
+At least $2^h$ and at most $2^{h+1}-1$. Can be seen because a complete binary
+tree of depth $h-1$ has $\sum_{i=0}^{h-1} 2^i = 2^h-1$ elements, and the number
+of elements in a heap of depth $h$ is between the number for a complete
+binary tree of depth $h-1$ exclusive and the number in a complete binary
+tree of depth $h$ inclusive.
+
+### Exercise 6.1-4
+
+> Where in a max-heap might the smallest element reside, assuming that all
+> elements are distinct?
+
+In any of the leaves, that is, elements with index $\lfloor n/2 \rfloor + 1$,
+that is, in the second half of the heap array.
