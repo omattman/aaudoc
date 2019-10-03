@@ -4,37 +4,39 @@
   items:
     - title: Introduction
       link: /software/
-    - title: 1. Semester
-      link: /software/1-semester/
+    - title: 3. Semester
+      link: /software/3-semester/
       items:
         - title: SU
-          link: /software/1-semester/su/
+          link: /software/3-semester/su/
           items:
             - title: 1. Introduction and System Choice
-              link: /software/1-semester/su/introduction/
+              link: /software/3-semester/su/introduction/
             - title: 2. Classes
-              link: /software/1-semester/su/classes/
+              link: /software/3-semester/su/classes/
             - title: 3. Structure
-              link: /software/1-semester/su/structure/
+              link: /software/3-semester/su/structure/
             - title: 4. Behavior
-              link: /software/1-semester/su/behavior/
+              link: /software/3-semester/su/behavior/
             - title: 5. Usage
-              link: /software/1-semester/su/usage/
+              link: /software/3-semester/su/usage/
             - title: 7. OOA&D in Practice
-              link: /software/1-semester/su/ooad/
+              link: /software/3-semester/su/ooad/
         - title: AD1
-          link: /software/1-semester/ad1/
+          link: /software/3-semester/ad1/
           items:
             - title: 1. Introduction
-              link: /software/1-semester/ad1/introduction/
+              link: /software/3-semester/ad1/introduction/
             - title: 2. Analyzing Algorithms
-              link: /software/1-semester/ad1/analyzing-algorithms/
+              link: /software/3-semester/ad1/analyzing-algorithms/
             - title: 3. Divide-and-Conquer
-              link: /software/1-semester/ad1/divide-and-conquer/
+              link: /software/3-semester/ad1/divide-and-conquer/
             - title: 4. Solving recurrences and Correctness of algorithms
-              link: /software/1-semester/ad1/solving-recurrences/
+              link: /software/3-semester/ad1/solving-recurrences/
+            - title: 6. Heapsort & ADTs
+              link: /software/3-semester/ad1/heapsort/
         - title: DEB
-          link: /software/1-semester/deb/
+          link: /software/3-semester/deb/
           items:
             - title: 1. Introduction
-              link: /software/1-semester/deb/introduction/
+              link: /software/3-semester/deb/introduction/
