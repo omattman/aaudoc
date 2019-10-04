@@ -22,6 +22,8 @@
               link: /software/3-semester/su/usage/
             - title: 7. OOA&D in Practice
               link: /software/3-semester/su/ooad/
+            - title: 8. Architectural Design
+              link: /software/3-semester/su/architectural-design/
         - title: AD1
           link: /software/3-semester/ad1/
           items:
