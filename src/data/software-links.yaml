@@ -44,3 +44,5 @@
           items:
             - title: 1. Introduction
               link: /software/3-semester/deb/introduction/
+            - title: 4. Physical Design
+              link: /software/3-semester/deb/physical-design/
