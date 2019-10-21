@@ -1,0 +1,105 @@
+---
+title: Connection of Components
+---
+
+## The Connecting Components activity
+
+### Results
+The results of the activity of connecting components is:
+
+* A revised class diagram for components of the system
+* An architecture includes dependencies between components
+* The implementation of these dependencies must be designed
+* The dependencies are designed as connections between the classes
+in the components
+* The revised class diagram specifies these connections precisely
+
+![Results of connecting components](images/connection-of-components-results.png)
+
+### Activities
+![Activities of connecting components](images/connection-of-components-activities.png)
+
+### Connect Classes
+__Component__: A collection of program parts that constitutes a whole and has
+well-defined responsibilities.
+
+__Connection__: Realization of a dependency between components.
+
+![Connect Classes](images/connection-of-components-connect-classes.png)
+
+* Aggregation
+* Specialization
+* Call
+
+#### Connection: Aggregation
+A dependency can be realized by letting a class in one component aggregate
+a public class from another component.
+
+![Connection: Aggregation](images/connection-of-components-aggregation.png)
+
+#### Connection: Specialization
+A dependency can be realized by defining a class in one component as a
+specialization of a public class in another component.
+
+![Connection: Specialization](images/connection-of-components-specialization.png)
+
+#### Connection: Call
+A class in one component calls a public operation in another component.
+
+![Connection: Call](images/connection-of-components-call.png)
+
+### Explore Patterns
+The most general pattern for realizing dependencies between classes is
+called _Observer_.
+
+* The _Subject_ knows its observers and provides attaching and detaching observers.
+* The Observer provides an update  operation to the subject.
+* The involved objects are all from either _Concrete Subject_ or _Concrete Observer_.
+* The concrete subject notifies its observers when its state has changed.
+* The concrete observers each know their concrete subject and each implement
+the update operation.
+
+#### Using the Observer Pattern
+* The _Account_ is the concrete object.
+* The _Signal_ class contains the oprations to observe the state of an Account object.
+
+![Observer Pattern](images/connection-of-components-observer-pattern.png)
+
+### Evalutate Connections
+![Evaluate Connections](images/connection-of-components-evaluation.png)
+
+## Quiz 11
+
+### Question 1
+> Which structures are used to connect components?
+
+### Question 2
+> What do we strive for?
+
+### Question 3
+> What is the purpose of this pattern?
+>
+> ![Quiz question 3](images/connection-of-components-quiz-q-3.png)
+
+## Individual Exercises
+
+### Exercise 1 (page 283)
+
+
+### Exercise 2 (page 283)
+
+
+### Exercise 3 (page 283)
+
+
+### Exercise 7 (page 283)
+
+
+## Group Exercises
+
+### Exercise 9 (page 284)
+
+### Exercise 12 (page 284)
+
+### Conenct components activity
+> Start on the Connect components activity for your project
