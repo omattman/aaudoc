@@ -43,6 +43,8 @@
               link: /software/3-semester/ad1/solving-recurrences/
             - title: 6. Heapsort & ADTs
               link: /software/3-semester/ad1/heapsort/
+            - title: 9. Dynamic Programming
+              link: /software/3-semester/ad1/dynamic-programming/
         - title: DEB
           link: /software/3-semester/deb/
           items:
