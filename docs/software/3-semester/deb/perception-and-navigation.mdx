@@ -1,0 +1,72 @@
+---
+title: Perception & Navigation
+---
+
+## Group Exercises
+
+### Exercise 1
+> Design your user interface to support the patterns related to user perception.
+> Describe which patterns you used and the considerations made.
+
+By looking at the NewOrderView one can quickly recognise three “columns”.
+The columns are separated by additional space to indicate separate entities.
+The contents of these columns are grouped together so that the user knows
+they are alike - proximity. Furthermore, textboxes are styled identically.
+
+All food items look alike no matter what view is active. This allows the
+user to recognise the pattern - recognise rather than recall.
+
+#### Proximity
+On the order receipts, the elements are grouped to ease the visual perception
+of the user. Textboxes are placed closer to each order than they are to other
+elements. The white space and proximity makes it so, that the user sees
+these elements as related.
+
+#### Similarity
+The various food items are made almost identical with the exception
+of an icon, which illustrates the category of the food item. Through
+similarity, the user sees these elements as cohesive. If one has
+experience with one element, one can manage all others.
+
+#### Chunking
+Views are split up in chunks that frames, which view corresponds to a specific
+task. The NewOrderView is split up in categories, choice of product, and the
+final receipt of the order.
+
+#### Continuity
+We use scrollbars each time a list has more content than can be shown on
+the screen at once. In scrollable lists the last element overflows
+and only a small part of it is visible. This indicates
+that more content is available.
+
+Every chunk has no broken lines so the readers always read from left to right
+and top to bottom.
+
+#### Depth Perception
+Element drop shadows give the impression of three dimensions.
+This is not necessary application-wise but looks pretty cool I suppose.
+
+#### Common Region
+
+#### Closure
+Well, if you take a look at the NewOrderView one can quickly recognise
+three “columns” or rectangles. In the lists, each line forms a
+rectangle with its elements without explicitly outlining the shape.
+This gives a sense of closure.
+
+### Exercise 2
+> Design your user interface to include navigation signs.
+> Describe which signs you used and the considerations made.
+
+In several of the pages (views) we use highlight menu tabs to allow
+the user to easily backtrack. We also designed each page with a heading,
+to show the user that a particular destination has been reached.
+
+Navigational items - namely sidebar menu tabs - are clearly separated
+from the main content. They are grouped together in boxes and the color
+of said boxes are different from the background color of the main content.
+
+Navigation follows the Apple guidelines. There is only one path that
+takes you to a given destination and each path is designed to be logic.
+An example of this is the edit order destination. The path to get
+here is my orders → specific order → edit order.
