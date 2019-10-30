@@ -43,7 +43,7 @@ const GuideList = ({ slug }) => {
   ))
   const toc = subitemList.length ? (
     <>
-      <h2>In this course:</h2>
+      <h2>In this section:</h2>
       <ul>{subitemList}</ul>
     </>
   ) : null
