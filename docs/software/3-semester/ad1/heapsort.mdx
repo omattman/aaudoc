@@ -3,19 +3,23 @@ title: Heapsort & ADTs
 ---
 
 ## ILO of Lecture 6
+
 - Understand the "heap" data structure.
 - Understand heapsort - using the heap data structure.
 - Understand basic data structures, in particular array and stack.
 
 ## Heap
+
 The binary heap data structure can be treated as an array $A$, which can
-consist of the __heap property__ of __max-heap__ and __min-heap__.
+consist of the **heap property** of **max-heap** and **min-heap**.
 
 For the heap we have two attributes:
+
 - `A.length`
 - `A.heapsize`
 
 ### Max-heap
+
 Specifically for max-heap sort we know that the heap property is
 
 $$A[Parent(i)] \geq A[i]$$
@@ -27,6 +31,7 @@ To find the value of specific indexes we use these functions:
 ![Max Heap example](images/heapsort-parent-left-right-child.png)
 
 ### Heapify
+
 ```text
 Heapify(A, i)
   l = LEFT(i)
@@ -38,17 +43,18 @@ Heapify(A, i)
 ```
 
 #### Example: Heapify(A, 2)
+
 ![Heapify example](images/heapsort-heapify-example.png)
 
 If the above mentioned example is not self explanatory, do refer to the
 below video for clarification.
 
-`youtube: https://www.youtube.com/watch?v=5iBUTMWGtIQ`
-
 #### Analysis of heapify
+
 In order to properly analyze the heapify we need to identify the recurrence.
+
 - Divide (lines 1-3; refer to the algorithm)
-  - Find the largest: $\theta (1)
+  - Find the largest: \$\theta (1)
 - Conquer (lines 4-6)
   - Case 1: `largest == i`
     - 0 sub-problem
@@ -57,6 +63,7 @@ In order to properly analyze the heapify we need to identify the recurrence.
 - Combine: no need
 
 ### Building a Heap
+
 - Input: an array `A[1, ..., n]`
 - Output: a heap consisting of an array `A` where elements are rearranged
 - Subarray $A[\lfloor \dfrac{n}{2} \rfloor + 1, ..., n]$
@@ -68,8 +75,8 @@ In order to properly analyze the heapify we need to identify the recurrence.
   - From $A[\lfloor \dfrac{n}{2} \rfloor]$ down to $A[1]$
 
 ### Analysis of building a heap
-![Analysis of building a heap](images/heapsort-analysis-of-building-a-heap.png)
 
+![Analysis of building a heap](images/heapsort-analysis-of-building-a-heap.png)
 
 ## Heapsort
 
@@ -90,16 +97,19 @@ Heapsort(A)
 ```
 
 ### Analysis
+
 - Line 1: $\mathcal{O} (n)$
-- Line 2-5: $\mathcal{O} (nlgn)
+- Line 2-5: \$\mathcal{O} (nlgn)
   - (n-1) iterations
   - Each iteration: \mathcal{O} (lgn) (i.e., `Heapify( . )`)
 - Total: $\mathcal{O}(n) + \mathcal{O}(nlgn) = \mathcal{O}(nlgn)$
 
 ### Table for reference
+
 ![Reference table](images/heapsort-reference-table.png)
 
 ## Stack
+
 Intuitively we refer to a stack as a pily of things. The stack consists of `push`
 and `pop` operations, which adds/inserts and remove from the top respectively.
 
@@ -107,6 +117,7 @@ A stack `S` is a container of elements, which contains a sequence of elements
 $< a_1, a_2, ..., a_i >$ where the top of the stack is $a_i$.
 
 ### Operators
+
 All of the below mentioned operations take constant time.
 
 - `Push(S,x)` inserts an element x into the stack S
@@ -114,14 +125,15 @@ All of the below mentioned operations take constant time.
 - `Stack-Empty(S)` returns whether the stack is empty
 
 ### Properties: LIFO (last in first out)
+
 - Insert only to the top
 - Remove only from the top
 - Remove follows the reverse order of insert
 
-
 ## Exercises
 
 ### Exercise BuildMaxHeap
+
 > Run the heapsort algorithm on the following array of numbers:
 > (5, 13, 2, 25, 7, 17, 20, 8, 4). Give the state of the array (a)
 > after the _BuildMaxHeap_ operation, and (b) after three
@@ -134,6 +146,7 @@ After three iterations of the loop we have:
 `[13, 8, 5, 2, 7, 4, 2, 20, 25]`
 
 ### Exercise 6.1-1
+
 > What are the minimum and maximum number of elements in a heap
 > of height _h_?
 
@@ -141,7 +154,7 @@ For minimum it is $2^{h-1}$
 
 For maximum it is $2^h-1$
 
-__SOLUTION FROM CLRS__
+**SOLUTION FROM CLRS**
 
 At least $2^h$ and at most $2^{h+1}-1$. Can be seen because a complete binary
 tree of depth $h-1$ has $\sum_{i=0}^{h-1} 2^i = 2^h-1$ elements, and the number
