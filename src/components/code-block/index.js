@@ -1,27 +1,28 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Highlight, { defaultProps } from "prism-react-renderer"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import React from "react";
+import PropTypes from "prop-types";
+import Highlight, { defaultProps } from "prism-react-renderer";
 
-import Copy from "../copy"
-import normalize from "./normalize"
-import { fontSizes, radii, space } from "../../utils/presets"
+import Copy from "../copy";
+import normalize from "./normalize";
 
 const getParams = (name = ``) => {
-  const [lang, params = ``] = name.split(`:`)
+  const [lang, params = ``] = name.split(`:`);
   return [
     lang
       .split(`language-`)
       .pop()
       .split(`{`)
-      .shift(),
+      .shift()
   ].concat(
     params.split(`&`).reduce((merged, param) => {
-      const [key, value] = param.split(`=`)
-      merged[key] = value
-      return merged
+      const [key, value] = param.split(`=`);
+      merged[key] = value;
+      return merged;
     }, {})
-  )
-}
+  );
+};
 
 /*
  * MDX passes the code block as JSX
@@ -31,15 +32,15 @@ const getParams = (name = ``) => {
 const CodeBlock = ({
   children,
   className = children.props ? children.props.className : ``,
-  copy,
+  copy
 }) => {
-  const [language, { title = `` }] = getParams(className)
+  const [language, { title = `` }] = getParams(className);
   const [content, highlights] = normalize(
     children.props && children.props.children
       ? children.props.children
       : children,
     className
-  )
+  );
 
   return (
     <Highlight
@@ -52,7 +53,7 @@ const CodeBlock = ({
         <React.Fragment>
           {title && (
             <div className="gatsby-code-title">
-              <div css={{ fontSize: fontSizes[0] }}>{title}</div>
+              <div sx={{ fontSize: 0 }}>{title}</div>
             </div>
           )}
           <div className="gatsby-highlight">
@@ -60,34 +61,34 @@ const CodeBlock = ({
               {copy && (
                 <Copy
                   fileName={title}
-                  css={{
+                  sx={{
                     position: `absolute`,
-                    right: space[1],
-                    top: space[1],
-                    borderRadius: `${radii[2]}px ${radii[2]}px`,
+                    right: t => t.space[1],
+                    top: t => t.space[1],
+                    borderRadius: 2
                   }}
                   content={content}
                 />
               )}
               <code className={`language-${language}`}>
                 {tokens.map((line, i) => {
-                  const lineProps = getLineProps({ line, key: i })
+                  const lineProps = getLineProps({ line, key: i });
                   const className = [lineProps.className]
                     .concat(highlights[i] && `gatsby-highlight-code-line`)
                     .filter(Boolean)
-                    .join(` `)
+                    .join(` `);
                   return (
                     <div
                       key={i}
                       {...Object.assign({}, lineProps, {
-                        className,
+                        className
                       })}
                     >
                       {line.map((token, key) => (
                         <span key={key} {...getTokenProps({ token, key })} />
                       ))}
                     </div>
-                  )
+                  );
                 })}
               </code>
             </pre>
@@ -95,17 +96,17 @@ const CodeBlock = ({
         </React.Fragment>
       )}
     </Highlight>
-  )
-}
+  );
+};
 
 CodeBlock.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   className: PropTypes.string,
-  copy: PropTypes.bool,
-}
+  copy: PropTypes.bool
+};
 
 CodeBlock.defaultProps = {
-  copy: true,
-}
+  copy: true
+};
 
-export default CodeBlock
+export default CodeBlock;
