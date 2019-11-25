@@ -64,9 +64,7 @@ module.exports = {
           },
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-smartypants`,
-          `gatsby-remark-responsive-iframe`
+          `gatsby-remark-smartypants`
         ]
       }
     },
@@ -109,9 +107,25 @@ module.exports = {
               strict: `ignore`
             }
           },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: {
+                dosini: `ini`,
+                env: `bash`,
+                es6: `js`,
+                flowchart: `none`,
+                gitignore: `none`,
+                gql: `graphql`,
+                htaccess: `apacheconf`,
+                mdx: `markdown`,
+                ml: `fsharp`,
+                styl: `stylus`
+              }
+            }
+          },
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-prismjs`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-responsive-iframe`
         ]
