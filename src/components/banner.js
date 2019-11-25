@@ -1,10 +1,12 @@
-import React from "react"
-import styled from "@emotion/styled"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import React from "react";
+import styled from "@emotion/styled";
 
-import { colors, space, sizes, fonts, zIndices } from "../utils/presets"
+import { colors, space, sizes, fonts, zIndices } from "../utils/presets";
 
-const horizontalPadding = space[6]
-const backgroundColor = colors.blue[90]
+const horizontalPadding = space[6];
+const backgroundColor = colors.blue[90];
 
 const BannerContainer = styled(`aside`)`
   background-color: ${backgroundColor};
@@ -14,7 +16,7 @@ const BannerContainer = styled(`aside`)`
   z-index: ${zIndices.banner};
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
-`
+`;
 
 const InnerContainer = styled(`div`)`
   align-items: center;
@@ -22,7 +24,7 @@ const InnerContainer = styled(`div`)`
   height: ${sizes.bannerHeight};
   overflow-x: auto;
   mask-image: ${`linear-gradient(to right, transparent, ${backgroundColor} ${horizontalPadding}, ${backgroundColor} 96%, transparent)`};
-`
+`;
 
 const Content = styled(`div`)`
   color: ${colors.white};
@@ -41,7 +43,7 @@ const Content = styled(`div`)`
     color: ${colors.white};
     border-bottom-color: ${colors.white}a0;
   }
-`
+`;
 
 const Banner = () => (
   <BannerContainer className="banner">
@@ -49,6 +51,6 @@ const Banner = () => (
       <Content>{`Get hyper`}</Content>
     </InnerContainer>
   </BannerContainer>
-)
+);
 
-export default Banner
+export default Banner;

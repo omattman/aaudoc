@@ -1,34 +1,32 @@
-import React from "react"
-import { graphql } from "gatsby"
-import EditIcon from "react-icons/lib/md/create"
-
-import { space } from "../utils/presets"
-import { linkStyles } from "../utils/styles"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import React from "react";
+import { graphql } from "gatsby";
+import EditIcon from "react-icons/lib/md/create";
 
 export default class MarkdownPageFooter extends React.Component {
   constructor() {
-    super()
-    this.state = { feedbackSubmitted: false }
+    super();
+    this.state = { feedbackSubmitted: false };
   }
   render() {
     return (
       <>
-        <hr css={{ marginTop: space[9] }} />
-
+        <hr sx={{ display: `none` }} />
         {this.props.page && (
           <a
-            css={{ ...linkStyles }}
-            href={`https://github.com/omattman/aaudoc/blob/master/docs/${
+            sx={{ variant: `links.muted`, mt: 9 }}
+            href={`https://github.com/omattman/aaudoc/blob/master/${`docs`}/${
               this.props.page ? this.props.page.parent.relativePath : ``
             }`}
           >
-            <EditIcon css={{ marginRight: space[2] }} />
+            <EditIcon sx={{ marginRight: 2 }} />
             {` `}
             Edit this page on GitHub
           </a>
         )}
       </>
-    )
+    );
   }
 }
 
@@ -40,4 +38,11 @@ export const fragment = graphql`
       }
     }
   }
-`
+  fragment MarkdownPageFooter on MarkdownRemark {
+    parent {
+      ... on File {
+        relativePath
+      }
+    }
+  }
+`;

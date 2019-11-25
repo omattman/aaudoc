@@ -1,8 +1,9 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 
 const ChevronSvg = ({ size = 10, cssProps = {} }) => (
   <svg
-    css={cssProps}
+    sx={cssProps}
     viewBox="0 0 926.23699 573.74994"
     version="1.1"
     x="0px"
@@ -26,6 +27,6 @@ const ChevronSvg = ({ size = 10, cssProps = {} }) => (
       />
     </g>
   </svg>
-)
+);
 
-export default ChevronSvg
+export default ChevronSvg;

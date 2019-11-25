@@ -1,11 +1,13 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
-import { Helmet } from "react-helmet"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import React from "react";
+import { graphql } from "gatsby";
+import { Link } from "gatsby";
+import { Helmet } from "react-helmet";
 
-import Layout from "../components/layout"
-import { colors, space, mediaQueries, fontWeights } from "../utils/presets"
-import Container from "../components/container"
+import Layout from "../components/layout";
+import Container from "../components/container";
+import FooterLinks from "../components/shared/footer-links";
 
 class IndexRoute extends React.Component {
   render() {
@@ -20,15 +22,13 @@ class IndexRoute extends React.Component {
             display: `flex`,
             flexDirection: `row`,
             flexWrap: `wrap`,
-            justifyContent: `space-between`,
+            justifyContent: `space-between`
           }}
         >
           <div css={{ flex: `1 1 100%` }}>
             <Container withSidebar={false}>
               <section>
-                <h1 css={{ fontWeight: fontWeights[1], marginTop: 0 }}>
-                  Welcome
-                </h1>
+                <h1>Welcome</h1>
                 <ol>
                   <li>
                     links
@@ -49,9 +49,10 @@ class IndexRoute extends React.Component {
             </Container>
           </div>
         </main>
+        <FooterLinks />
       </Layout>
-    )
+    );
   }
 }
 
-export default IndexRoute
+export default IndexRoute;

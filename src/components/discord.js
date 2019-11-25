@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const DiscordIcon = ({ overrideCSS }) => (
   <svg
@@ -29,6 +29,6 @@ const DiscordIcon = ({ overrideCSS }) => (
       />
     </g>
   </svg>
-)
+);
 
-export default DiscordIcon
+export default DiscordIcon;

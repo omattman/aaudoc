@@ -1,79 +1,71 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-import { ScreenReaderText } from "./feedback-widget/styled-elements"
-import {
-  space,
-  fonts,
-  fontSizes,
-  colors,
-  lineHeights,
-  shadows,
-  transition,
-} from "../utils/presets"
-import copyToClipboard from "../utils/copy-to-clipboard"
+import copyToClipboard from "../utils/copy-to-clipboard";
 
-const delay = duration => new Promise(resolve => setTimeout(resolve, duration))
+const delay = duration => new Promise(resolve => setTimeout(resolve, duration));
 
 function Copy({ className, content, duration, fileName, trim = false }) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const label = copied
     ? `${fileName ? fileName + ` ` : ``}copied to clipboard`
-    : `${fileName ? fileName + `: ` : ``}copy code to clipboard`
+    : `${fileName ? fileName + `: ` : ``}copy code to clipboard`;
 
   return (
     <button
       name={label}
       className={className}
       disabled={copied}
-      css={{
+      sx={{
         backgroundColor: `transparent`,
         border: `none`,
-        color: colors.grey[60],
+        color: `code.copyButton`,
         cursor: `pointer`,
-        fontSize: fontSizes[2],
-        fontFamily: fonts.header,
-        lineHeight: lineHeights.solid,
-        padding: `${space[2]} ${space[2]}`,
-        transition: `${transition.speed.default} ${transition.curve.default}`,
+        fontSize: 2,
+        fontFamily: `header`,
+        lineHeight: `solid`,
+        p: 2,
+        transition: t =>
+          `${t.transition.speed.default} ${t.transition.curve.default}`,
         "&[disabled]": {
-          cursor: `not-allowed`,
+          cursor: `not-allowed`
         },
         ":not([disabled]):hover": {
-          backgroundColor: colors.blue[80],
-          boxShadow: shadows.raised,
-          color: colors.white,
+          bg: `purple.60`,
+          boxShadow: `raised`,
+          color: `white`
         },
         ":active": {
-          boxShadow: shadows.floating,
-        },
+          boxShadow: `floating`
+        }
       }}
       onClick={async () => {
-        await copyToClipboard(trim ? content.trim() : content)
+        await copyToClipboard(trim ? content.trim() : content);
 
-        setCopied(true)
+        setCopied(true);
 
-        await delay(duration)
+        await delay(duration);
 
-        setCopied(false)
+        setCopied(false);
       }}
     >
       {copied ? `Copied` : `Copy`}
-      <ScreenReaderText aria-roledescription="status">{label}</ScreenReaderText>
     </button>
-  )
+  );
 }
 
 Copy.propTypes = {
   content: PropTypes.string.isRequired,
   duration: PropTypes.number,
-  trim: PropTypes.bool,
-}
+  trim: PropTypes.bool
+};
 
 Copy.defaultProps = {
   duration: 5000,
-  fileName: ``,
-}
+  fileName: ``
+};
 
-export default Copy
+export default Copy;

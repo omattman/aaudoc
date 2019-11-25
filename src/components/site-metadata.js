@@ -1,22 +1,25 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { graphql, useStaticQuery } from "gatsby"
+import React from "react";
+import { Helmet } from "react-helmet";
+import { graphql, useStaticQuery } from "gatsby";
+
+import aaudocIcon from "../assets/aaudoc-icon.png";
 
 const SiteMetadata = ({ pathname }) => {
   const {
     site: {
-      siteMetadata: { siteUrl, title, twitter },
-    },
+      siteMetadata: { siteUrl, title, twitter }
+    }
   } = useStaticQuery(graphql`
     query SiteMetadata {
       site {
         siteMetadata {
           siteUrl
           title
+          twitter
         }
       }
     }
-  `)
+  `);
 
   return (
     <Helmet defer={false} defaultTitle={title} titleTemplate={`%s | ${title}`}>
@@ -32,14 +35,14 @@ const SiteMetadata = ({ pathname }) => {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en" />
       <meta property="og:site_name" content={title} />
-      <meta property="og:image" content="" />
+      <meta property="og:image" content={`${siteUrl}${aaudocIcon}`} />
       <meta property="og:image:width" content="512" />
       <meta property="og:image:height" content="512" />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={twitter} />
     </Helmet>
-  )
-}
+  );
+};
 
-export default SiteMetadata
+export default SiteMetadata;
