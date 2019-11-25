@@ -3,18 +3,20 @@ title: Elementary Graph Algorithms
 ---
 
 ## ILO of Lecture 10
+
 After this lecture, you should be able to
-* Understand the definition of a graph
-* Understand how to represent a graph
-* Understand graph searching algorithms
-* Understand topologically sorting a directed acyclic graph
+
+- Understand the definition of a graph
+- Understand how to represent a graph
+- Understand graph searching algorithms
+- Understand topologically sorting a directed acyclic graph
 
 ## Graph Applications
-
 
 ## Representing a Graph
 
 ### Definition:
+
 > A graph $G=(V, E)$, where $V$ is the set of vertices
 > and $E$ is the set of edges.
 
@@ -22,9 +24,10 @@ After this lecture, you should be able to
 > $v_i$, $v_j \in V$.
 
 ### Undirected Graph
+
 > $V={A, B, C, D}$
 
-> $E = { (A, B), (B, A), (A, C), (C, A), (C, D), (D, C), (C, B), (B, C) }
+> $E = { (A, B), (B, A), (A, C), (C, A), (C, D), (D, C), (C, B), (B, C) }$
 
 ![Undirected graph](images/elementary-graph-algorithms-undirected-graph.png)
 
@@ -32,19 +35,22 @@ After this lecture, you should be able to
 
 > $V={A, B, C, D}$
 
-> $E = { (B, A), (C, A), (C, B), (B, C), (D, C) }
+> $E = { (B, A), (C, A), (C, B), (B, C), (D, C) }$
 
 ![Directed graph](images/elementary-graph-algorithms-directed-graph.png)
 
 ### Notation
+
 There are two ways of representing a graph:
-* A collection of adjacency lists
-* An adjacency matrix
+
+- A collection of adjacency lists
+- An adjacency matrix
 
 #### Adjacency Lists
-* An array of $|V|$ lists.
-* Each list for a vertex $v$ contains:
-  * All vertices $u$ such that $(v, u) \in E$
+
+- An array of $|V|$ lists.
+- Each list for a vertex $v$ contains:
+  - All vertices $u$ such that $(v, u) \in E$
 
 For a undirected graph we get the following:
 ![Undirected graph list](images/elementary-graph-algorithms-undirected-graph-lists.png)
@@ -52,26 +58,29 @@ For a undirected graph we get the following:
 And for a directed graph we get:
 ![Directed graph list](images/elementary-graph-algorithms-directed-graph-lists.png)
 
-
 #### Adjacency Matrix
-* Matrix $A$
-  * Entries for all pairs of vertices.
-  * Size: $|V| \times $V$.
-* $A[i, j] = 1$ vs. $A[i, j] = 0
-  * 1 indicates a connection, and 0 indicates that there are no connecting between
-  two vertices.
+
+- Matrix $A$
+  - Entries for all pairs of vertices.
+  - Size: $|V| \times V$.
+- $A[i, j] = 1$ vs. $A[i, j] = 0$
+  - 1 indicates a connection, and 0 indicates that there are no connecting between
+    two vertices.
 
 ![Adjacency Matrix](images/elementary-graph-algorithms-adjacency-matrix.png)
 
 ## Searching a Graph
-* Systematically follow edges in a graph to visit vertices
-* Discover the structure of a graph
+
+- Systematically follow edges in a graph to visit vertices
+- Discover the structure of a graph
 
 We have two search algorithms:
-* Breadth First Search
-* Depth First Search
+
+- Breadth First Search
+- Depth First Search
 
 ### Breadth First Search
+
 Given a graph $G = (V, E)$ and a distinguished source vertex $x$, breadth-first
 search systematically explores the edges of $G$ to "discover" every vertex
 that is reachable from $s$. It computes the distance (fewest number of edges)
@@ -82,27 +91,29 @@ corresponds to a "shortest path" from $s$ to $v$ in $G$, that is, a path
 containing the fewest number of edges. The algorithm works on both directed
 and undirected graphs.
 
-* __Input__: A graph $G(V, E)$ and a source vertex $s$.
+- **Input**: A graph $G(V, E)$ and a source vertex $s$.
 
-* __Output__: The distance from $s$ to each reachable vertex and a
+- **Output**: The distance from $s$ to each reachable vertex and a
   breadth first tree rooted at $s$.
 
-* __Aim__: Systematically discovers _every_ vertex that is reachable from $s$.
+- **Aim**: Systematically discovers _every_ vertex that is reachable from $s$.
 
-* __How__: We discover all vertices at distance $k$ from $s$ and then,
+- **How**: We discover all vertices at distance $k$ from $s$ and then,
   discover vertices at distance $k+1$.
 
 #### Intuition of BFS
+
 ![Intuition of BFS](images/elementary-graph-algorithms-intuition-of-bfs.png)
 
 A vertex has a color attribute:
-* White: unexplored
-* Gray: explored, but not all of its adjacent vertices.
-* Black: explored, as well as its adjacent vertices.
+
+- White: unexplored
+- Gray: explored, but not all of its adjacent vertices.
+- Black: explored, as well as its adjacent vertices.
 
 To keep track of progress, breadth-first search colors each vertex white, gray
 or black. All vertices start out white, and may later become gray and then
-black. A vertex is __discovered__ the first time it is encountered during the
+black. A vertex is **discovered** the first time it is encountered during the
 search, at which time it becomes nonwhite. Gray and black vertices, therefore,
 have been discovered, but breadth-first search distinguishes between them to
 ensure that the search proceeds in a breadth-first manner. If $(u, v) \in E$
@@ -112,27 +123,31 @@ may have some adjacent white vertices; they represent the frontier between
 discovered and undiscovered vertices.
 
 #### Algorithm
+
 ![BFS algorithm](images/elementary-graph-algorithms-bfs-algorithm.png)
 
 #### Running Example
+
 ![A Running Example 1](images/elementary-graph-algorithms-bfs-algorithm-1.png)
 
 ![A Running Example 2](images/elementary-graph-algorithms-bfs-algorithm-2.png)
 
 #### Breadth-First Tree
+
 Breadth First Search constructs a breadth-first tree, initially containing only
 its root, which is the source vertex $s$. Whenever a white vertex $v$ is
 discovered in the course of scanning the adjacency list of an already discovered
 vertex $u$, the vertex $v$ and the edge $(u, v)$ are added to the tree. We say
-that $u$ is the __predecessor__ or __parent__ of $v$ in the breadth-first tree.
+that $u$ is the **predecessor** or **parent** of $v$ in the breadth-first tree.
 Since a vertex is discovered at most once, it has at most one parent. Ancestor
 and descendant relationships in the breadth-first tree are defined relative to
 the root $s$ as usual: if $u$ is on a path in the tree from the root $s$ to
 vertex $v$, then $u$ is an ancestor of $v$ and $v$ is a descendant of $u$.
 
 A breadth-first tree:
-* Consists of vertices reachable from $s$
-* Contains a unique simple path from $s$ to a vertex $v$, which is the
+
+- Consists of vertices reachable from $s$
+- Contains a unique simple path from $s$ to a vertex $v$, which is the
   shortest path from $s$ to $v$.
 
 ![Breadth-First Tree](images/elementary-graph-algorithms-breadth-first-tree.png)
@@ -142,6 +157,7 @@ A breadth-first tree:
 ![BFS Run Time](images/elementary-graph-algorithms-bfs-runtime.png)
 
 ### Depth First Search
+
 The strategy followed by depth-first search is, as its name implies, to search
 "deeper" in the graph whenever possible. In depth-first search, edges are
 explored out of the most recently discovered vertex $v$ that still has
@@ -159,13 +175,13 @@ breadth-first search, whose predecessor subgraph forms a tree, the predecessor
 subgraph produced by a depth-first search may be composed of several trees,
 because the search may be repeated from multiple sources.
 
-* __Input__: A graph $G(V, E)$.
+- **Input**: A graph $G(V, E)$.
 
-* __Output__: A depth-first forest that is composed of several depth-first trees.
+- **Output**: A depth-first forest that is composed of several depth-first trees.
 
-* __Aim__: Systematically visit _every_ vertex in $V$.
+- **Aim**: Systematically visit _every_ vertex in $V$.
 
-* __How__: It search "deeper" in the graph whenever possible.
+- **How**: It search "deeper" in the graph whenever possible.
 
 #### Algorithm
 
@@ -180,62 +196,68 @@ because the search may be repeated from multiple sources.
 ![DFS Algorithm Run Time](images/elementary-graph-algorithms-dfs-run-time.png)
 
 ### BFS vs. DFS
+
 Breadth First Search
-* Search from one source.
-* Only visit the vertices that are reachable from the source.
-* Breadth First Tree
-* Often serves to find shortest paths and shortest path distances.
-* $\mathcal{O}(|V|+|E|)$
+
+- Search from one source.
+- Only visit the vertices that are reachable from the source.
+- Breadth First Tree
+- Often serves to find shortest paths and shortest path distances.
+- $\mathcal{O}(|V|+|E|)$
 
 Depth First Search
-* May search from multiple sources
-* Visit every vertex
-* Depth First Forest
-* Often has a subroutine in another algorithm, e.g.,
-  * Classifying edges
-  * Topological sort
-  * Strongly connected components
-* $\theta (|V|+|E|)$
+
+- May search from multiple sources
+- Visit every vertex
+- Depth First Forest
+- Often has a subroutine in another algorithm, e.g.,
+  - Classifying edges
+  - Topological sort
+  - Strongly connected components
+- $\theta (|V|+|E|)$
 
 ## Classifying Edges
 
 ### Edge Classification based on DFS
-* Classify edges in a graph into 4 categories based on DFS forest.
-* Definition:
-  * Tree edges:
-    * Edges that are in the DFS forest
-    * $(u, v), (v, y), (y, x), (w, z)$
-  * Non tree edges
-    * Back edges
-      * From descendant to ancestor in a DFS tree
-        * $(x, v)$
-      * Self loops
-        * $(z, z)$
-    * Forward edges
-      * From ancestor to descendant in a DFS tree
-        * $(u, x)$
-    * Cross edges
-      * Remaining edges, between trees or subtrees
-        * $(w, y)$
+
+- Classify edges in a graph into 4 categories based on DFS forest.
+- Definition:
+  - Tree edges:
+    - Edges that are in the DFS forest
+    - $(u, v), (v, y), (y, x), (w, z)$
+  - Non tree edges
+    - Back edges
+      - From descendant to ancestor in a DFS tree
+        - $(x, v)$
+      - Self loops
+        - $(z, z)$
+    - Forward edges
+      - From ancestor to descendant in a DFS tree
+        - $(u, x)$
+    - Cross edges
+      - Remaining edges, between trees or subtrees
+        - $(w, y)$
 
 ![Classifying edges](images/elementary-graph-algorithms-classifying-edges.png)
 
 When exploring an edge $(x, y)$, y's color tells something:
-* If y is white, edge $(x, y)$ is a tree edge.
-* visit x, then y
-![Tree Edge](images/elementary-graph-algorithms-tree-edge.png)
 
-* If y is gray, edge $(x, y)$ is a back edge
-* visit y, later x, then y again.
-![Back Edge](images/elementary-graph-algorithms-back-edge.png)
+- If y is white, edge $(x, y)$ is a tree edge.
+- visit x, then y
+  ![Tree Edge](images/elementary-graph-algorithms-tree-edge.png)
 
-* If y is black, edge $(x, y)$ is a forward or cross edge.
-![Forward or Cross edge](images/elementary-graph-algorithms-forward-or-cross.png)
+- If y is gray, edge $(x, y)$ is a back edge
+- visit y, later x, then y again.
+  ![Back Edge](images/elementary-graph-algorithms-back-edge.png)
+
+- If y is black, edge $(x, y)$ is a forward or cross edge.
+  ![Forward or Cross edge](images/elementary-graph-algorithms-forward-or-cross.png)
 
 ## Topological sort
+
 This section shows how depth-first search can be used to perform topological sorts
 of directed acyclic graphs, or "dags" as they are sometimes called. A
-__topological sort__ of a dag $G = (V, E)$ is a linear ordering of all its
+**topological sort** of a dag $G = (V, E)$ is a linear ordering of all its
 vertices such that if $G$ contains an edge $(u, v)$, then $u$ appears before
 $v$ in the ordering. (If the graph is not acyclic, then no linear ordering
 is possible.) A topological sort of a graph can be viewed as an ordering of
@@ -256,11 +278,9 @@ edges go from left to right.
 ![DAG Example](images/elementary-graph-algorithms-dag-example.png)
 
 ### Algorithm
-```js
-
-```
 
 ### How to Check DAG
+
 A directed graph is acyclic if and only if the graph has no back edges.
 
 ![How to Check DAG](images/elementary-graph-algorithms-check-dag.png)
