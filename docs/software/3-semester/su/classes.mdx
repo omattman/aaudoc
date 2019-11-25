@@ -1,4 +1,7 @@
-# Classes
+---
+title: Classes
+tableOfContentsDepth: 2
+---
 
 <details>
   <summary>Show Lecture Slides</summary>
@@ -11,13 +14,13 @@
 
 ## Event table
 
-|             	| Reserved 	| Cancel 	| Treated 	| Employed 	| Resigned 	| Grad. 	| Agreed 	|
-|-------------	|----------	|--------	|---------	|----------	|----------	|-------	|--------	|
-| Customer    	|     ✓    	|    ✓   	|    ✓    	|          	|          	|       	|        	|
-| Assistant   	|     ✓    	|    ✓   	|         	|     ✓    	|     ✓    	|       	|    ✓   	|
-| Apprentice  	|          	|        	|         	|     ✓    	|     ✓    	|   ✓   	|    ✓   	|
-| Appointment 	|     ✓    	|    ✓   	|    ✓    	|          	|          	|       	|        	|
-| Plan        	|     ✓    	|        	|         	|          	|          	|       	|    ✓   	|
+|             | Reserved | Cancel | Treated | Employed | Resigned | Grad. | Agreed |
+| ----------- | -------- | ------ | ------- | -------- | -------- | ----- | ------ |
+| Customer    | ✓        | ✓      | ✓       |          |          |       |        |
+| Assistant   | ✓        | ✓      |         | ✓        | ✓        |       | ✓      |
+| Apprentice  |          |        |         | ✓        | ✓        | ✓     | ✓      |
+| Appointment | ✓        | ✓      | ✓       |          |          |       |        |
+| Plan        | ✓        |        |         |          |          |       | ✓      |
 
 The result of well researched entities is an **Event Table**, which
 clearly clarifies the major classes and events in the problem domain.
@@ -64,14 +67,14 @@ For events:
 
 ### Example: Hair Salon
 
-|                                                                                                                       |
-|------------------------|----------------------------------------------------------------------------------------------|
-| **Functionality**      | Support for work planning and appointments                                                   |
+|                        |
+| ---------------------- |
+| **Functionality**      | Support for work planning and appointments |
 | **Application domain** | Managing customer, their treatments, and appointments, and planning emplyees' work schedules |
-| **Conditions**         | Developed in close cooperation with the employees                                            |
-| **Technology**         | Smaller PC or Macintosh with a large graphical screen                                        |
-| **Objects**            | Customer, employees, appointment, and work schedules                                         |
-| **Responsibility**     | Tool for reliable administration and a common mediator                                       |
+| **Conditions**         | Developed in close cooperation with the employees |
+| **Technology**         | Smaller PC or Macintosh with a large graphical screen |
+| **Objects**            | Customer, employees, appointment, and work schedules |
+| **Responsibility**     | Tool for reliable administration and a common mediator |
 
 **Classes**
 
@@ -192,12 +195,14 @@ your problem-domain.
 ### Section 3.6, exercise 16.
 
 > Elevator control. Consider a system to control elevator movement in a building. Several processors keep track of movements and signals. There is one processor for each of the N elevators. It controls the engine and doors, and reads the push buttons and sensors associated with the elevator. There is one processor at each of the M floors. It reads the push buttons associated with the floor. Finally, there is one processor that controls all requests from all push buttons. Your solution can be centralized or decentralized, but it should meet the following requirements:
+>
 > - Each elevator has a button for each floor. The buttons are illuminated when pressed and cause the elevator to visit that floor.
 > - Each floor has two buttons (except ground and top): one to request up-elevator and one to request down-elevator. The buttons illuminate when pressed and cancel when a suitable elevator visits the floor.
 > - All requests for elevators from the different floor must be serviced eventually with all floors given equal priority.
 > - All requests for floors from within elevators must be served eventually, with floors being serviced sequentially in the travel direction.
 >
 > Add details and assumptions as needed and address the following problems.
+>
 > - List class candidates in the elevator control system.
 > - List event candidates in the elevator control system.
 > - Evaluate the candidates systematically and produce the resulting event table.
@@ -222,17 +227,17 @@ your problem-domain.
 
 #### Event Table
 
-|                      | Classes                 |
-|----------------------|----------|------|-------|
+|                      | Classes  |
+| -------------------- | -------- |
 | **Events**           | Elevator | Knap | Etage |
-| Opkørsel påbegyndt   | ✓        |      |       |
-| Nedkørsel påbegyndt  | ✓        |      |       |
-| Kørsel stoppet       | ✓        | ✓    |       |
-| Knap trykket         | ✓        | ✓    | ✓     |
-| Lys tændt            |          | ✓    |       |
-| Lys slukket          |          | ✓    |       |
-| Elevator efterspurgt | ✓        |      | ✓     |
-| Elevator ankommet    | ✓        |      | ✓     |
+| Opkørsel påbegyndt   | ✓        |  |  |
+| Nedkørsel påbegyndt  | ✓        |  |  |
+| Kørsel stoppet       | ✓        | ✓ |  |
+| Knap trykket         | ✓        | ✓ | ✓ |
+| Lys tændt            |          | ✓ |  |
+| Lys slukket          |          | ✓ |  |
+| Elevator efterspurgt | ✓        |  | ✓ |
+| Elevator ankommet    | ✓        |  | ✓ |
 
 ### Start the analysis on your project (if you have chosen it)
 

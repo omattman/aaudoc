@@ -30,8 +30,8 @@ function createItems(items, location, depth, maxDepth) {
               transition: t =>
                 `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
               ":hover": {
-                color: `link.color`,
-                borderBottom: t => `1px solid ${t.colors.link.hoverBorder}`
+                color: `link.hoverColor`,
+                borderBottom: `1px solid ${colors.link.hoverBorder}`
               }
             }
           }}
@@ -40,7 +40,7 @@ function createItems(items, location, depth, maxDepth) {
               ? {
                   style: {
                     color: colors.link.color,
-                    borderBottom: `1px solid ${colors.link.hoverBorder}`
+                    borderBottom: `1px solid ${colors.link.border}`
                   }
                 }
               : null

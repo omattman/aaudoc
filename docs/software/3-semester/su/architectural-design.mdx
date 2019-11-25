@@ -1,8 +1,10 @@
 ---
 title: Architectural Design, Criteria and Components
+tableOfContentsDepth: 2
 ---
 
 ## The end of analysis
+
 This lecture is the transition of moving from _analysis_ towards _design_.
 
 Let us briefly summarize the chapters we have gone through so far:
@@ -35,17 +37,20 @@ system.
 ![System model](images/architectural-design-system-model.png)
 
 ### Key Concepts
+
 _System_: A collection of components that implements modelling requirements, functions,
 and interfaces.
 
 _Architecture_: A general structure that is later developed further.
 
 ### Two Views
+
 ![Architectural Design: Two Views](images/architectural-design-two-views.png)
 
 The two views consists of _component_ and _process_ architecture.
 
 #### Component architecture
+
 - classes
 - Stable aspects
 - Related components
@@ -53,6 +58,7 @@ The two views consists of _component_ and _process_ architecture.
 - Structure for descriptions
 
 #### Process architecture
+
 - Objects
 - Dynamic aspects
 - Coordination of processes
@@ -65,17 +71,19 @@ It is important to state the clear difference of objects depending of the curren
 stage of development. In this case analysis and design.
 
 #### Analysis
+
 - Phenomena outside the computer system
 - Identity: identifies an object
 - State: the quality that characterize an object
 - Behaviour: the events an object have performed or suffered
 
 #### Design
+
 - Phenomena inside the computer system
 - Identity: gets acces to an object
 - State: the values of the object's attributes and object structures
 - Behaviour: the operations an object can perform on request and offers to the
-other objects (methods)
+  other objects (methods)
 
 ### Activities
 
@@ -94,18 +102,22 @@ It is important to emphasize what is more and less important. Not all
 criterias can be prioritized as equally important.
 
 ### Key Concepts
+
 For OOA&D we work with the following key concepts when talking about criterias:
 
 Usability
+
 - The system as a whole
 - The user's needs
 - The technical platform
 
 Flexibility
+
 - Consequences of changes
 - Modular design
 
 Comprehensibility
+
 - Overview
 - Abstraction
 - Use of patterns
@@ -131,7 +143,7 @@ A list of components can be seen as a collection of program parts, which functio
 as LEGO blocks to build the system. It constitutes a totality and has a
 well-defined responsibility.
 
-Component wise is the smallest possible a __class__ and the largest is a __system__.
+Component wise is the smallest possible a **class** and the largest is a **system**.
 
 As an example on the below image we see a component that has the responsibility
 for reading the buttons and updating the display
@@ -148,30 +160,30 @@ for reading the buttons and updating the display
 
 ![Layerered architecture](images/architectural-design-layered-architecture.png)
 
-The __layer__ describes a component's responsibility by the oprations it provides
+The **layer** describes a component's responsibility by the oprations it provides
 to a layer above and those that are applied from the layer below.
 
-The __part__ is that there is no substantial interaction with other parts in the
+The **part** is that there is no substantial interaction with other parts in the
 same layer.
 
-For __closed architecture__ we only apply operations from an adjacent layer.
+For **closed architecture** we only apply operations from an adjacent layer.
 
-For __open architecture__ we apply opeartions from any other layer.
+For **open architecture** we apply opeartions from any other layer.
 
-When working with __strict architecture__ one should only apply operations
+When working with **strict architecture** one should only apply operations
 from a layer below.
 
-In __relaxed architecture__ you should apply operations from the layers both
+In **relaxed architecture** you should apply operations from the layers both
 above and below.
 
-For __strict architecture__ one should apply operations on the layer placed both
+For **strict architecture** one should apply operations on the layer placed both
 above and below the actual layer.
 
 ### The Generic Architecture
 
 ![Generic architecture](images/architectural-design-generic-architecture.png)
 
-The __generic architecture__ reflects the actual division of the context into
+The **generic architecture** reflects the actual division of the context into
 problem domain and application domain. An example of this would be a single
 DanKort terminal.
 
@@ -188,6 +200,7 @@ DanKort terminal.
 ## Group Exercises
 
 ### Exercise 7 (page 188)
+
 > Consider the design of a specific system with respect to each of the classical
 > criteria in figure 9.1 (page 180). How can you practically assess the system's quality
 > with respect to each of the criteria? Indicate the expected outcome of such
@@ -195,7 +208,7 @@ DanKort terminal.
 > on this assessment.
 
 | Criterion      | Very important | Important | Less important | Irrelevant | Easily fulfilled |
-|----------------|----------------|-----------|----------------|------------|------------------|
+| -------------- | -------------- | --------- | -------------- | ---------- | ---------------- |
 | Usable         | X              |           |                |            |                  |
 | Secure         |                |           | X              |            |                  |
 | Efficient      |                |           | X              |            |                  |
@@ -210,8 +223,8 @@ DanKort terminal.
 | Interoperable  |                |           |                | X          |                  |
 | Additional     |                |           |                |            | X                |
 
-
 ### Exercise 8 (page 189)
+
 > Analyze the general criteria for design in Figure 9.1. Identify those pairs
 > of criteria that can be combined and that conflict or need to be balanced.
 
@@ -223,7 +236,9 @@ The possible pairs of criteria:
 - Combine Maintainable & Comprehensible
 
 ### Exercise 1 on project
+
 > Conduct the activity criteria for your project
 
 ### Exercise 2 on project
+
 > Conduct the activity components for you project

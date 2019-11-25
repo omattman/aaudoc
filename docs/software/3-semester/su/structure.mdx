@@ -1,4 +1,7 @@
-# Structure
+---
+title: Structure
+tableOfContentsDepth: 2
+---
 
 This lecture presents the second activity in Object-Oriented Analysis,
 more precisely you will get:
@@ -9,30 +12,37 @@ more precisely you will get:
 ## Summary of structures
 
 ### Purpose
+
 To describe structural relations between classes and objects in a problem
 domain.
 
 ### Concepts
+
 Class structures
-* Generalization: A general class (the super class) describes properties
-common to a group of specialized classes (the subclasses).
-* Cluster: A collection of related classes
+
+- Generalization: A general class (the super class) describes properties
+  common to a group of specialized classes (the subclasses).
+- Cluster: A collection of related classes
 
 Object structures
-* Aggregation: A puperior object (the whole) consists of a number of
-objects (the parts).
-* Association: A meaningful relation between a number of objects.
+
+- Aggregation: A puperior object (the whole) consists of a number of
+  objects (the parts).
+- Association: A meaningful relation between a number of objects.
 
 ### Principles
-* Study abstract, static relations between classes.
-* Study concrete, dynamic relations between objects.
-* Model only the necessary structual relations.
+
+- Study abstract, static relations between classes.
+- Study concrete, dynamic relations between objects.
+- Model only the necessary structual relations.
 
 ### Results
+
 The result is a class diagram with classes and structures.
 ![Class diagram](/images/structure-class-diagram.png)
 
 ## Key Concepts
+
 The takeway from this section is that it is possible to have both a
 generalization class and aggregation class on a parent class. Take for
 instance a car. The `Car` class can consist of a generalization class
@@ -41,6 +51,7 @@ to specify, that the car has a engine. This is also visually shown in
 [Cluster](#cluster).
 
 ### Generalization
+
 ![Generalization](/images/structure-generalization.png)
 
 'is-a' relation.
@@ -48,12 +59,14 @@ to specify, that the car has a engine. This is also visually shown in
 It describes the relation between two classes.
 
 ### Cluster
+
 ![Cluster](/images/structure-cluster.png)
 
 Clusters are a class structure to distinguish between the various
 types of classes.
 
 ### Aggregation
+
 ![Aggregation](/images/structure-aggregation.png)
 
 'has-a' or 'owns-a' relation.
@@ -62,21 +75,25 @@ Aggregation is about looking at the specific objects, and how they are connected
 in relation to each other. This also specifies the amount of relations.
 
 Typical aggregations:
-* Whole - part
-  * Example: a project group, and the parts are the students
-* Container - contents
-* Union - member
+
+- Whole - part
+  - Example: a project group, and the parts are the students
+- Container - contents
+- Union - member
 
 ### Association
+
 ![Association](/images/structure-association.png)
 
 Defines the relation between two objects, but is not as strongly described as
 aggregation. It is usually on the same level.
 
 ## Activities
+
 ![Activities](/images/structure-activities.png)
 
 ## Evaluate Systematically
+
 You can read more about aggregation versus association on page 87.
 
 The structures must be simple, especially at the top levels. It is seen as good
@@ -87,31 +104,35 @@ avoid objects changing class, since this require a total rework of the structure
 ## Explore patterns
 
 ### Role
+
 As en example it is possible for a person to have different roles. The roles for
 a person can change dynamically over time.
 
 ![Activities](/images/structure-role.png)
 
 ### Relation
+
 Used to identify if objects from two classes are related.
 
 ![Activities](/images/structure-relation.png)
 
 ### Hierarchy
+
 Used to identify how objects from different classes form a hierarchy.
 
 ![Activities](/images/structure-hierarchy.png)
 
 ### Item-Descriptor
+
 Properties of objects from one class (items) are described in an object
 from another class (descriptor).
-
 
 ## Individual Exercises
 
 ### Quiz 3
 
 #### Question 1
+
 > Which pattern is this?
 >
 > ![Quiz 1](/images/structure-quiz-1.png)
@@ -119,6 +140,7 @@ from another class (descriptor).
 It is a Descriptor-item pattern.
 
 #### Question 2
+
 > Match the three structures with the diagram
 >
 > ![Quiz 2](/images/structure-quiz-2.png)
@@ -128,23 +150,27 @@ It is a Descriptor-item pattern.
 - C. Aggregation.
 
 #### Question 3
+
 > Generalization is a structure that expresses that:
 
 Specialized classes inherit properties from a super class, we have
 and 'is-a' relation.
 
 #### Question 5
+
 > The following is/are object structure(s)
 
 Association & Aggregation.
 
 #### Question 5
+
 > The Role Pattern
 
 - Is a pattern concerned with structure.
 - Let's a person change roles dynamically.
 
 #### Question 6
+
 > The following is/are class structure(s)
 
 Cluster & Generalization.
@@ -189,6 +215,7 @@ extend or tailor that behavior to provide special action for specific needs.
 ### Compare solutions
 
 ### Section 4.8, exercise 17
+
 > _Teaching administration_. Continue your considerations of the system for
 > monitoring student activities in a university department (see Exercise 3.15).
 > Describe structural relations between classes and objects in a class diagram.
@@ -196,6 +223,7 @@ extend or tailor that behavior to provide special action for specific needs.
 ![Exercise 17](/images/structure-exercise-17.png)
 
 ### Section 4.8, exercise 18
+
 > _Elevator control_. Continue your considerations of the system to control elevator
 > movement in a building (see Exercise 3.16). Describe structural relations between
 > classes and objects in a class diagram.

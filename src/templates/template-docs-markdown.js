@@ -167,6 +167,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        tableOfContentsDepth
       }
 
       ...MarkdownPageFooterMdx
