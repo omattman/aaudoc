@@ -10,7 +10,7 @@ const GA = {
 
 module.exports = {
   siteMetadata: {
-    title: `AAU Doc, Developed & Mainted by Matthias Hansen`,
+    title: `AAU Doc`,
     siteUrl: `https://aaudoc.netlify.com`,
     description: `Shared Note-Taking platform for lecture notes and course solutions`,
     twitter: ``
@@ -143,7 +143,7 @@ module.exports = {
         short_name: `AAU Doc`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#0032FC`,
+        theme_color: `#38E1AF`,
         display: `standalone`,
         icon: `src/assets/aaudoc-icon.png`
       }
