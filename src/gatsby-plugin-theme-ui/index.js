@@ -74,7 +74,6 @@ const col = {
   // A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
   muted: c.grey[5],
   // end Theme-UI required keys
-  banner: c.purple[70],
   // gatsby-design-tokens has the following in colors.text,
   // which conflicts with theme-ui's default color `text`
   // making text.header and text.secondary available as
@@ -215,7 +214,6 @@ const col = {
       text: c.grey[30],
       heading: c.whiteFade[80],
       textMuted: c.grey[40],
-      banner: hex2rgba(c.purple[90], 0.975),
       muted: c.grey[90],
       icon: {
         dark: c.purple[50],

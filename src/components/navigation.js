@@ -91,7 +91,6 @@ const Navigation = ({ pathname }) => {
         px: `env(safe-area-inset-left)`,
         position: `relative`,
         right: 0,
-        top: t => t.sizes.bannerHeight,
         zIndex: `navigation`,
         [breakpointGutter]: {
           position: isHomepage ? `absolute` : `fixed`

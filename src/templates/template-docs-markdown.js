@@ -107,14 +107,11 @@ function DocsTemplate({ data, location, pageContext: { next, prev } }) {
                     ml: 9,
                     maxWidth: `tocWidth`,
                     position: `sticky`,
-                    top: t =>
-                      `calc(${t.sizes.headerHeight} + ${
-                        t.sizes.bannerHeight
-                      } + ${t.space[9]})`,
+                    top: t => `calc(${t.sizes.headerHeight} + ${t.space[9]})`,
                     maxHeight: t =>
-                      `calc(100vh - ${t.sizes.headerHeight} - ${
-                        t.sizes.bannerHeight
-                      } - ${t.space[9]} - ${t.space[9]})`,
+                      `calc(100vh - ${t.sizes.headerHeight} - ${t.space[9]} - ${
+                        t.space[9]
+                      })`,
                     overflow: `auto`
                   }
                 }}
