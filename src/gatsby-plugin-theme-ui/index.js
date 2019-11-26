@@ -4,25 +4,23 @@ import {
   breakpoints as bp,
   colors as c,
   fonts as f,
-  fontSizes as fs,
   fontWeights as fw,
+  fontSizes as fs,
   letterSpacings as ls,
   lineHeights as lh,
   mediaQueries as mq,
-  radii as r,
   shadows as sh,
+  radii as r,
   sizes as s,
   space as sp,
   transition as t,
   zIndices as z
-} from "gatsby-design-tokens";
+} from "./styles";
 
 const breakpointsTokens = [];
 for (const b in bp) {
   breakpointsTokens.push(bp[b]);
 }
-
-breakpointsTokens.splice(0, 1);
 
 const fontsTokens = {};
 for (const fontFamily in f) {
@@ -33,36 +31,34 @@ fontsTokens.body = fontsTokens.system;
 fontsTokens.heading = fontsTokens.header;
 
 const fontSizesTokens = fs.map(token => `${token / 16}rem`);
-const spaceTokens = sp.map(token => `${token / 16}rem`);
-
-const lineHeightsTokens = {
-  ...lh,
-  body: lh.default,
-  heading: lh.dense
-};
+let spaceTokens = sp.map(token => `${token / 16}rem`);
 
 const darkBackground = `#131217`; // meh
 const darkBorder = c.grey[90];
 const shadowDarkBase = `19,18,23`;
 const shadowDarkFlares = `0,0,0`;
 
+const lineHeightsTokens = {
+  ...lh,
+
+  body: lh.default,
+  heading: lh.dense
+};
+
 const fweights = {
+  ...fw,
+
   body: fw[0],
   bold: fw[1],
-  medium: `600`,
+  medium: fw[2],
   heading: fw[1],
   headingPrimary: fw[2]
 };
 
 const col = {
   ...c,
-  // https://theme-ui.com/theme-spec#color
-  // Theme-UI required keys
-  //
-  // Body foreground color
-  // overwrite what's currently in `colors` from `gatsby-design-tokens`
-  // also see `heading` key below
-  text: c.grey[80], // c.text.primary
+
+  text: c.grey[80],
   // Body background color
   background: c.white,
   // Primary brand color for links, buttons, etc.
@@ -78,36 +74,31 @@ const col = {
   // which conflicts with theme-ui's default color `text`
   // making text.header and text.secondary available as
   // `heading` and `textMuted` resolves that
-  heading: c.text.header, // text.header
-  textMuted: c.text.secondary, // text.secondary
+  heading: c.black, // text.header
+  textMuted: c.grey[50], // text.secondary
   // moved `text.placeholder` to `input.placeholder`
   // ref. e.g. https://github.com/system-ui/theme-ui/blob/702c43e804046a94389e7a12a8bba4c4f436b14e/packages/presets/src/tailwind.js#L6
   // transparent: `transparent`,
   // expand `gatsby-design-tokens` defaults
   code: {
     ...c.code,
-    // refactor names
-    background: c.code.bg,
-    backgroundInline: c.code.bgInline,
-    // modify token color values to comply to WCAG 2.0 AA standard contrast ratios
-    // changed
-    selector: `#b94185`,
-    keyword: `#096fb3`,
-    comment: `#527713`,
-    tag: `#137886`,
-    regex: `#dc0437`,
+    background: "#fdfaf6",
+    backgroundInline: "#fbf2e9",
+    selector: "#b94185",
+    keyword: "#096fb3",
+    comment: "#527713",
+    tag: "#137886",
+    regex: "#dc0437",
     remove: c.red[70],
     add: c.green[80],
-    // unchanged
-    border: `#faede5`,
-    text: `#866c5b`,
-    punctuation: `#53450e`,
-    cssString: `#a2466c`,
-    invisibles: `#e0d7d1`,
-    // add a bunch of UI colors
+    border: "#faede5",
+    text: "#866c5b",
+    punctuation: "#53450e",
+    cssString: "#a2466c",
+    invisibles: "#e0d7d1",
     copyButton: c.grey[60],
-    lineHighlightBackground: `#fbf0ea`,
-    scrollbarTrack: `#faede5`
+    lineHighlightBackground: "#fbf0ea",
+    scrollbarTrack: "#faede5"
   },
   ui: {
     background: c.grey[5],
@@ -137,17 +128,12 @@ const col = {
     focusBoxShadow: c.purple[60],
     icon: c.grey[50],
     iconFocus: c.grey[60],
-    placeholder: c.text.placeholder
+    placeholder: c.grey[40]
   },
-  // new tokens
   card: {
     background: c.white,
     color: c.grey[50],
-    header: c.black,
-    starterLabelBackground: c.teal[5],
-    starterLabelText: c.teal[70],
-    pluginLabelBackground: c.orange[5],
-    pluginLabelText: c.orange[90]
+    header: c.black
   },
   modal: {
     background: c.white,
@@ -159,10 +145,6 @@ const col = {
     linkActive: c.purple[50],
     linkHover: c.gatsby,
     socialLink: c.grey[40]
-  },
-  search: {
-    suggestionHighlightBackground: c.lavender,
-    suggestionHighlightColor: c.gatsby
   },
   sidebar: {
     itemHoverBackground: hex2rgba(c.purple[20], 0.275),
@@ -180,21 +162,9 @@ const col = {
     iconFocus: c.grey[60],
     placeholder: c.grey[60]
   },
-  widget: {
-    border: c.grey[10],
-    background: c.white,
-    color: c.text.primary
-  },
   highlightedBox: {
     background: c.yellow[10],
     color: c.grey[80]
-  },
-  newsletter: {
-    background: c.white,
-    border: c.grey[10],
-    heading: c.grey[70],
-    stripeColorA: c.red[40],
-    stripeColorB: c.blue[40]
   },
   button: {
     primaryBg: c.purple[60],
@@ -239,7 +209,7 @@ const col = {
       },
       code: {
         // ui
-        background: `#1b191f`, // another meh
+        background: `#1b191f`,
         backgroundInline: darkBorder,
         border: c.grey[90],
         lineHighlightBackground: hex2rgba(c.purple[90], 0.25),
@@ -247,7 +217,6 @@ const col = {
         scrollbarThumb: c.grey[70],
         scrollbarTrack: c.grey[90],
         copyButton: c.grey[40],
-        // tokens
         add: c.green[50],
         comment: c.grey[30],
         cssString: c.orange[50],
@@ -282,7 +251,7 @@ const col = {
         iconFocus: c.purple[50],
         placeholder: c.whiteFade[50]
       },
-      // TODO figure out how to make shadows themeable
+
       shadows: {
         dialog: `0px 4px 16px rgba(${shadowDarkBase}, 0.08), 0px 8px 24px rgba(${shadowDarkFlares}, 0.16)`,
         floating: `0px 2px 4px rgba(${shadowDarkBase}, 0.08), 0px 4px 8px rgba(${shadowDarkFlares}, 0.16)`,
