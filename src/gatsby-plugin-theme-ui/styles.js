@@ -34,10 +34,10 @@ export const sizes = {
 
 export const zIndices = {
   widget: 2,
-  navigation: 5,
   banner: 10,
   modal: 10,
   sidebar: 10,
+  navigation: 15,
   floatingActionButton: 20,
   skipLink: 100
 };
@@ -177,16 +177,16 @@ export const mediaQueries = {
 
 export const colors = {
   purple: {
-    5: "#fcfaff",
-    10: "#f6edfa",
-    20: "#f1defa",
-    30: "#d9bae8",
-    40: "#b17acc",
-    50: "#8a4baf",
-    60: "#663399",
-    70: "#542c85",
-    80: "#452475",
-    90: "#362066"
+    5: "#E6D8FA",
+    10: "#D9C5F8",
+    20: "#CDB2F6",
+    30: "#C19FF4",
+    40: "#B48BF2",
+    50: "#A878F0",
+    60: "#9C65EE",
+    70: "#8F52EC",
+    80: "#833FEA",
+    90: "#772CE8"
   },
   orange: {
     5: "#fffcf7",
@@ -274,9 +274,9 @@ export const colors = {
   },
   grey: {
     5: "#fbfbfb",
-    10: "#f5f5f5",
+    10: "#EFEFF1",
     20: "#f0f0f2",
-    30: "#d9d7e0",
+    30: "#e6e6ea",
     40: "#b7b5bd",
     50: "#78757a",
     60: "#635e69",
@@ -305,7 +305,7 @@ export const colors = {
   },
   text: "#36313d",
   background: "#ffffff",
-  primary: "#663399",
+  primary: "#9147FF",
   secondary: "#b17acc",
   muted: "#fbfbfb"
 };

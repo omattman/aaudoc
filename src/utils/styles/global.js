@@ -219,9 +219,14 @@ export const globalStyles = t => {
     "h5, h6": { fontWeight: t.fontWeights.body },
     h6: { fontSize: t.fontSizes[2] },
     blockquote: {
+      paddingTop: t.space[4],
+      paddingRight: t.space[6],
+      paddingBottom: t.space[4],
       paddingLeft: t.space[6],
       marginLeft: 0,
-      borderLeft: `${t.space[1]} solid ${t.colors.ui.border}`
+      marginRight: 0,
+      background: t.colors.note.background,
+      borderLeft: `${t.space[1]} solid ${t.colors.note.border}`
     },
     hr: {
       backgroundColor: t.colors.ui.border

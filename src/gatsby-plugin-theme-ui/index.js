@@ -57,6 +57,7 @@ const fweights = {
 
 const col = {
   ...c,
+  ...sh,
 
   text: c.grey[80],
   // Body background color
@@ -103,10 +104,15 @@ const col = {
   ui: {
     background: c.grey[5],
     hover: c.purple[5],
-    border: c.grey[20]
+    border: c.grey[20],
+    quote: "#ffe564"
+  },
+  note: {
+    border: "#ffe564",
+    background: hex2rgba("#ffe564", 0.3)
   },
   link: {
-    color: c.purple[50],
+    color: c.purple[90],
     border: c.purple[30],
     hoverBorder: c.purple[50],
     hoverColor: c.purple[60]
@@ -142,15 +148,16 @@ const col = {
   navigation: {
     background: hex2rgba(c.white, 0.985),
     linkDefault: c.grey[70],
-    linkActive: c.purple[50],
-    linkHover: c.gatsby,
-    socialLink: c.grey[40]
+    linkActive: c.purple[90],
+    linkHover: c.purple[90],
+    socialLink: c.black,
+    boxShadow: sh.raised
   },
   sidebar: {
-    itemHoverBackground: hex2rgba(c.purple[20], 0.275),
+    itemHoverBackground: hex2rgba(c.grey[30], 0.35),
     itemBackgroundActive: `transparent`,
     itemBorderColor: `transparent`, // `rgba(0,0,0,0.05)`,
-    activeSectionBackground: hex2rgba(c.purple[20], 0.15),
+    activeSectionBackground: hex2rgba(c.grey[10], 0.35),
     itemBorderActive: c.purple[10]
   },
   themedInput: {
@@ -251,7 +258,6 @@ const col = {
         iconFocus: c.purple[50],
         placeholder: c.whiteFade[50]
       },
-
       shadows: {
         dialog: `0px 4px 16px rgba(${shadowDarkBase}, 0.08), 0px 8px 24px rgba(${shadowDarkFlares}, 0.16)`,
         floating: `0px 2px 4px rgba(${shadowDarkBase}, 0.08), 0px 4px 8px rgba(${shadowDarkFlares}, 0.16)`,
@@ -260,7 +266,7 @@ const col = {
       },
       sidebar: {
         itemBackgroundActive: `transparent`,
-        activeSectionBackground: hex2rgba(c.purple[90], 0.2),
+        activeSectionBackground: hex2rgba(c.purple[90], 0.1),
         itemBorderActive: c.purple[80],
         itemBorderColor: `transparent`,
         itemHoverBackground: hex2rgba(c.purple[90], 0.2)
