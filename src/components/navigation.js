@@ -13,7 +13,7 @@ import DarkModeToggle from "../components/dark-mode-toggle";
 
 // what we need to nudge down the navItems to sit
 // on the baseline of the logo's wordmark
-const navItemTopOffset = `0.4rem`;
+const navItemTopOffset = `0.1rem`;
 // theme-ui values
 const navItemHorizontalSpacing = [1, null, 2];
 
@@ -91,6 +91,7 @@ const Navigation = ({ pathname }) => {
         px: `env(safe-area-inset-left)`,
         position: `relative`,
         right: 0,
+        boxShadow: `raised`,
         zIndex: `navigation`,
         [breakpointGutter]: {
           position: isHomepage ? `absolute` : `fixed`
