@@ -3,45 +3,16 @@ title: Introduction and System Choice
 tableOfContentsDepth: 2
 ---
 
-## Exam
+The first lectures gives an introduction to the course and its content, and presents
+the first activity of the method. More precisely you will get:
 
-- Written
-- 2 hours
-- All source of nodes allowed
-- Internet connection is allowed
+1. A general presentation of the key activites in systems development, with examples.
+2. A presentation and discussion of the main concepts of the OOA&D method.
+3. A Presentation of the System Choice activity in OOA&D.
 
-### Date
+## Readings
 
-Friday january 3rd/4th.
-
-## Course overview
-
-- Object-oriented modelling in analysis and design
-- Modelling with patterns
-- Sys. Dev. methods
-- Sys. Practices
-
-## Primary goal
-
-- Be able to apply concepts, patterns and modelling language to describe a specific system.
-
-## System Development
-
-We wil primarily work with design and methods. This is in regards as to how to produce a system
-design without significant uncertainties, but also applying methods as guidelines for carrying
-out system development activities.
-
-The book provided in this course covers the guidelines for work processes in relation to both
-design and methods.
-
-### Difficulties associtated with System Definition Elements
-
-- One can confuse the difference between **Functionality** and **Responsibility**
-  - Functionality: The system functions that sipport the application-domain tasks.
-  - The system's responsibility in relation to its Administrative tool.
-- The difference between **Techonology** and **Conditions**
-  - The conditions clearly clarify the conditions under which the system will be
-    developed and used.
+Chapter 1 & 2.
 
 ## Objects in Analysis and Design
 
@@ -82,7 +53,133 @@ behavior keeps track of the operations an object can perform on request and offe
 
 - An analysis document and a design document.
 
-## Group Exercises
+## Individual Exercises
 
-1. Test
-2. **Select an existing system, which you know well. Describe the problem domain, application domain, model, function, and interfaces for this system.**
+### Complete Quiz 1
+
+#### Question 1
+
+> What is design?
+
+Determining how to get access to an object, Determination of a phenomenon in the IT-system, Determining the operations an object can carry out and make available to other objects in the system
+
+#### Question 2
+
+> A system for boat reservations. A reservation consists of the name of the renter, the size of the boat (max. number of passengers) and a period.
+>
+> Which of the following may be part of the application domain?
+
+The owner of the boat rental, Renter, IT-system with clients and server
+
+#### Question 3
+
+> What is a system?
+
+A collection of components that implements requirements, functions and interfaces
+
+#### Question 4
+
+> A system for boat reservations in a boat rental company. A reservation contains the name of ther renter, boat size (max. number of passengers) and a period.
+>
+> Which of the following can be classes in the problem domain?
+
+Boat, Renter
+
+#### Question 5
+
+> The purpose(s) of OOA&D is/are?
+
+To determine systems requirements, to establish a basis for implementation
+
+#### Question 6
+
+> What is/are the purpose(s) of analysis?
+
+Understand a system in relation to its context, Determine system requirements
+
+#### Question 7
+
+> The FACTOR criterion covers the following items:
+
+Responsibility, Functionality
+
+#### Question 8
+
+> Which knowledge areas can rich pictures help clarify?
+
+Concrete experience with user’s work, Relevant structures on user’s work
+
+#### Question 9
+
+> What are the sub-activities of system choice?
+
+Situation, Ideas, Systems
+
+### Section 1.9, Exercise 1
+
+> What is the difference between objects and classes?
+
+An **Object** is an entity with identity, state, and behaviour.
+A **Class** is a description of a collection of objects sharing structure,
+behavioural pattern, and attributes.
+
+In _analysis_ an object is an abstraction of a phenomenon in the system's context,
+such as a customer. A specific customer is treated as a single entity with an
+identity, state, and behaviour. Opposed to objects acting as a single entity will classes act as a container for multiple objects. Instead of describing each particular
+object, the class functions as a shared object description for all objects in the same
+class.
+
+### Section 1.9, Exercise 4
+
+> Why should systems developers understand the context of the systems they are designing?
+
+A key task in analysis and design is to model what the system will administrate,
+monitor, or control. System developers should analyze the problem domain, both to understand the system's context and to learn how to usefully representing it to the system's users. A second key task in analysis and design is to model how the system will interact with users in the application domain. This includes identifying all user groups and understanding both what they will use the system for and how each group will interact with the system in different situations. However, users and system developers interpret things in different ways thus system development requires a common understanding between the developer and user. OOA&D focuses on this challenge.
+
+### Section 1.9, Exercise 5
+
+> How can you distinguish between a system's problem domain and application domain?
+> Can they partly overlap?
+
+The system's context can be viewed from two complementary perspectives: the system models something (the problem domain) and it is operated by users (the application domain). We define them as following:
+
+- **Problem domain:** _That part of a context that is administrated, monitored or controlled by a system_.
+- **Application domain:** _The organization that administrates, monitors, or controls a problem domain_.
+
+To establish a clear separation between the two you could think of it as being: The problem domain is part of the real world and consists of entities that exists in the real world. The application domain consists of software entities in the implementation of the solution. However, they need to be tighly connected to fully resemble the problem domain.
+
+### Section 2.10, Exercise 2
+
+> What is a system definition and how is it used?
+
+A **system definition** is a concise description of a computerized system expressed in a natural language. It seeks to describe the system in context, what information it should contain, which functions it should provide, where it is to be used, and which development conditions apply. Furthermore, it should be brief and precise, and contain the most fundamental decisions about the system.
+
+The system definition is produced by iterating through the three subactivities:
+
+1. **Situation:** Focuses on challenges.
+2. **Ideas:** Create and evaluate ideas.
+3. **Systems:** Formulate and choose system definition.
+
+To describe the situation in the first subactibity one could apply the usage of **Rich Pictures**, which focuses on important aspects of a given situation. This enables participants to get ideas and bring creativity into the project.
+
+The result of the second subactivity is a collection of ideas, but in order to establish and evaluate ideas in operation with the users, one could make use of _exemplars_, _metaphors_, and _experiments_. The most important are probably exemplars in the form existing solutions, and experiments in the form of prototypes.
+
+The purpose of the third and final subactivity is to choose the actual system to develop. After thoroughly creating and evaluating new ideas based on Rich Pictures, exemplars, or prototypes, it is time to decide on an actual system definition. The definition describes a totality, or a whole. It will therefore express emergent, system-focus properties, rather than detailed, component-oriented properties.
+
+### Section 2.10, Exercise 9
+
+> What are the elements in the FACTOR criterion for system definition?
+
+The **FACTOR criterion** consists of six elements:
+
+- **Functionality:** The system functions that support the application-domain tasks.
+- **Application domain:** Those parts of an organization that administrate, monitor, or control a problem domain.
+- **Conditions:** The conditions under which the system will be developed and used.
+- **Technology:** Both the technology used to develop the system and the technology on which the system till run.
+- **Objects:** The main objects in the problem domain.
+- **Responsibility:** The system's overall responsibility in relation to its context.
+
+The FACTOR criterion can be used in two ways:
+
+1. Use it to support system-definition development.
+2. Start the definition by describing the system and then use the criterai to see how the system definition satisfies each of the six factors.
