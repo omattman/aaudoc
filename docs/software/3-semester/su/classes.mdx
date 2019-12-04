@@ -3,93 +3,185 @@ title: Classes
 tableOfContentsDepth: 2
 ---
 
-<details>
-  <summary>Show Lecture Slides</summary>
-  <iframe
-    src="https://www.moodle.aau.dk/pluginfile.php/1627023/mod_resource/content/4/Systems%20Development%20Lecture%202%20-%20before%20lecture.pdf"
-    width="100%"
-    height="500px"
-  ></iframe>
-</details>
+This lecture presents the first activity in Object-Oriented Analysis, more precisely you will get:
+
+1. An overview of the whole analysis of the problem domain
+2. A detailed presentation of the classes activity
+
+## Readings
+
+Chapter 3 and pages 385-392 (until the subsection on Structure)
+
+## The Class Activity
+
+![Activities regarding classes](/images/classes-activities.png)
+
+Abstraction, classification, and selection are the primary tasks in the class activity.
+
+Class activity produces an [event table](#event-table).
+
+## Classification of Objects and Events
+
+In the [class activity](#the-class-activity), we focus on objects of the user's work with the goal of creating and selecting relevant abstractions.
+
+Different users means different interpretations. Multiple users do not necessarily understand a concept in the same way.
+
+The aim in system development is to change the user organization by improving its products and services.
+
+In OOA&D we use the concepts _object_ and _event_ to understand phenomena in the problem domain. We do not see anything else but these concepts when we look at the problem domain; not processes, entities, or anything else.
+
+### Object
+
+The object concept is the focus of the [class activity](#the-class-activity).
+
+An **Object** is an entity with identity, state, and behaviour.
+
+Entity: To call something an object it must be describeable as an entity. The more tangible the easier. For example, it is easier to consider a person entity than an organization.
+
+Identity: An object's identity is the property that separates it from all other objects. **All objects must have an entity**, which means we must be able to define it as distinguishable from all other objects. This could for example be a unique id number.
+
+State: An object's state consists of both its static properties and the dynamic or static values we assign to these properties.. A customer with a property `Name` can change dynamically, but the customers social security number do not change and therefore is a static value.
+
+Behaviour: An object's behaviour is that sequence of events that it actively performs and passively experiences during its lifetime. An example of these events could be a bank customer's behaviour when they open and close their acconts.
+
+The key point is that we can identify and delimit the object as an indepent entity for instances we have tangible objects as a customer, a clerk, a contract, and less tangible objects such as an organization or a resource.
+
+### Event
+
+Events specify the qualities of problem domain objects.
+
+A **Event** is an instanttaneous incident involving one or more objects.
+
+An event is always seen as an _atomic_ unit that cannot be broken down into sub-events. If it happens we need sub-events we include these and omit the super-event.
+
+### Class
+
+In the object-oriented approach, abstraction is directly supported by the class concept. The class concept refers to and describes all the objects in a specific class, as expressed in this definition.
+
+A **Class** is a description of a collection of objects sharing structure, behavioural pattern, and attributes.
+
+Classes have their own identity, state, and behaviour.
+
+## Find Classes
+
+The aim is to generate a candidate list that is as long and varied as possible. You can use your own perception of the problem-domain as a starting point. You can also use existing descriptions, including different rich pictures, the system definition, and, perhaps, an application-domain description.
+
+To obtain a good problem-domain description you must interview prospective users.
+
+To improve the process of selecting class candidates, consider both:
+
+- Nouns or noun phrases, and
+- General types.
+
+An object will typically be described by a noun. For example prospective users of a bank account system might use the nouns: _customer, account, money, loan, interest, debit, credit, teller, copy machine, banj box, meeting room,_ and _annual accounts_.
+
+The classes you select will become the core of your problem-domain model. Thus, you should name your candidate classes carefully. It is recommended that you use names that:
+
+- Are simple and readable
+- Originate in the problem domain.
+- Indicate a single instance.
+
+Below is a sample list of class candidates from a Hair Salon System.
+
+|                  |                   |                     |
+| ---------------- | ----------------- | ------------------- |
+| Plan             | Apprentice        | Treatment Performed |
+| Appoinment book  | Customer          | Work schedule       |
+| Appointment      | Salon             | Assistant           |
+| Desired vacation | Customer database | Receptionist        |
+| Boss             | Cash register     | Chair               |
+
+## Find Events
+
+Event selection defines the second set of building blocks for the problem-domain.
+
+There is a fundamental difference between events and classes. Numerous verbs relate to **the way users carry out their jobs**. These verbs do not belong in the problem-domain, but rather in the application-domain. Eliminate these immediately.
+
+To successfully model the problem-domain elements you need a rich list of event candidates. To improve the selection of events consider both:
+
+- Verbs.
+- General types.
+  Focusing on verbs relates naturally to object behaviour.
+
+In choosing the verb form for event names, there are three possible options: _present tense, past tense,_ and _present participle_. All brings their pros and cons.
+
+Prospective users of a bank's account system might use the following verbs: _account opened, amount deposited, loan granted, customer informed, meeting room reserved, application signed_.
+
+When generating event candidates, choose names that:
+
+- Are simple and reable.
+- Originate in the problem domain.
+- indicate a single event.
+
+Below is a sample list of class candidates from a Hair Salon System.
+
+|                  |                    |                      |
+| ---------------- | ------------------ | -------------------- |
+| Reserved         | Item sold          | Employed             |
+| Customer arrived | Customer picked up | Graduated            |
+| Payment received | Leave workplace    | Material used        |
+| Resigned         | Cancelled          | Item purchased       |
+| Agreed           | Treated            | Arrived at workplace |
+
+## Evaluate Systematically
+
+When you have completed the lists for class and event candidates, you should evaluate them systematically using general and specific evaluation criteria. As part of this evaluation, we relate classes and events to each other to produce an event table, **which is the outcome of the class activity**.
+
+The [class activity](#the-class-activity) contributes to problem-domain modelling. Therefore, you should only select classes and events that belong to the problem domain.
+
+The problem-domain model should only include classes or events that users identify.
+
+### Evaluation Criteria for Classes
+
+When you evaluate a class, you should be able to answer these questions affirmatively:
+
+- Can you identify objects from the class?
+- Does the class contain unique information?
+- Does the class encompass multiple objects?
+- Does the class have a suitable and manageable number of events?
+
+Events are related to classes in order to characterise them. This relation is expressed in an event table as shown in [this table](#event-table).
+
+Cohesion is a classical measure for class-definition quality. A highly cohesive class is a logical unit, and it is this quality that we want to achieve. With a cohesive class its easy to express the purpose of the class.
+
+In terms of responsibility, a class with only a few, clear responsibilities will be chracterized by **high cohesion**. If, on the other hand, you have a class with a long list of responsibilities, it will have low cohesion and it should probably be splitted up into several new classes **with higher cohesion as the primary goal in mind**.
+
+### Evaluation Criteria for Events
+
+When evaluating event candidates, you should be able to answer affirmatively:
+
+- Is the event instantaneous?
+- Is the even atomic?
+- Can the event be identified when it happens?
+
+Events should be **defined as instantaneous** in order to make it clear when it has occured.
+
+Also, an event is **always atomic** and cannot be broken down into sub-events.
+
+Each event **should be identifiable when it happens**.
+
+### Relating Classes and Events
+
+When we select a class, we also **define the events** that the class' objects are involved in. Similarly when we select an event, we **define the objects** that are involved in the event. We summarize these in an event table as shown in [this table](#event-table).
+
+A class with many events till have many check marks in its column. This might indicate that the class has **too many responsibilities and thus low cohesion**. Similarly, an event can be common to many classes, indicated by many checks in its row. This indicates that the event connects many mutually related classes that might be highly coupled, which is not the goal. We want **low-coupling between classes**.
 
 ## Event table
 
-|             | Reserved | Cancel | Treated | Employed | Resigned | Grad. | Agreed |
-| ----------- | -------- | ------ | ------- | -------- | -------- | ----- | ------ |
-| Customer    | ✓        | ✓      | ✓       |          |          |       |        |
-| Assistant   | ✓        | ✓      |         | ✓        | ✓        |       | ✓      |
-| Apprentice  |          |        |         | ✓        | ✓        | ✓     | ✓      |
-| Appointment | ✓        | ✓      | ✓       |          |          |       |        |
-| Plan        | ✓        |        |         |          |          |       | ✓      |
+|           | Customer | Assistant | Apprentice | Appointment | Plan |
+| --------- | -------- | --------- | ---------- | ----------- | ---- |
+| reserved  | ✓        | ✓         |            | ✓           | ✓    |
+| cancelled | ✓        | ✓         |            | ✓           |      |
+| treated   | ✓        |           |            | ✓           |      |
+| employed  |          | ✓         | ✓          |             |      |
+| resigned  |          | ✓         | ✓          |             |      |
+| graduated |          |           | ✓          |             |      |
+| agreed    |          | ✓         | ✓          |             | ✓    |
 
 The result of well researched entities is an **Event Table**, which
 clearly clarifies the major classes and events in the problem domain.
 
 It functions as a checklist, to indicate the different events of the defined classes.
-
-## Key Concepts
-
-- Object and Class
-- Event
-  - An instantaneous incident involving one or more objects.
-  - Its atomic, which means it can not be divided into sub-events.
-
-## Activities regarding classes
-
-![Activities regarding classes](/images/classes-activities.png)
-
-### Example from IKEA
-
-> What are relevant events?
-
-- Vare modtaget
-- Vare solgt
-- Vare skadet
-
-Based on the above events it would be sufficient to define a class
-**Vare**. There's many things which can define a product(vare) but
-for this system will the above mentioned events be the most important.
-We abstract from any other instances which are not defined.
-
-## Find Candidates for Classes and Events
-
-For classes:
-
-- Look at nouns.
-- Eliminate nouns.
-- Describe a single instance (object).
-
-For events:
-
-- Look at verbs.
-- Eliminate verbs related to the way users carry out their job.
-- Indicate a single event. Avoid adding sub-events.
-
-### Example: Hair Salon
-
-|                        |
-| ---------------------- |
-| **Functionality**      | Support for work planning and appointments |
-| **Application domain** | Managing customer, their treatments, and appointments, and planning emplyees' work schedules |
-| **Conditions**         | Developed in close cooperation with the employees |
-| **Technology**         | Smaller PC or Macintosh with a large graphical screen |
-| **Objects**            | Customer, employees, appointment, and work schedules |
-| **Responsibility**     | Tool for reliable administration and a common mediator |
-
-**Classes**
-
-- Frisør
-- Elev
-- Kunde
-- Aftale
-
-**Events**
-
-- Kunde behandlet
-- Kunde aflyst
-- Kunde ankommet
-- Betalt
-- Ansat sygemeldt
 
 ## Quiz 2
 
@@ -97,43 +189,52 @@ For events:
 
 > The following are core principles of the class activity:
 
-The correct answers are: Make an event table, Classify objects in the problem domain
+Make an event table, Classify objects in the problem domain
 
 ### Question 2
 
 > A system to be used to control train traffic at Aalborg Railway Station: Which of the following are events?
 
-The correct answers are: A train passing a signal, A train passing a rail sensor, A train shifting track, A train crossing the rail bridge across the fjord, A train stopping at Aalborg Nord
+A train passing a signal, A train passing a rail sensor, A train shifting track, A train crossing the rail bridge across the fjord, A train stopping at Aalborg Nord
 
 ### Question 3
 
 > An object in the problem domain is defined as an entity with:
 
-The correct answers are: Identity, State, Behavior
+Identity, State, Behavior
 
 ### Question 4
 
 > A system to be used to control train traffic at Aalborg Railway Station: Which statements are correct?
 
-The correct answers are: A signal post and its signal is part of the PD, A signal post and its signal can be part of the AD, A signal post and its signal can be part of both PD and AD, but it depends on which functions we require, A train sensor on the rails can be part of the PD, A train sensor on the rails is not an object and neither part of the PD nor part of the AD because it is just an input device
+- A signal post and its signal is part of the PD
+- A signal post and its signal can be part of the AD
+- A signal post and its signal can be part of both PD and AD, but it depends on which functions we require
+- A train sensor on the rails can be part of the PD
+- A train sensor on the rails is not an object and neither part of the PD nor part of the AD because it is just an input device
 
 ### Question 5
 
 > What are the results of the problem-domain analysis?
 
-The correct answers are: A class diagram describing classes and structure, State-chart diagrams describing the behavior of objects in classes, An event table
+- A class diagram describing classes and structure
+- State-chart diagrams describing the behavior of objects in classes
+- An event table
 
 ### Question 6
 
 > An event in problem domain analysis is:
 
-The correct answers are: Atomic, An incident involving one or more objects, Instantaneous
+- Atomic
+- An incident involving one or more objects
+- Instantaneous
 
 ### Question 7
 
 > The system's model of the problem domain is:
 
-The correct answers are: Represents the state of the problem domain, Provides information to users in the application domain about the problem domain
+- Represents the state of the problem domain
+- Provides information to users in the application domain about the problem domain
 
 ## Individual Exercises
 
@@ -172,10 +273,7 @@ An event should be defined as instantaneous in order to make it clear when it ha
 
 > What is the result of the class activity?
 
-As one would be writing down many candidates will provide one with a better overall picture. If this incidence
-does not occur, then one might reject relevant candidates too soon. It is important to have a broad range of
-potential candidates as it opens up a lot of edge cases and thereby select the correct classes to be the core of
-your problem-domain.
+As one would be writing down many candidates will provide one with a better overall picture. If this incidence does not occur, then one might reject relevant candidates too soon. It is important to have a broad range of potential candidates as it opens up a lot of edge cases and thereby select the correct classes to be the core of your problem-domain.
 
 ### Section 3.6, exercise 15
 
@@ -246,9 +344,3 @@ your problem-domain.
 > Carry out the Classes activity as described in Chapter 3.
 
 > Reconsider your first system definition: was it useful for selecting classes and events or does it have to be refined.
-
-### Watch Air Traffic Control videos
-
-[Video 1](http://www.youtube.com/watch?v=HXcfelsNAow&NR=1)
-
-[Video 2](http://www.youtube.com/watch?v=780eqg3_Dxw&feature=related)
