@@ -46,85 +46,72 @@ const ItemWithSubitems = ({
   );
 };
 
-class Accordion extends React.Component {
-  constructor(props) {
-    super(props);
+export default function Accordion ({
+  itemRef,
+  activeItemLink,
+  activeItemParents,
+  createLink,
+  isActive,
+  isParentOfActiveItem,
+  item,
+  location,
+  onLinkClick,
+  onSectionTitleClick,
+  openSectionHash,
+  isSingle,
+  disableAccordions }) {
+  const [uid, setUid] = React.useState(`item_`);
+  const isExpanded = openSectionHash[item.title] || disableAccordions;
 
-    this.state = {
-      uid: (`` + Math.random()).replace(/\D/g, ``)
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(...args) {
-    if (this.props.onLinkClick) {
-      this.props.onLinkClick(...args);
+  const handleClick = (...args) => {
+    if (onLinkClick) {
+      onLinkClick(...args);o
     }
 
-    if (this.props.onSectionTitleClick) {
-      this.props.onSectionTitleClick(...args);
+    if (onSectionTitleClick) {
+      onSectionTitleClick(...args);
     }
   }
 
-  render() {
-    const {
-      itemRef,
-      activeItemLink,
-      activeItemParents,
-      createLink,
-      isActive,
-      isParentOfActiveItem,
-      item,
-      location,
-      onLinkClick,
-      onSectionTitleClick,
-      openSectionHash,
-      isSingle,
-      disableAccordions
-    } = this.props;
-    const uid = `item_` + this.state.uid;
-    const isExpanded = openSectionHash[item.title] || disableAccordions;
-
-    return (
-      <li
-        sx={{
-          bg:
-            (isParentOfActiveItem && item.level === 0) ||
-            (isActive && item.level === 0)
-              ? `sidebar.activeSectionBackground`
-              : false,
-          position: `relative`,
-          transition: t =>
-            `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
-          mt: t =>
-            item.level === 0 && disableAccordions && !isSingle
+  return (
+    <li
+      sx={{
+        bg:
+          (isParentOfActiveItem && item.level === 0) ||
+          (isActive && item.level === 0)
+            ? `sidebar.activeSectionBackground`
+            : false,
+        position: `relative`,
+        transition: t =>
+          `all ${t.transition.speed.fast} ${t.transition.curve.default}`,
+        mt: t =>
+          item.level === 0 && disableAccordions && !isSingle
               ? `${t.space[4]} !important`
               : false,
-          ...(item.level === 0 &&
-            !isSingle && {
-              "::before": {
-                content: `" "`,
-                position: `absolute`,
-                borderTopWidth: `1px`,
-                borderTopStyle: `solid`,
-                borderColor: `ui.border`,
-                left: t =>
+        ...(item.level === 0 &&
+          !isSingle && {
+            "::before": {
+              content: `" "`,
+              position: `absolute`,
+              borderTopWidth: `1px`,
+              borderTopStyle: `solid`,
+              borderColor: `ui.border`,
+              left: t =>
                   (isParentOfActiveItem && isExpanded) ||
                   (isActive && isExpanded)
-                    ? 0
-                    : t.space[6],
-                right: 0,
-                top: 0
-              },
-              ":after": {
-                top: `auto`,
-                bottom: -1
-              }
-            })
-        }}
-      >
-        <ItemWithSubitems
+                      ? 0
+                      : t.space[6],
+              right: 0,
+              top: 0
+            },
+            ":after": {
+              top: `auto`,
+              bottom: -1
+            }
+          })
+      }}
+    >
+      <ItemWithSubitems
           itemRef={itemRef}
           activeItemLink={activeItemLink}
           activeItemParents={activeItemParents}
@@ -136,10 +123,10 @@ class Accordion extends React.Component {
           location={location}
           onLinkClick={onLinkClick}
           onSectionTitleClick={onSectionTitleClick}
-          uid={uid}
+          uid={() => setUid(uid + (`` + Math.random()).replace(/\D/g, ``))}
           disableAccordions={disableAccordions}
-        />
-        <ul
+      />
+      <ul
           id={uid}
           sx={{
             display: isExpanded ? `block` : `none`,
@@ -158,26 +145,23 @@ class Accordion extends React.Component {
               }
             })
           }}
-        >
-          {item.items.map(subitem => (
+      >
+        {item.items.map(subitem => (
             <Item
-              activeItemLink={activeItemLink}
-              activeItemParents={activeItemParents}
-              createLink={createLink}
-              item={subitem}
-              key={subitem.title}
-              location={location}
-              onLinkClick={onLinkClick}
-              isExpanded={isExpanded}
-              onSectionTitleClick={onSectionTitleClick}
-              openSectionHash={openSectionHash}
-              ui={item.ui}
+                activeItemLink={activeItemLink}
+                activeItemParents={activeItemParents}
+                createLink={createLink}
+                item={subitem}
+                key={subitem.title}
+                location={location}
+                onLinkClick={onLinkClick}
+                isExpanded={isExpanded}
+                onSectionTitleClick={onSectionTitleClick}
+                openSectionHash={openSectionHash}
+                ui={item.ui}
             />
-          ))}
-        </ul>
-      </li>
-    );
-  }
+        ))}
+      </ul>
+    </li>
+  );
 }
-
-export default Accordion;
