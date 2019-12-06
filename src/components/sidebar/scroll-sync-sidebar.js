@@ -1,95 +1,95 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import SidebarBody from "./sidebar";
+import SidebarBody from './sidebar'
 
 class ScrollSyncSection extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor (props, context) {
+    super(props, context)
 
     this.state = {
-      activeItemHash: `NONE`,
+      activeItemHash: 'NONE',
       itemTopOffsets: []
-    };
+    }
 
-    this.calculateItemTopOffsets = this.calculateItemTopOffsets.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
+    this.calculateItemTopOffsets = this.calculateItemTopOffsets.bind(this)
+    this.handleResize = this.handleResize.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
   }
 
-  componentDidMount() {
-    this.calculateItemTopOffsets();
+  componentDidMount () {
+    this.calculateItemTopOffsets()
 
-    window.addEventListener(`resize`, this.handleResize);
-    window.addEventListener(`scroll`, this.handleScroll);
+    window.addEventListener('resize', this.handleResize)
+    window.addEventListener('scroll', this.handleScroll)
   }
 
-  componentWillUnmount() {
-    window.removeEventListener(`resize`, this.handleResize);
-    window.removeEventListener(`scroll`, this.handleScroll);
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
-  calculateItemTopOffsets() {
-    const { itemList } = this.props;
+  calculateItemTopOffsets () {
+    const { itemList } = this.props
 
-    const itemIds = _getItemIds(itemList);
+    const itemIds = _getItemIds(itemList)
     this.setState({
       itemTopOffsets: _getElementTopOffsetsById(itemIds)
-    });
+    })
   }
 
-  handleResize() {
-    this.calculateItemTopOffsets();
-    this.handleScroll();
+  handleResize () {
+    this.calculateItemTopOffsets()
+    this.handleScroll()
   }
 
-  handleScroll() {
-    const { itemTopOffsets } = this.state;
+  handleScroll () {
+    const { itemTopOffsets } = this.state
     const item = itemTopOffsets.find((itemTopOffset, i) => {
-      const nextItemTopOffset = itemTopOffsets[i + 1];
+      const nextItemTopOffset = itemTopOffsets[i + 1]
 
       return nextItemTopOffset
         ? window.scrollY >= itemTopOffset.offsetTop &&
             window.scrollY < nextItemTopOffset.offsetTop
-        : window.scrollY >= itemTopOffset.offsetTop;
-    });
+        : window.scrollY >= itemTopOffset.offsetTop
+    })
 
     this.setState({
-      activeItemHash: item ? item.hash : `NONE`
-    });
+      activeItemHash: item ? item.hash : 'NONE'
+    })
   }
 
-  render() {
-    const { activeItemHash } = this.state;
-    return <SidebarBody activeItemHash={activeItemHash} {...this.props} />;
+  render () {
+    const { activeItemHash } = this.state
+    return <SidebarBody activeItemHash={activeItemHash} {...this.props} />
   }
 }
 
 const _getItemIds = section => {
-  let list = [];
+  const list = []
 
   section.forEach(subSection => {
-    if (subSection.hasOwnProperty(`hash`)) list.push(subSection.hash);
-    if (subSection.items) list.push(..._getItemIds(subSection.items));
-  });
+    if (subSection.hasOwnProperty('hash')) list.push(subSection.hash)
+    if (subSection.items) list.push(..._getItemIds(subSection.items))
+  })
 
-  return list;
-};
+  return list
+}
 
 const _getElementTopOffsetsById = ids => {
-  const navigation = document.getElementsByClassName(`navigation`);
-  const navigationHeight = navigation[0].offsetHeight || 0;
+  const navigation = document.getElementsByClassName('navigation')
+  const navigationHeight = navigation[0].offsetHeight || 0
 
   return ids
     .map(hash => {
-      const element = document.getElementById(hash);
+      const element = document.getElementById(hash)
       return element
         ? {
-            hash,
-            offsetTop: element.offsetTop - navigationHeight
-          }
-        : null;
+          hash,
+          offsetTop: element.offsetTop - navigationHeight
+        }
+        : null
     })
-    .filter(item => item);
-};
+    .filter(item => item)
+}
 
-export default ScrollSyncSection;
+export default ScrollSyncSection

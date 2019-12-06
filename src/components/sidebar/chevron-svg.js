@@ -1,18 +1,18 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
+import { jsx } from 'theme-ui'
 
-export default function ChevronSvg({ size = 10, cssProps = {} }) {
+export default function ChevronSvg ({ size = 10, cssProps = {} }) {
   return (
     <svg
       sx={cssProps}
-      viewBox="0 0 926.23699 573.74994"
-      version="1.1"
-      x="0px"
-      y="0px"
+      viewBox='0 0 926.23699 573.74994'
+      version='1.1'
+      x='0px'
+      y='0px'
       width={size}
       height={size}
     >
-      <g transform="translate(904.92214,-879.1482)">
+      <g transform='translate(904.92214,-879.1482)'>
         <path
           d={`
             m -673.67664,1221.6502 -231.2455,-231.24803 55.6165,
@@ -24,9 +24,9 @@ export default function ChevronSvg({ size = 10, cssProps = {} }) {
             -231.5279,231.248 -231.873,231.248 -0.3451,0 -104.688,
             -104.0616 -231.873,-231.248 z
           `}
-          fill="currentColor"
+          fill='currentColor'
         />
       </g>
     </svg>
-  );
+  )
 }

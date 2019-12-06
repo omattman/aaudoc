@@ -1,24 +1,24 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { jsx } from 'theme-ui'
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-import copyToClipboard from "../utils/copy-to-clipboard";
+import copyToClipboard from '../utils/copy-to-clipboard'
 
-const delay = duration => new Promise(resolve => setTimeout(resolve, duration));
+const delay = duration => new Promise(resolve => setTimeout(resolve, duration))
 
-export default function Copy({
+export default function Copy ({
   className,
   content,
   duration,
   fileName,
   trim = false
 }) {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false)
 
   const label = copied
-    ? `${fileName ? fileName + ` ` : ``}copied to clipboard`
-    : `${fileName ? fileName + `: ` : ``}copy code to clipboard`;
+    ? `${fileName ? fileName + ' ' : ''}copied to clipboard`
+    : `${fileName ? fileName + ': ' : ''}copy code to clipboard`
 
   return (
     <button
@@ -26,50 +26,50 @@ export default function Copy({
       className={className}
       disabled={copied}
       sx={{
-        backgroundColor: `transparent`,
-        border: `none`,
-        color: `code.copyButton`,
-        cursor: `pointer`,
+        backgroundColor: 'transparent',
+        border: 'none',
+        color: 'code.copyButton',
+        cursor: 'pointer',
         fontSize: 2,
-        fontFamily: `header`,
-        lineHeight: `solid`,
+        fontFamily: 'header',
+        lineHeight: 'solid',
         p: 2,
         transition: t =>
           `${t.transition.speed.default} ${t.transition.curve.default}`,
-        "&[disabled]": {
-          cursor: `not-allowed`
+        '&[disabled]': {
+          cursor: 'not-allowed'
         },
-        ":not([disabled]):hover": {
-          bg: `purple.60`,
-          boxShadow: `raised`,
-          color: `white`
+        ':not([disabled]):hover': {
+          bg: 'purple.60',
+          boxShadow: 'raised',
+          color: 'white'
         },
-        ":active": {
-          boxShadow: `floating`
+        ':active': {
+          boxShadow: 'floating'
         }
       }}
       onClick={async () => {
-        await copyToClipboard(trim ? content.trim() : content);
+        await copyToClipboard(trim ? content.trim() : content)
 
-        setCopied(true);
+        setCopied(true)
 
-        await delay(duration);
+        await delay(duration)
 
-        setCopied(false);
+        setCopied(false)
       }}
     >
-      {copied ? `Copied` : `Copy`}
+      {copied ? 'Copied' : 'Copy'}
     </button>
-  );
+  )
 }
 
 Copy.propTypes = {
   content: PropTypes.string.isRequired,
   duration: PropTypes.number,
   trim: PropTypes.bool
-};
+}
 
 Copy.defaultProps = {
   duration: 5000,
-  fileName: ``
-};
+  fileName: ''
+}

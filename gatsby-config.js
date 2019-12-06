@@ -1,158 +1,158 @@
-const path = require(`path`);
+const path = require('path')
 
-require(`dotenv`).config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
-});
+})
 
 const GA = {
-  identifier: ``
-};
+  identifier: ''
+}
 
 module.exports = {
   siteMetadata: {
-    title: `AAU Doc`,
-    siteUrl: `https://aaudoc.netlify.com`,
-    description: `Shared Note-Taking platform for lecture notes and course solutions`,
-    twitter: ``
+    title: 'AAU Doc',
+    siteUrl: 'https://aaudoc.netlify.com',
+    description: 'Shared Note-Taking platform for lecture notes and course solutions',
+    twitter: ''
   },
   plugins: [
-    `gatsby-plugin-theme-ui`,
+    'gatsby-plugin-theme-ui',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "docs",
+        name: 'docs',
         path: `${__dirname}/docs/`
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/assets`
       }
     },
     {
-      resolve: "gatsby-plugin-mdx",
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: [".md", ".mdx"],
+        extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               related: false,
               noIframeBorder: true
             }
           },
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 750,
-              backgroundColor: `#ffffff`,
+              backgroundColor: '#ffffff',
               linkImagesToOriginal: false
             }
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: `margin-bottom: 1.5rem`
+              wrapperStyle: 'margin-bottom: 1.5rem'
             }
           },
           {
-            resolve: `gatsby-remark-katex`,
+            resolve: 'gatsby-remark-katex',
             options: {
-              strict: `ignore`
+              strict: 'ignore'
             }
           },
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants'
         ]
       }
     },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography`
+        pathToConfigModule: 'src/utils/typography'
       }
     },
-    "gatsby-plugin-emotion",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-emotion',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               related: false,
               noIframeBorder: true
             }
           },
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 750,
-              backgroundColor: `#ffffff`,
+              backgroundColor: '#ffffff',
               linkImagesToOriginal: false
             }
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: `margin-bottom: 1.5rem`
+              wrapperStyle: 'margin-bottom: 1.5rem'
             }
           },
           {
-            resolve: `gatsby-remark-katex`,
+            resolve: 'gatsby-remark-katex',
             options: {
-              strict: `ignore`
+              strict: 'ignore'
             }
           },
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
               aliases: {
-                dosini: `ini`,
-                env: `bash`,
-                es6: `js`,
-                flowchart: `none`,
-                gitignore: `none`,
-                gql: `graphql`,
-                htaccess: `apacheconf`,
-                mdx: `markdown`,
-                ml: `fsharp`,
-                styl: `stylus`
+                dosini: 'ini',
+                env: 'bash',
+                es6: 'js',
+                flowchart: 'none',
+                gitignore: 'none',
+                gql: 'graphql',
+                htaccess: 'apacheconf',
+                mdx: 'markdown',
+                ml: 'fsharp',
+                styl: 'stylus'
               }
             }
           },
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-          `gatsby-remark-responsive-iframe`
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants',
+          'gatsby-remark-responsive-iframe'
         ]
       }
     },
-    "gatsby-plugin-emotion",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
-    `gatsby-plugin-catch-links`,
-    `gatsby-plugin-layout`,
+    'gatsby-plugin-emotion',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-layout',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `AAU Doc`,
-        short_name: `AAU Doc`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#38E1AF`,
-        display: `standalone`,
-        icon: `src/assets/aaudoc-icon.png`
+        name: 'AAU Doc',
+        short_name: 'AAU Doc',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#38E1AF',
+        display: 'standalone',
+        icon: 'src/assets/aaudoc-icon.png'
       }
     },
-    `gatsby-plugin-offline`,
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    'gatsby-plugin-offline',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: GA.identifier,
         anonymize: true,
@@ -160,4 +160,4 @@ module.exports = {
       }
     }
   ]
-};
+}

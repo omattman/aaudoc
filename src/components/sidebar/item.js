@@ -1,17 +1,17 @@
-import React, { Fragment, useCallback } from "react";
+import React, { Fragment, useCallback } from 'react'
 
-import Accordion from "./accordion";
-import createLink from "../../utils/sidebar/create-link";
+import Accordion from './accordion'
+import createLink from '../../utils/sidebar/create-link'
 
 const isItemActive = (activeItemParents, item) => {
   if (activeItemParents) {
-    for (let parent of activeItemParents) {
-      if (parent === item.title) return true;
+    for (const parent of activeItemParents) {
+      if (parent === item.title) return true
     }
   }
 
-  return false;
-};
+  return false
+}
 
 const Item = ({
   activeItemLink,
@@ -34,17 +34,17 @@ const Item = ({
         // will only scroll to the correct location on a full page refresh,
         // instead of navigating between pages with the prev/next buttons
         // or clicking on linking guides or urls
-        await function() {};
-        node.scrollIntoView({ block: `center` });
+        await function () {}
+        node.scrollIntoView({ block: 'center' })
       }
     },
     [location.pathname]
-  );
+  )
 
-  const isParentOfActiveItem = isItemActive(activeItemParents, item);
+  const isParentOfActiveItem = isItemActive(activeItemParents, item)
 
   return (
-    <Fragment>
+    <>
       {item.items ? (
         <Accordion
           itemRef={itemRef}
@@ -78,8 +78,8 @@ const Item = ({
           })}
         </li>
       )}
-    </Fragment>
-  );
-};
+    </>
+  )
+}
 
-export default Item;
+export default Item

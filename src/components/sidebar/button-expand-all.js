@@ -1,35 +1,35 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import React from "react";
-import GoFold from "react-icons/lib/go/fold";
-import GoUnfold from "react-icons/lib/go/unfold";
+import { jsx } from 'theme-ui'
+import React from 'react'
+import GoFold from 'react-icons/lib/go/fold'
+import GoUnfold from 'react-icons/lib/go/unfold'
 
 const iconStyles = {
-  display: `inline-block`,
+  display: 'inline-block',
   mr: 2
-};
+}
 
-export default function ExpandAllButton({ onClick, expandAll }) {
+export default function ExpandAllButton ({ onClick, expandAll }) {
   return (
     <button
       onClick={onClick}
       sx={{
-        alignItems: `center`,
-        bg: `transparent`,
-        border: `none`,
+        alignItems: 'center',
+        bg: 'transparent',
+        border: 'none',
         borderRadius: 1,
-        color: `textMuted`,
-        cursor: `pointer`,
-        display: `flex`,
+        color: 'textMuted',
+        cursor: 'pointer',
+        display: 'flex',
         flexGrow: 0,
         fontSize: 0,
-        lineHeight: `solid`,
+        lineHeight: 'solid',
         py: 2,
-        textAlign: `left`,
+        textAlign: 'left',
         transition: t => `all ${t.transition.speed.fast}`,
-        "&:hover": {
-          bg: `sidebar.itemHoverBackground`,
-          color: `navigation.linkHover`
+        '&:hover': {
+          bg: 'sidebar.itemHoverBackground',
+          color: 'navigation.linkHover'
         }
       }}
     >
@@ -49,5 +49,5 @@ export default function ExpandAllButton({ onClick, expandAll }) {
         </React.Fragment>
       )}
     </button>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 
-import softwareHierarchy from "../data/software-links.yaml"
-import tutorialHierarchy from "../data/tutorial-links.yaml"
-import contributingHierarchy from "../data/contributing-links.yaml"
+import softwareHierarchy from '../data/software-links.yaml'
+import tutorialHierarchy from '../data/tutorial-links.yaml'
+import contributingHierarchy from '../data/contributing-links.yaml'
 
 // Search through tree, which may be 2, 3 or more levels deep
 const childItemsBySlug = (

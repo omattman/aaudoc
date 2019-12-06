@@ -13,12 +13,12 @@ import {
   sizes as sizeTokens,
   space as spaceTokens,
   transition,
-  zIndices,
-} from "gatsby-design-tokens"
+  zIndices
+} from 'gatsby-design-tokens'
 
-let fonts = {}
-for (let fontFamily in fontTokens) {
-  fonts[fontFamily] = fontTokens[fontFamily].join(`, `)
+const fonts = {}
+for (const fontFamily in fontTokens) {
+  fonts[fontFamily] = fontTokens[fontFamily].join(', ')
 }
 
 const fontSizes = fontSizeTokens.map(token => `${token / 16}rem`)
@@ -27,10 +27,10 @@ const space = spaceTokens.map(token => `${token / 16}rem`)
 const sizes = {
   ...sizeTokens,
   mainContentWidth: {
-    default: `54rem`,
-    withSidebar: `42rem`,
+    default: '54rem',
+    withSidebar: '42rem'
   },
-  tocWidth: `18rem`,
+  tocWidth: '18rem'
 }
 
 export {
@@ -48,5 +48,5 @@ export {
   sizes,
   space,
   transition,
-  zIndices,
+  zIndices
 }

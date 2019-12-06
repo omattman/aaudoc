@@ -1,10 +1,10 @@
-import softwareSidebar from "../../data/software-links.yaml"
-import tutorialSidebar from "../../data/tutorial-links.yaml"
-import contributingSidebar from "../../data/contributing-links.yaml"
+import softwareSidebar from '../../data/software-links.yaml'
+import tutorialSidebar from '../../data/tutorial-links.yaml'
+import contributingSidebar from '../../data/contributing-links.yaml'
 
 const createHash = link => {
   let index = -1
-  if (link) index = link.indexOf(`#`)
+  if (link) index = link.indexOf('#')
   return index >= 0 ? link.substr(index + 1) : false
 }
 
@@ -33,7 +33,7 @@ const extendSidebarData = item => {
     key: item[0].key,
     disableExpandAll: item[0].disableExpandAll,
     disableAccordions: item[0].disableAccordions,
-    items: extendItemList(item[0].items),
+    items: extendItemList(item[0].items)
   }
 }
 

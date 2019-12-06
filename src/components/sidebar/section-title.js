@@ -1,36 +1,36 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
+import { jsx } from 'theme-ui'
 
-import ChevronSvg from "./chevron-svg";
-import indention from "../../utils/sidebar/indention";
+import ChevronSvg from './chevron-svg'
+import indention from '../../utils/sidebar/indention'
 
 const Chevron = ({ isExpanded }) => (
   <span
     sx={{
-      display: `flex`,
+      display: 'flex',
       flexShrink: 0,
-      ml: `auto`,
-      height: `100%`,
-      width: `100%`,
-      pt: `1.3em`,
-      minHeight: `sidebarItemMinHeight`,
-      minWidth: `sidebarItemMinHeight`,
-      "&:hover": {
-        backgroundColor: `sidebar.activeSectionBackground`
+      ml: 'auto',
+      height: '100%',
+      width: '100%',
+      pt: '1.3em',
+      minHeight: 'sidebarItemMinHeight',
+      minWidth: 'sidebarItemMinHeight',
+      '&:hover': {
+        backgroundColor: 'sidebar.activeSectionBackground'
       }
     }}
   >
     <ChevronSvg
       cssProps={{
-        color: `textMuted`,
-        mx: `auto`,
-        transform: isExpanded ? `rotate(180deg)` : `rotate(270deg)`,
+        color: 'textMuted',
+        mx: 'auto',
+        transform: isExpanded ? 'rotate(180deg)' : 'rotate(270deg)',
         transition: t =>
           `transform ${t.transition.speed.fast} ${t.transition.curve.default}`
       }}
     />
   </span>
-);
+)
 
 const TitleButton = ({
   isActive,
@@ -46,17 +46,17 @@ const TitleButton = ({
       ...styles.resetButton,
       ...styles.button,
       pl: item.level === 0 ? 6 : 0,
-      pr: `0 !important`,
+      pr: '0 !important',
       minHeight: 40,
-      "&:before": {
-        bg: `itemBorderColor`,
-        content: `''`,
+      '&:before': {
+        bg: 'itemBorderColor',
+        content: '\'\'',
         height: 1,
-        position: `absolute`,
+        position: 'absolute',
         right: 0,
         bottom: 0,
         left: t => (item.level === 0 ? t.space[6] : 0),
-        top: `auto`
+        top: 'auto'
       }
     }}
     onClick={() => onSectionTitleClick(item)}
@@ -65,19 +65,19 @@ const TitleButton = ({
       {item.title}
       <span
         sx={{
-          position: `absolute`,
+          position: 'absolute',
           top: 0,
           bottom: 0,
           right: 0,
-          minHeight: `sidebarItemMinHeight`,
-          width: `sidebarItemMinHeight`
+          minHeight: 'sidebarItemMinHeight',
+          width: 'sidebarItemMinHeight'
         }}
       >
         <Chevron isExpanded={isExpanded} />
       </span>
     </SectionTitle>
   </button>
-);
+)
 
 const SplitButton = ({
   itemRef,
@@ -94,10 +94,10 @@ const SplitButton = ({
   <span
     ref={itemRef}
     css={{
-      alignItems: `flex-end`,
-      display: `flex`,
-      position: `relative`,
-      width: `100%`
+      alignItems: 'flex-end',
+      display: 'flex',
+      position: 'relative',
+      width: '100%'
     }}
   >
     <span
@@ -118,15 +118,15 @@ const SplitButton = ({
         level: item.level,
         overrideCSS: {
           ...(item.level === 0 &&
-            item.ui !== `steps` && {
-              "&&": {
-                ...styles.level0,
-                color:
+            item.ui !== 'steps' && {
+            '&&': {
+              ...styles.level0,
+              color:
                   (isParentOfActiveItem && isExpanded) || isActive
-                    ? `link.color`
-                    : `navigation.linkDefault`
-              }
-            }),
+                    ? 'link.color'
+                    : 'navigation.linkDefault'
+            }
+          }),
           pr: t => t.sizes.sidebarItemMinHeight
         }
       })}
@@ -134,16 +134,16 @@ const SplitButton = ({
     <button
       aria-controls={uid}
       aria-expanded={isExpanded}
-      aria-label={item.title + (isExpanded ? ` collapse` : ` expand`)}
+      aria-label={item.title + (isExpanded ? ' collapse' : ' expand')}
       sx={{
         ...styles.resetButton,
         bottom: 0,
-        ml: `auto`,
-        minHeight: `sidebarItemMinHeight`,
-        position: `absolute`,
+        ml: 'auto',
+        minHeight: 'sidebarItemMinHeight',
+        position: 'absolute',
         right: 0,
         top: 0,
-        width: `sidebarItemMinHeight`,
+        width: 'sidebarItemMinHeight',
         zIndex: 1
       }}
       onClick={() => onSectionTitleClick(item)}
@@ -151,13 +151,13 @@ const SplitButton = ({
       <Chevron isExpanded={isExpanded} />
     </button>
   </span>
-);
+)
 
 const Title = ({ item, isActive, isExpanded }) => (
   <div
     sx={{
-      alignItems: `center`,
-      display: `flex`,
+      alignItems: 'center',
+      display: 'flex',
       paddingLeft: indention(item.level),
       minHeight: 40
     }}
@@ -171,52 +171,52 @@ const Title = ({ item, isActive, isExpanded }) => (
       {item.title}
     </SectionTitle>
   </div>
-);
+)
 
 const SectionTitle = ({ children, isExpanded, isActive, disabled, item }) => (
   <h3
     sx={{
-      alignItems: `center`,
-      display: `flex`,
+      alignItems: 'center',
+      display: 'flex',
       fontSize: 1,
-      fontWeight: `body`,
-      textTransform: `uppercase`,
-      letterSpacing: `tracked`,
+      fontWeight: 'body',
+      textTransform: 'uppercase',
+      letterSpacing: 'tracked',
       margin: 0,
       ...(item.level === 0 && { ...styles.level0 }),
       color:
         isExpanded && !disabled
-          ? `gatsby`
+          ? 'gatsby'
           : disabled
-          ? `navigation.linkDefault`
-          : false,
-      "&:hover": {
-        color: disabled ? false : `gatsby`
+            ? 'navigation.linkDefault'
+            : false,
+      '&:hover': {
+        color: disabled ? false : 'gatsby'
       }
     }}
   >
     {children}
   </h3>
-);
+)
 
-export { Title, TitleButton, SplitButton };
+export { Title, TitleButton, SplitButton }
 
 const styles = {
   resetButton: {
-    backgroundColor: `transparent`,
+    backgroundColor: 'transparent',
     border: 0,
-    cursor: `pointer`,
+    cursor: 'pointer',
     padding: 0
   },
   button: {
-    position: `relative`,
-    textAlign: `left`,
-    width: `100%`
+    position: 'relative',
+    textAlign: 'left',
+    width: '100%'
   },
   level0: {
-    fontFamily: `header`,
-    letterSpacing: `tracked`,
-    textTransform: `uppercase`,
+    fontFamily: 'header',
+    letterSpacing: 'tracked',
+    textTransform: 'uppercase',
     fontSize: 1
   }
-};
+}

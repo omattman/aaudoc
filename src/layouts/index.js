@@ -1,5 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 export default props => {
-  return <>{props.children}</>;
-};
+  return <>{props.children}</>
+}
