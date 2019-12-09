@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Fragment } from 'react'
+import { jsx } from "theme-ui";
+import React, { Fragment } from "react";
 
-import StickyResponsiveSidebar from './sidebar/sticky-responsive-sidebar'
+import StickyResponsiveSidebar from "./sidebar/sticky-responsive-sidebar";
 
 export default props => {
   if (props.disable) {
-    return props.renderContent()
+    return props.renderContent();
   } else {
     return (
       <>
@@ -34,6 +34,6 @@ export default props => {
           location={props.location}
         />
       </>
-    )
+    );
   }
-}
+};
