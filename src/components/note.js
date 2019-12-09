@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import React from "react";
-import { useColorMode } from "theme-ui";
-import hex2rgba from "hex2rgba";
 
 export default function Note({ children }) {
   return (
