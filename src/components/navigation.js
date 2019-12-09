@@ -106,10 +106,10 @@ const Navigation = ({ pathname }) => {
           height: '100%',
           margin: '0 auto',
           px: 6,
-          position: 'relative',
-          width: '100%',
-          '&:after': {
-            bg: isHomepage ? 'transparent' : 'ui.border',
+          position: `relative`,
+          width: `100%`,
+          "&:after": {
+            bg: isHomepage ? `transparent` : ``,
             bottom: 0,
             content: '\'\'',
             height: 1,
