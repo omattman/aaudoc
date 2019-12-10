@@ -9,7 +9,13 @@ more precisely you will get:
 - A detailed presentation of the Structure activity (Chapter 4)
 - A discussion of the different means for describing structure
 
+## Readings
+
+Chapter 4 & 20, pages 392-394 (the sub-section on Structures and Clusters)
+
 ## Summary of structures
+
+![Structure Activites](/images/structure-activities.png)
 
 ### Purpose
 
@@ -41,52 +47,133 @@ Object structures
 The result is a class diagram with classes and structures.
 ![Class diagram](/images/structure-class-diagram.png)
 
-## Key Concepts
+## Object-Oriented Structures
 
-The takeway from this section is that it is possible to have both a
-generalization class and aggregation class on a parent class. Take for
-instance a car. The `Car` class can consist of a generalization class
-`Passenger Car` to describe the type of car and a aggregation class `Engine`
-to specify, that the car has a engine. This is also visually shown in
-[Cluster](#cluster).
+We apply two kinds of object structures: **aggregation structures**, which describe the relation between an object and its component objects; and **association structures**, which describe other meaningful object relations.
 
-### Generalization
+To describe the conceptual relations among classes, we apply two kidns of class structures: **generalization structures**, which describe a number of classes as specializations of a more general class; and **cluster structures**, which group collections of related classes.
+
+We also deal with **abstract** classes and include them only for descriptive reasons. If a class name is using italics to signify their name its considered an abstraction that have no related objects.
+
+**class structures** express static, conceptual relations between classes. The **object structures** on the other hand, express dynamic, concrete relations between objects.
+
+## Structures between Classes
+
+There are two types of class structures: **generalization** and **cluster**.
+
+### Generalization Structure
+
+A generalization structure us a relation between two or more specialization classes and a more general class
+
+<Note>
+  <strong>Generalization</strong>: A general class (the super class) describes
+  properties common to a group of specialized classes (the subclasses).
+</Note>
+
+We call a specialized class a **subclass** and a generalized class a **super class**.
+
+<Note>
+  Specialization is expressed with the formulation <strong>"is-a"</strong>.
+</Note>
+
+A generalization structure is drawn as an arrow from the subclass to the super class. The class diagram is easier to understand if all arrow consistently point upwards, implying that generalization classes are above their specialization as specified in the below figure. In the figure the super class is `Passenger Car` and its subclasses are `Taxi` and `Private Car` resembling that for instance: `A Taxi is a Passenger Car`.
 
 ![Generalization](/images/structure-generalization.png)
 
-'is-a' relation.
+The generalization structure expresses inheritance: Specialized classes inherit the properties and behavioural pattern of the general class. The typical generalization structure is hierarchical in that any subclass is a specialization of exactly one super class.
 
-It describes the relation between two classes.
+### Cluster Structure
 
-### Cluster
+A cluster is a collection of classes that helps us achieve and provide a problem-domain overview.
+
+<Note>
+  <strong>Cluster:</strong> A collection of related classes.
+</Note>
+
+The graphical notation is a file folder that encloses the classes as seen in the below figure:
 
 ![Cluster](/images/structure-cluster.png)
 
-Clusters are a class structure to distinguish between the various
-types of classes.
+Classes within a cluster are usually connected by either a [generalization structure](#generalization-structure) or an [aggregation structure](#aggregation-structure). Additionally are relations between classes from different clusters usuaully [association structures](#association-structures).
 
-### Aggregation
+## Structures between Objects
+
+There are two types of object structures: **aggregation** and **association**. Both structures capture dynamic relations between objects.
+
+### Aggregation Structure
+
+An aggregation structure is a relation between two or more objects.
+
+<Note>
+  <strong>Aggregation:</strong> A superior object (the whole) consists of a
+  number of inferior objects (the parts).
+</Note>
+
+An aggregation structure is drawn as a line between the classes of the whole and the parts, where the line is annotated with a rhomb at the class that models the whole. The below figure shows an example of an aggregation structure.
 
 ![Aggregation](/images/structure-aggregation.png)
 
-'has-a' or 'owns-a' relation.
+In the above model the objects of `Cam Shaft` class can be part of an object of the `Engine` class, and an object of the `Car` class can aggregate an object of the `Engine` class.
 
-Aggregation is about looking at the specific objects, and how they are connected
-in relation to each other. This also specifies the amount of relations.
+The figure also illustrated the specification of **multiplicity**, which can be a single number or a range between two numbers.
 
-Typical aggregations:
+<Note>
+  Aggregation is expressed with the formulation <strong>"has-a"</strong>.
+</Note>
 
-- Whole - part
-  - Example: a project group, and the parts are the students
-- Container - contents
-- Union - member
+### Association Structure
 
-### Association
+An association structure is also a relation between two or more objects, but it differs from aggregation in that associated objects are not a defining property of an object.
+
+<Note>
+  <strong>Association:</strong> A meaningful relation between a number of
+  objects.
+</Note>
+
+An association structure is drawn as a simple line between the relevant classes. Association is often used when aggregation would imply a too strong relation.
+
+<Note>
+  Association is expressed with the formulation{" "}
+  <strong>"associated-with"</strong> or <strong>"knows"</strong>.
+</Note>
 
 ![Association](/images/structure-association.png)
 
-Defines the relation between two objects, but is not as strongly described as
-aggregation. It is usually on the same level.
+## Explore Patterns
+
+A pattern is a generalized description of a problem and a related solution.
+
+Here, we present four patterns that are concerned with structure.
+
+### The Role Pattern
+
+We use this person to model the situation in which a single person can have several different roles. The below figure illustrates a role pattern.
+
+![The Role Pattern](/images/structure-role.png)
+
+This structure lets a person change roles dynamically over time. The `Employee` and `Customer` is a generalization of the `Role` class, which aggregates from the `Person` class.
+
+The special thing about the role pattern is that you can exclude and simplify the `Role` class if the generalized classes do not share common properties or behaviour.
+
+### The Relation Pattern
+
+The purpose of the structure pattern is to relate two parties to each other. An example of the structure pattern is illustrated below.
+
+![Activities](/images/structure-relation.png)
+
+Objects from both parties can have many relations, but each of them must be represented by exactly one relation object.
+
+### The Hierachy Pattern
+
+Many problem domains include objects that are organized into a hierachy with two or more level and relationships exist among objects on different levels.
+
+![Activities](/images/structure-hierarchy.png)
+
+### The Item-Descriptor Pattern
+
+This pattern is utilised to establish distinction between items and their description. The below example is taken from a library. `Books` have descriptions and keywords to facilitate search, and numbers to determine where they are located in the library. Each `Copy` has its own identity and is treated as a separate entity, but all copies share the properties described by the related `book` object.
+
+![Activities](/images/structure-item-descriptor.png)
 
 ## Activities
 
@@ -94,42 +181,9 @@ aggregation. It is usually on the same level.
 
 ## Evaluate Systematically
 
-You can read more about aggregation versus association on page 87.
+The structures must be simple, especially at the top levels. It is seen as good practice to avoid unnescessary generalization and aggregations to keep it as clean and descriptive as possible. This is also the reason for why one should avoid objects changing class, since this require a total rework of the structure.
 
-The structures must be simple, especially at the top levels. It is seen as good
-practice to avoid unnescessary generalization and aggregations to keep it as
-clean and descriptive as possible. This is also the reason for why one should
-avoid objects changing class, since this require a total rework of the structure.
-
-## Explore patterns
-
-### Role
-
-As en example it is possible for a person to have different roles. The roles for
-a person can change dynamically over time.
-
-![Activities](/images/structure-role.png)
-
-### Relation
-
-Used to identify if objects from two classes are related.
-
-![Activities](/images/structure-relation.png)
-
-### Hierarchy
-
-Used to identify how objects from different classes form a hierarchy.
-
-![Activities](/images/structure-hierarchy.png)
-
-### Item-Descriptor
-
-Properties of objects from one class (items) are described in an object
-from another class (descriptor).
-
-## Individual Exercises
-
-### Quiz 3
+## Quiz 3
 
 #### Question 1
 
@@ -175,7 +229,9 @@ Association & Aggregation.
 
 Cluster & Generalization.
 
-### Section 4.8, exercise 3
+## Individual Exercises
+
+#### Section 4.8, exercise 3
 
 > Why is multiplicity only specified on object structures?
 
@@ -188,7 +244,7 @@ as a number and a `*` is used to represent multiplicity of many.
 This is why it is only specified on object structures since it defines
 relationship between objects of classes.
 
-### Section 4.8, exercise 5
+#### Section 4.8, exercise 5
 
 > What is the meaning of inheritance? How is it described?
 
@@ -196,25 +252,23 @@ Inheritance is a feature that represents the "is a" relationship between differe
 classes. Inheritance allows a class to have the same behavior as another class and
 extend or tailor that behavior to provide special action for specific needs.
 
-### Section 3.6, exercise 14
+#### Section 3.6, exercise 14
 
 > Review the class diagram in Chapter 20 using the criteria for systematic
 > structure evaluation from this chapter. Are the structural relations appropriately
-> descibed? Suggest possible alternatives.
+> described? Suggest possible alternatives.
 
-### Section 4.8, exercise 16
+#### Section 4.8, exercise 16
 
 > _Mobile Phone_. Continue your considerations of the system for a simple mobile phone
 > (see Exercise 3.14). Describe structural relations between classes and objects in a
 > class diagram.
 
-### Hand in assignment
-
 ## Group Exercises
 
-### Compare solutions
+#### Compare solutions
 
-### Section 4.8, exercise 17
+#### Section 4.8, exercise 17
 
 > _Teaching administration_. Continue your considerations of the system for
 > monitoring student activities in a university department (see Exercise 3.15).
@@ -222,7 +276,7 @@ extend or tailor that behavior to provide special action for specific needs.
 
 ![Exercise 17](/images/structure-exercise-17.png)
 
-### Section 4.8, exercise 18
+#### Section 4.8, exercise 18
 
 > _Elevator control_. Continue your considerations of the system to control elevator
 > movement in a building (see Exercise 3.16). Describe structural relations between
