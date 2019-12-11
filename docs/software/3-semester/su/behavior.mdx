@@ -3,7 +3,23 @@ title: Behavior
 tableOfContentsDepth: 2
 ---
 
-## Summary
+This lecture presents the third activity Object-Oriented Analysis, more precisely you will get:
+
+1. A detailed presentation of the Behaviour activity (Chapter 5)
+2. A discussion of the different means for describing behaviour
+3. A discussion of consistency between structure and behaviour
+
+A system's fundamental purpose is to register, store, and produce information about problem-domain-events.
+
+## Readings
+
+Chapter 5, chapter 19 (pages 351-360), and chapter 20 (pages 394-396)
+
+## Summary of behavior
+
+In the behavior activity, we extend on our class definitions in the class diagram by adding descriptions of the behavioural pattern and attributes of each class.
+
+![Activities](/images/behavior-activities.png)
 
 ### Purpose
 
@@ -24,98 +40,313 @@ To model the dynamics of a problem domain.
 
 ### Results
 
-- A behavioral pattern with attributes for every class in a
-  class diagram.
-
-## Result
+A behavioral pattern with attributes for every class in a class diagram.
 
 ![Result](/images/behavior-result.png)
 
-For the class we add a behavioral diagram that describes the current behavior of
-the objects related to the class.
+For the class we add a behavioral diagram that describes the current behavior of the objects related to the class.
 
-## Activities
+## Behavioral Pattern and Attributes
 
-![Activities](/images/behavior-activities.png)
+In the behavior activity, we describe behavior more precisely by adding the relative timing of events. An object's behavior is defined by an event trace that exhibits a certain ordering of events over time.
 
-## Key concepts
+<Note>
+  <strong>Even trace:</strong> A sequence of events involving a specific object.
+</Note>
 
-### Event Traces
+An event trace could resemble something like: `account opened - amount deposited - amount withdrawn - amount deposited - account closed`
 
-> A sequence of events involving a specific object.
+We refrain from describing the behavior of every object in the problem domain. Instead, we describe a behavioral pattern for object classes:
 
-One should make event traces for each class. This means that we for each class asks:
+<Note>
+  <strong>Behavioral pattern:</strong> A description of possible event traces
+  for objects in a class.
+</Note>
 
-- Which event(s) cause the creaton of a problem-domain object?
-- Which event(s) cause the disappearence of a problem-domain object?
+The behavioral pattern describes behavior common to all objects of the class. To produce the pattern, we use examples of event traces for individual objects in the class.
 
-Typical event traces includes:
+<Note>
+  Event traces and behavioral patterns deal with a single object or class.
+</Note>
 
-- Which events occur together in a sequence?
-- Are there any alternative events?
-- Can a given event occur more than once?
-- Is the overall form structured or unstructured.
+When we model the problem domain, we formulare requirements for data that the system will store, and thereby render the data acccessible through functions and interfaces. To specify the data, we use attributes:
 
-### Control Structures
+<Note>
+  <strong>Attributes:</strong> A descriptive property of a class or an event.
+</Note>
 
-![Activities](/images/behavior-control-structures.png)
+We define attributes simply, using a name rather than detailed divisions into data fields and data-format specifications. In OOA&D subdivisions are unnecessary as they extend the analysis and add nothing substantial to the overall understanding of the problem domain.
 
-### Event Traces to Behavioral Patterns
+## Notation for Behavioral Patterns
 
-![Event Traces to Behavioral Patterns](/images/behavior-traces-to-behavior-patterns.png)
+A behavioral pattern orders individual events in time using fundamental control structures from structured programming:
 
-#### Common Events: Event Table
+<Note>
+  <strong>Sequence:</strong> Events in a set occur one by one.
+  <br />
+  <br />
+  <strong>Selection:</strong> Exactly one out of a set of events occurs.
+  <br />
+  <br />
+  <strong>Iteration:</strong> An event occurs zero or more times.
+</Note>
 
-![Event table](/images/behavior-event-table.png)
+A behavioral pattern with sequence, selection, and iteration can be described by utilising regular expressions. Given that `+` denotes sequence, `|` denotes selection, and `*` denotes iteration. The behavior of a customer could for instance be described by the following regular expression:
 
-A `*` indicates that the event can occur multiple times, whereas
-the `+` indicates that the event only happens once.
+`account opened + (amount deposited | amount withdrawn)* + amount closed`
 
-## Modelling techniques
+The above expression describes the possible course of each arbitrary customer object's life.
 
-### Consider Structures
+It is also possible to describe a behavioral pattern graphically with a **statechart diagram**. In addition, the graphical notation lets you name the states of an object. The below figure shows that the three classical control structures used in regular expressions can also be expressed in statechart diagrams.
 
-Aggregation and association
+![Control structures in a statechart diagram](/images/behavior-control-structures.png)
 
-- If two or more objects have common events, consider adding an aggregation
-  or association structure between them.
-- If two classes are related by and aggregation or association structure,
-  at least one common event should be considered.
+_Sequence_ is expressed by making the events lead through several states, where each state has only one event leaving it. The sequence indicates that the events from "a" to "z" occur one-by-one in the given order.
 
-Generalization
+_Selection_ is expressed by making all possible events lead out of the same state. This means that exactly one of the events from "a" to "z" occurs exactly once. You can draw the selection events anywhere on the state they lead out of without changing the diagram's meaning.
 
-- If the same event is tied to two classes, consider whether one class is
-  a generalization of the other.
+_Iteration_ is expressed by making an event lead back to its original state. The first iteration means that the event "a" occurs zero or more times. This form of iteration is **direct** as it leads right back to the original state. If an object's event trace includes an arbitrary number of repetitions of the sequence `b-c`, it means that it toggles between the two state several times and can be describes as being **indirect**.
 
-### Hierarchical States
+It is possible to use **statechart diagram conditionals**, which means that an event only is fired if the requirement is true. The conditional event is stated through square brackets `[some-condition]`.
 
-Consider using hierarchical states
+## Describe Behavioral Patterns
 
-![Hierarchical states](/images/behavior-hierarchical-states.png)
+Start by identifying the first and last event in an object's life. This is accomplished by asking the following questions for objects from the class:
 
-### Describe Attributes
+- Which event cause the creation of a problem-domain object? These events are grouped as selections that can cause the birth of an object.
+- Which event cause the disappearance of a problem-domain object? These events are grouped as selections that can cause the death of an object.
 
-Class attributes:
+A simple way to answer the above questions is to introduce events such as `created` and `deleted`. However, this naming is misleading and more descriptive events could be `account opened` and `account closed`. This is more descriptive as the death of a problem-domain object does not mean the object is deleted, it only implies that the object can no longer be involved in events.
+
+To get an overview of the events that occur between birth and death, you should draw up a number of typical event traces for objects from the target class.
+
+### Maintain Overview
+
+When there are many classes and behavioral patterns to describe, it is easy to lose your overall perspective. To maintain a model overview, we suggest that you update the event table created in the [class activity](/software/3-semester/su/classes/#event-table).
+
+The below table shows an updated version of the event table. All checkmarks have been exchanged with one of the two symbols: a `+` indicated that the event in question can occur zero or one time; an `*` indicates it can occur zero or more times.
+
+|           | Customer | Assistant | Apprentice | Appointment | Plan |
+| --------- | -------- | --------- | ---------- | ----------- | ---- |
+| reserved  | \*       | \*        |            | +           | \*   |
+| cancelled | \*       | \*        |            | +           |      |
+| treated   | \*       |           |            | +           |      |
+| employed  |          | +         | +          |             |      |
+| resigned  |          | +         | +          |             |      |
+| graduated |          |           | +          |             |      |
+| agreed    |          | \*        | \*         |             | \*   |
+
+## Explore Patterns
+
+We focus on three basic behavior patterns. You can utilise these to improve an outline or contribute to a completely new idea for part of the problem-domain model.
+
+### The Stepwise Relation Pattern
+
+We use the stepwise relation pattern when certain problem-domain objects are related to the elements of a hierarchy in a stepwise or sequential manner. The below figure shows an example of this pattern.
+
+![Example of the stepwise relation pattern](/images/behavior-stepwise-relation.png)
+
+The model describes a situation in which university students are first assigned to a semester, then to a class, and then to a group within the class.
+
+### The Stepwise Role Pattern
+
+The stepwise role pattern describes interaction between several objects ober time, but this pattern focuses on the horizontal dimension in a class diagram rather than the vertical dimension. You can utilise this pattern to describe how the behavior of a whole changes as its parts become active.
+
+![Example of the stepwise role pattern](/images/behavior-stepwise-role.png)
+
+### The Composite Pattern
+
+The composite pattern offers a way to describe the creation and destruction of a hierarchy using a detailed structure that is unknown to model-development time. An example of such a structure is the list of contents in a written document, a chart of financial-system accounts, or a list of pieces in a manufacturing process.
+
+The key point in this pattern is that the top-level behavior requires some behavior from the level beneath it, which in turn requires behavior from the level beneath it, and so on. We thus end up with a recursive description.
+
+![Example of the composite pattern](/images/behavior-composite.png)
+
+## Consider Structures
+
+When the behavior activity is complete, we often have to revise the results of the previous two activities. Because behavior must be consistent with structure, as we develop behavioral patterns, new ideas for structural relations can emerge. To check consistency, we differentiate between aggregation and association on one side, and generalization on the other.
+
+### Aggregation and Association
+
+In the behavior activity, we describe the dynamic relations between objects using common events. both dynamic and structural relations represent concrete relations between objects. Therefore, the two forms of relations should be mututally consistent. Given this, we can use the dynamic properties to control for the structural properties, and vise versa:
+
+<Note>
+  If two or more objects have common events, consider adding an aggregatrion or
+  association structure between them.
+</Note>
+
+The opposite situation when using structural properties to generate candidates for new events is also a useful technique that lets us determine whether, we have found all the relevant events for a class during the class activity:
+
+<Note>
+  If two classes are related by an aggregation or association structure, at
+  least one common event should be considered.
+</Note>
+
+### Generalization
+
+When we identify the same event in the behavioral pattern for two different classes, it is not necessarily a commen event; rather, it might indicate that one class is a subclass of the other.
+
+It is important that you always distinguish carefully between common and inherited events:
+
+<Note>
+  If the same event is tied to two classes, consider whether one class is a
+  generalization of the other.
+</Note>
+
+If two classes have many events with the same name, they might be different specialization of a third class that you've overlooked:
+
+<Note>
+  If two classes have many events with the same name, consider whether they are
+  different specializations of a third class.
+</Note>
+
+## Describe Attributes
+
+<Note>
+  An attribute is a descriptive property of a class or event. We use attributes
+  to represent states in the problem-domain model.
+</Note>
+
+There are typically three categories of attributes:
+
+1. **Events**, which covers most of the data registered by the system.
+2. **General information** that does not relate to a single event but to the object as a whole. For a customer, `name` and `address` are typical examples.
+3. **Attributes that derive from other attributes**. A customer account balance is a good example. The balance attribute is not tied to a specific event, but rather results from several deposit and withdrawal events.
+
+<Note>
+  Attributes should be atomic in relation to their use. However, the division of
+  details is typically unnecessary in object-oriented analysis.
+</Note>
+
+It is possible to specify **class attributes** based on the following questions:
 
 - What are the general characteristics of the class?
+- How is the class described in the problem domain?
 - What basic data must be captured about objects from this class?
 - What results from an event trace must be captured?
 
-Event attributes:
+You can specify **event attributes** by answering similar questions:
 
 - What time did the event occur?
 - Which amount did it concern?
 
-## Explore Patterns
+Furthermore, it is important to seriously consider whether the attribute is relevant:
 
-### Stepwise Relation
+<Note>
+  An attribute should only be included in your description if it is used by at
+  least one system function. Otherwise, it is irrelevant.
+</Note>
 
-![Stepwise Relation](/images/behavior-stepwise-relation.png)
+## Quiz 4
 
-### Stepwise Role
+#### Question 1
 
-![Stepwise Role](/images/behavior-stepwise-role.png)
+> A behavioral pattern:
+>
+> Select one or more:
+>
+> - describes possible event traces for objects of a class
+> - describes event traces for specific objects
+> - captures the dynamic character of the problem domain
+> - captures the dynamic character of the application domain
+> - describes the use of the target system
 
-### Composite
+The correct answers are:
 
-![Composite](/images/behavior-composite.png)
+- Describes possible event traces for objects of a class.
+- Captures the dynamic character of the problem domain.
+
+#### Question 2
+
+> Given the class diagram and behavioral pattern shown in the diagram; which of the given solutions is a legal behvaioural pattern for sub class 1?
+>
+> ![Question 2 in quiz](/images/behavior-quiz-2.png)
+
+Solution B as event `e` can not occur before event `b` and `c`.
+
+#### Question 3
+
+> Which of these statements are true for the Stepwise Relation Pattern?
+>
+> Select one or more:
+>
+> - Association and generalization are used as the structures in the generic pattern
+> - Aggregation and association are used as the structures in the generic pattern
+> - Aggregation and generalization are used as the structures in the generic pattern
+> - It describes how a whole changes as its parts become active
+> - It describes how elements in a hierarchy are related in a sequential manner
+
+The correct answers are:
+
+- It describes how elements in a hierarchy are related in a sequential manner.
+- Aggregation and association are used as the structures in the generic pattern.
+
+#### Question 4
+
+> Choose the legal paths in the statechart diagram shown below:
+>
+> ![Question 4 in quiz](/images/behavior-quiz-4.png)
+
+- abdddeeeefffg
+- abcbdddch
+- abfffeedg
+- abh
+
+#### Question 5
+
+> Match the three diagrams with the right notation:
+>
+> ![Question 5 in quiz](/images/behavior-quiz-5.png)
+
+A --> Iteration
+
+B --> Sequence
+
+C --> Selection
+
+#### Question 6
+
+> Which of these statements are correct?
+>
+> Select one or more:
+>
+> - When events in a set occur one by one it is called a sequence
+> - When exactly one of a set of events occur it is called a selection
+> - When an event occurs zero or more times it is called a cycle
+> - When events in a set occur one after one it is called a procedure
+> - When exactly one of a set of events occur it is called a sequence
+> - When an event occurs zero or more times it is called an iteration
+
+The correct answers are:
+
+- When an event occurs zero or more times it is called an iteration.
+- When exactly one of a set of events occur it is called a selection.
+- When events in a set occur one by one it is called a sequence.
+
+## Individual Exercises
+
+#### Section 5.9, exercise 2 (page 114)
+
+> What is an event trace?
+
+It is a sequence of events involving a specific object. An object’s behavior is defined by an event trace that exhibits a certain ordering of events over time. For more knowledge on event traces see [behavioral pattern and attributes](#behavioral-pattern-and-attributes).
+
+#### Section 5.9, exercise 3 (page 114)
+
+> What is a behavioral pattern?
+
+A behavioral pattern is a description of possible event traces for objects in a class. The behavioral pattern describes behavior common to all objects of the class. To produce the pattern, we use examples of event traces for individual objects in the class. For more knowledge on behavioral patterns see [behavioral pattern and attributes](#behavioral-pattern-and-attributes).
+
+#### Section 5.9, exercise 9 (page 114)
+
+> How are behavioral patterns developed and described?
+
+A behavioral pattern orders individual events in time using fundamental control structures from structured programming.
+
+A behavioral pattern with sequence, selection, and iteration can be described by utilising regular expressions. Given that `+` denotes sequence, `|` denotes selection, and `*` denotes iteration. The behavior of a customer could for instance be described by the following regular expression:
+
+`account opened + (amount deposited | amount withdrawn)* + amount closed`
+
+The above expression describes the possible course of each arbitrary customer object's life.
+
+For more knowledge on behavioral patterns and its development see [notation for behavioral patterns](#notation-for-behavioral-patterns).
