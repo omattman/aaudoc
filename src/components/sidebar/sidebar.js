@@ -235,7 +235,7 @@ class SidebarBody extends Component {
             overflowY: `auto`,
             transition: t =>
               `opacity ${t.transition.speed.slow} ${t.transition.curve.default}`,
-            zIndex: 10,
+            zIndex: 20,
             borderRightWidth: `1px`,
             borderRightStyle: `solid`,
             borderColor: `ui.border`,

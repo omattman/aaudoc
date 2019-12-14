@@ -34,10 +34,9 @@ export const sizes = {
 
 export const zIndices = {
   widget: 2,
-  banner: 10,
   modal: 10,
-  sidebar: 15,
-  navigation: 10,
+  sidebar: 10,
+  navigation: 15,
   floatingActionButton: 20,
   skipLink: 100
 };
