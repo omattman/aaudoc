@@ -3,11 +3,21 @@ title: Usage
 tableOfContentsDepth: 2
 ---
 
-We have recently worked with what the system will consist of,
-but in this lecture we will focus on the output of the specific
-program/application.
+This lecture presents the fourth activity in Object-Oriented Analysis, more precisely you will get:
 
-## Summary
+1. An overview of the whole analysis of the application domain
+2. A detailed presentation of the usage activity
+3. A discussion of the different means for describing actors and use cases
+
+## Readings
+
+Chapter 6 and 19 (pages 362 - 364)
+
+## Summary of usage
+
+To be usable, a system must fit the application domain. On the following sections we look at how we can determine this fit. We do this by describing actors and use cases based on an understanding of application-domain activities. The use cases provide an overview of the system requirements from the users' perspective and provide a foundation for defining and evaluating the more basic function and interface requirements.
+
+![Activities](/images/usage-activities.png)
 
 ### Purpose
 
@@ -30,73 +40,90 @@ To determine how actors interact with a system.
 
 Descriptions of all use cases and actors.
 
-## Usage Activity
+## Use Cases
 
-### Results
+Use cases can help you achieve a relevant focus and abstraction level. In this activity they key concepts are:
 
-The result is a **Actor table**, which consists of
-different actors. When we work with actors we typically
-create **use cases** to describe the specific case of using
-the product/application.
+<Note>
+  <strong>Actors:</strong> An abstraction of users or other system that interact
+  with the system.
+  <br />
+  <br />
+  <strong>Use case:</strong> A pattern for interaction between the system and actors
+  in the application domain.
+</Note>
 
-### Key Concepts
+Actors are an abstraction of people and other system that activate a target system's functions.
 
-#### Actor
+A use case is an abstraction of an interaction with the target system. It can be initiated by an actor or by the target system. Furthermore, the complete set of use cases determine all uses of the target system within the application domain. They originate from needs and conditions in the application domain, but a use case is itself an expression of a solution.
 
-Identify actors:
+It is possible to illustrate the relation between actors and use cases using either an **actor table** or a **use-case diagram**. We prefer the actor table, as it consumes less space. An example of the table is seen below, where left column described the use cases and the top row describes actors involved:
 
-- Determine the distribution of roles of the works tasks
-  related to the system.
-  - It is important to figure out the different
-    areas of works tasks to specifically be a able to tie a unique
-    actor to the correct works tasks. This is typically how the
-    use case is set up.
-- Consider human actors and other systems as actors.
+|                     | Account owner | Creditor | Administrator | Liquidity monitor |
+| ------------------- | ------------- | -------- | ------------- | ----------------- |
+| Payment             | ✔             | ✔        |               |                   |
+| Cash withdrawal     | ✔             |          |               |                   |
+| Money transfer      | ✔             | ✔        | ✔             |                   |
+| Account information | ✔             |          | ✔             | ✔                 |
+| Credit information  |               | ✔        | ✔             |                   |
+| Registration        |               |          | ✔             |                   |
+| Monitoring          |               |          | ✔             |                   |
+| Error correction    |               |          | ✔             |                   |
 
-Describe actors:
+### Actors and Classes, Use Cases, and Events
 
-- Make actor specification.
+An actor table looks similar to the previously discussed event table in the [class activity](/software/3-semester/su/classes/#event-table). This raises the question: **Is there any difference between actors with use cases and classes with events?** The answer is yes. The main difference is that the phenomena occur in different domains.
 
-Example of a actor specification:
-![Actor specification example](/images/usage-actor-example.png)
+A **class describes** something that the target system should manage, such as a customer. An **actor describes** someone or something that interacts physically with the system, such as a clerk (ekspedient). An **event describes** an incident the system must be aware of, such as when a customer orders certain goods. A **use case describes** the interaction between an actor and the system, such as a clerk entering an order.
 
-#### Use Case
+<Note>
+  Actors and classes describe static aspects, while use cases and events
+  describe dynamic aspects.
+</Note>
 
-One can sufficiently build use cases from either **text** or
-**statechart diagrams**. The preferred method when talking
-to client is the use case build from text since this is more
-descriptive for non-technical users.
+## Find Actors and Use Cases
 
-Use cases should be simple and constitute a coherent whole.
-The description of actors and use cases should provide
-uderstanding and overview. Use cases should be described in
-enough detail to enable identification of functions and
-interface elements.
+The central questions about the target system's usage are: **Who will use the system? How will it be used?** You can answer these questions in terms of actors and use cases.
+
+### Identify Actors
+
+To identify actors, you must determine the division of labor and the task-related roles in the target system's context. It is important to figure out the different areas of works tasks to specifically be a able to tie a unique actor to the correct works tasks.
+
+The criterion for determining different actors is the dissimilarity of roles, as expressed by the use cases in which actors are involved.
+
+<Note>
+  If several roles appear the same to the system, you should consider solidating
+  them into one actor.
+</Note>
+
+### Describe Actors
+
+An **actor specification** consists of three parts: _goal, characteristics, and examples_. The goal describes, as precisely as possible, the actor's role in relation to the target system. The characteristics describe important aspects of actors' use of the system. Below is an example of an actor specification shown:
+
+![Actor specifications for "Account Owner"](/images/usage-actor-example.png)
+
+### Describe Use Cases
+
+The use cases are abstractions of the interactions between the system and the actors. It is vital that you choose suitable abstractions as we delimit a use case based on the specific actors' viewpoint and application-domain tasks.
+
+<Note>
+  <strong>Goal:</strong> Collect the many possible ways of using the target
+  system in a few well-chosen use cases.
+</Note>
+
+Because use cases are dynamic phenomena, you can describe this by using **statechart diagrams** or **text specifications**. An example of a statechart diagram is seen below:
 
 ![Statechart Diagram](/images/usage-statechart-diagram.png)
 
-> What could be functions and interface elements for Cash
-> Withdrawel (refer to the image above)
+A statechart diagram defines the different states of the interaction and the different ways the system or actor can change that state. However, in a use-case specification, the use case itself is precisely described in a structured text that focuses on the actors. **Statechart diagrams are the preferred method** as these provide a good overview of the dynamic process and the logic of a use case, but omits many details. Even thought it omits details it is still preferred over use-case specifications as these make it difficult to describe its logic.
 
-Functions:
+### Use Case and Actor Structures
 
-- Register amount withdrawel
-- Validate
-  - Card
-  - PIN code
-- Check balance
+Actors can also be related to each other, as can use cases, which can overlap or use each other.
 
-User Interface:
+Just as we organise the problem domain by describing abstract structures between the classes and relating the classes by common events, we **organise the application domain by structuring actors and use cases**.
 
-- Keyboard
-- Display (window)
-  - PIN code
-  - Amount
-  - Approval
-
-### Activities
-
-![Activities](/images/usage-activities.png)
+Use-case diagrams can show **use-case groupings**, which function much like clusters for structuring.
 
 ## Differences between Actors and Classes
 
@@ -105,32 +132,204 @@ User Interface:
 | Static  | Actors             | Classes and structure |
 | Dynamic | Use cases          | Behavioral patterns   |
 
+## Explore Patterns
+
+Patterns are a source of inspiration that can help you identify and describe use cases.
+
+### The Procedural Pattern
+
+The **procedural use-case pattern** is the general solution to ensuring that **many rules are observed**. The pattern's basic structure is **a sequence** with minor variations in terms of selections or iterations.
+
+![The Procedural Pattern](/images/usage-procedural-pattern.png)
+
+### The Material Pattern
+
+The **material pattern** is good for situations in which there are **no business rules governing the usage**. We call this the "material" use case as it resembles an artisan's material process: Any tool may be used in any order:
+
+![The Material Pattern](/images/usage-material-pattern.png)
+
+## Evaluate Systematically
+
+There are three ways to evaluate use cases:
+
+1. Carefully review the descriptions to find mistakes and inconsistencies.
+2. Test your use cases to see if they work in practice.
+3. Evaluate the social changes in the application.
+
+### Systematic review
+
+- Use cases should be simple and constitute a coherent whole.
+- The description of actors and uses cases should provide understanding and overview.
+- Use cases should be described in enough detail to enable identification of functions and interface elements.
+
+## Quiz
+
+#### Question 1
+
+> You can evaluate your actor and use case candidates by:
+>
+> Select one or more:
+>
+> - Reviewing the descriptions for mistakes and inconsistency
+> - Using prototypes mainly focusing on objects
+> - Evaluate social changes in the application domain
+> - Using prototypes mainly focusing on functions and interfaces
+> - Evaluate administrative changes in problem-domain
+
+- Reviewing the descriptions for mistakes and inconsistency
+- Using prototypes mainly focusing on functions and interfaces
+- Evaluate social changes in the application domain
+
+#### Question 2
+
+> The purpose of the Procedural Pattern is to
+>
+> Select one or more:
+>
+> - Describe usage
+> - Describe behavior
+> - Ensure that every action can be done almost in any order
+> - Describe structure
+> - Ensure business rules are observed
+
+- Ensure business rules are observed
+- Describe usage
+
+#### Question 3
+
+> A use case ...
+>
+> Select one or more:
+>
+> - Is a special type of function
+> - Describes the interaction between the system and another system
+> - Is an event trace
+> - Is a behavioral pattern
+> - Describes the actors using the system
+> - Describes a user's interaction with the system
+
+- Describes a user's interaction with the system
+- Describes the interaction between the system and another system
+
+#### Question 4
+
+> Consider this system definition:
+>
+> An IT system to keep track of bicycles, their owners, and reports of stolen bicycles. The system shall increase the number of solved cases of bike theft by making information about bicycles and their insurance status, owners, and stolen bicycle reports available to the general public, insurance companies, the police, and municipal workers responsible for cleaning streets and bicycle parking lots.
+>
+> The system is based on a centralized register with information about bicycles etc., and computers and mobile devices (tablets, smartphones) to register and search for information. All bicycles in the system will have barcode labels to supplement the mandatory frame number. The system must protect information about bicycle owners from unauthorized access.
+>
+> Which of the following belong in the Problem Domain (PD), the Application Domain (AD) (or both) for the system
+
+| Actor              | Domain            |
+| ------------------ | ----------------- |
+| Bicycle owner      | Both PD and AD    |
+| Bicycle thief      | Neither PD nor AD |
+| Label with barcode | AD                |
+| Bicycle shop       | Neither PD nor AD |
+| Citizen            | PD                |
+| Insurance company  | Both PD and AD    |
+| Police officer     | Both PD and AD    |
+| Bicycle            | Both PD and AD    |
+| Smartphone         | Neither PD nor AD |
+
+#### Question 5
+
+> A private school in Aalborg struggles with the administration of grades. Delays occur when teachers write the grades directly into each student's grade sheet (paper!), which is handed over from teacher to teacher.
+>
+> The school wants to implement an IT based system to record grades. The system will administer teachers, students and grades. Grades are entered by teachers and parents can use it to view and sign off on student grades.
+>
+> Which of the following are actors in the system?
+>
+> Select one or more:
+>
+> - Parents
+> - The school's homepage
+> - Teacher
+> - Student
+> - Grade sheets
+> - The Ministry of Education
+
+- Teacher
+- Parents
+
+#### Question 6
+
+> ![Question 6 class diagram](/images/usage-quiz-6.png)
+>
+> There is one object of the class pilot.
+>
+> Select one or more:
+>
+> - There may be several objects of the class ‘Passenger’
+> - There is one object of the class 'Jet'
+> - There is one object of the class ‘Passenger’
+> - All passengers are indirectly connected to a pilot
+> - There is either one object of the class ‘Jet’ or one of the class ‘Propeller’
+> - There are two objects of the class 'Plane'
+> - There is one object of the class 'Propeller'
+> - There is one object of the class 'Plane'
+
+- There is either one object of the class ‘Jet’ or one of the class ‘Propeller’
+- All passengers are indirectly connected to a pilot
+- There may be several objects of the class ‘Passenger’
+
 ## Individual Exercises
+
+#### Section 7.6, exercise 2 (page 149)
+
+> What is a use case?
+
+A use case is a pattern for interaction between the system and actors in the application domain.
+
+#### Section 7.6, exercise 3 (page 149)
+
+> What are actor tables used for?
+
+Actor tables illustrates the relation between actors and use cases to determine how actors interact with a system. An example of this is seen in [use cases](#use-cases).
+
+#### Section 7.6, exercise 5 (page 149)
+
+> How are actors described?
+
+An actor is described through its specification, which includes three parts:
+
+1. Goal
+2. Characteristics
+3. Examples
+
+The goal describes, as precisely as possible, the actor’s role in relation to the target system. The characteristics describe important aspects of actors’ use of the system.
+
+#### Section 7.6, exercise 7 (page 149)
+
+> What are the key features of the procedural pattern?
+
+It ensures that many business rules are observed. This is required for some uses, and this should be applied if that is the case. The use case must follow a strict procedure as described in [the procedural pattern](#the-procedural-pattern).
 
 ## Group Exercises
 
-### Section 6.7, exercise 15 (page 137)
+#### Section 6.7, exercise 15 (page 137)
 
 > _Mobile phone_. Continue your considerations of the system
 > for a simple mobile phone (see Exercise 3.14). Analyze
 > the system's usage. Develop the actor table and specify
 > selected use case.
 
-### Section 6.7, exercise 16 (page 137)
+#### Section 6.7, exercise 16 (page 137)
 
 > _Teaching administration_. Continue your considerations of
 > the system for monitoring student activities in a university
 > department (see Exercise 3.15). Analyze the system's usage.
 > Develop the actor table and specify selected use cases.
 
-### Section 6.7, exercise 17 (page 137)
+#### Section 6.7, exercise 17 (page 137)
 
 > _Elevator control_. Continue your considerations of the system
 > to control elevator movement in a building (see Exercise 3.16)
 > Analyze the system's usage. Develop the actor table and
 > specify selected use cases.
 
-### Section 6.7, exercise 13 (page 136)
+#### Section 6.7, exercise 13 (page 136)
 
 > Discuss how actors, system functions, and model objects
 > interact in a use case. Start from an example and identify
