@@ -1,0 +1,196 @@
+---
+title: Functions
+tableOfContentsDepth: 2
+---
+
+This lecture presents the fifth activity in Object-Oriented Analysis, more precisely you will get:
+
+1. A detailed presentation of the Functions activity (Chapter 7)
+2. A discussion of the different types of functions
+
+## Readings
+Chapter 7
+
+## Summary of functions
+Functions docus on what the system can do to assist actors in their work. When determining requirements for the functions, we ask the following question: __What__ is the system going to do? In the usage activity, our question focused more on __how__ the system would be used.
+
+### Purpose
+To determine the system's information processing capabilities.
+
+### Concept
+Functions: A facility for making a model useful for actors.
+
+### Principles
+* Identify all functions.
+* Specify only complex functions.
+* Check consistency with use cases and the model.
+
+### Results
+A complete list of functions with specification of complex functions.
+
+## System Functions
+The elegance of functions is that they express, in a simple way, the __intent__ of a system. We define a function as follows:
+
+<Note>
+  <strong>Function:</strong> A facility for making a model useful for actors.
+</Note>
+
+Functions are activated, executed, and provides a results. An execution can change the model components state or create a reaction in the application or problems domains.
+
+### Function Types
+There are four different types of functions:
+
+| Type    | Description                                                                                                                                                                                                             |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Update  | Functions are activated by a problem-domain event and result in a change  in the model's state.                                                                                                                         |
+| Signal  | Functions are activated by a change in the model's state and result in  a reaction in the context.                                                                                                                      |
+| Read    | Functions are activated by a need for information in an actor's  work task and result in the system displaying relevant parts of the model.                                                                             |
+| Compute | Functions are activated by a need for information in an actor's work task  and consist of a computation involving information provided by the actor  of the model; the result is a display of the computation's result. |
+
+![Function Types](/images/functions-function-types.png)
+
+### Analyzing Functions
+The purpose of this actibity is to determine the system's information processing capabilities by constructing a complete list of functions.
+
+The central criterion for system-functionality analysis is that analysis ends with a list of functions that is both complete and consistent with the use cases.
+
+For some functions, you must describe their content in detail to understand what they do. However, you should give detailed descriptions for **only the most complex and incomprehensible functions**.
+
+The functions must be consistent iwth the other analysis results. In particular, functions must support the use cases, and all parts of the model should be used by some function.
+
+Function analysis consists of **three subactivites**: find functions, specify complex functions, and evaluate critically.
+
+![Function Subacitvities](/images/functions-subactivities.png)
+
+## Find Functions
+The sources for identifying functions are partly the problem-domain description, as expressed by uts classes and events, and partly the application-domain description, as expressed by its use cases.
+
+<Note>
+  <strong>Classes</strong> typically give rise to read and update functions. <strong>Events</strong> lead to requirements for update functions. <strong>Use cases</strong> give rise to all types of functions.
+</Note>
+
+The result of the function-analysis activity is a list of functional requirements for the system.
+
+![Example of a list of functions for the Hair Salon System (Chapter 20)](/images/functions-list-of-functions.png)
+
+<Note>
+  It is recommended that you specify functions as briefly as possible during the analysis. The primary purpose is to identify the functions.
+</Note>
+
+### Update
+Updating is related to events in the problem domain.
+
+For each event ask:
+* How is the event observed, and how is it registered? In which use cases does this happen?
+* How should the use cases be supported by update functions?
+* Which objects, attributes, and object structures are affected by the event, and what requirements does this impose on the update functions?
+
+### Read
+Reading reflects a need for information in the application domain about the problem domain.
+
+**Actor/Use case perspective:**
+* Given the work of the actors, what do the actors needs to know about the state of the model?
+* What read functions do actors give rise to?
+* Which read functions do we need in each use case?
+
+**Model perspective**
+* Given the model, which objects and structures will the actors need information about?
+* What read functions does this give rise to?
+
+### Compute
+Computation is used to generate further information. Take your point of departure in actors and use cases:
+
+* Which computations do the actors need to have carried out?
+* Does the computational basis come from the actors, the model, or both?
+* Which computations form complete wholes in the use cases?
+
+### Signal
+Signaling is related to critical states in the model. Examine the model of the problem domain carefully:
+
+* What are the critical state for the model?
+* What is the significance of these critical states? What are the consequences when they occur?
+* How does a signal function register that the model has entered a critical state?
+* What signals does each critical state give rise to? How reliable and strong do the signals have to be?
+
+## Evaluate Systematically
+The function list expresses the target system's functionality. You must ensure that the required functionality is consistent with the list of functions, that the functions are mutually consistent, and that each function expresses and appropriate level of abstraction.
+
+The best way to evaluate is to compare the function list with the model. The model must include precisely that information about the objects that the functions need; no more, no less. That is, if the model contains objects, structures, or events that are never used by any of the functions, then either the model contains too much or some functions are missing.
+
+## Event vs. Use Case vs. Function
+All the describe dynamic aspects, and they are connected but they belong to separate domains. They are all needed because they emphasize different parts of the requirements to the system, but you should still keep them separate.
+
+Example of an order processing system:
+
+Event: __Ordered__ - a customer has entered into a legally binding agreement at a point in time.
+
+Use case: __Enter order__ - a user in the application domain applies the system to make an order for a customer.
+
+Function: __Create order__ - in the system's model, an object of the class `Order` is created.
+
+## Quiz
+
+#### Question 1
+> Which are the function types?
+>
+> Select one or more:
+>
+> * Signal
+> * Find
+> * Update
+> * Process
+> * Compute
+> * Read
+
+Read, Update, Compute, and Signal
+
+#### Question 2
+> Match the function types with the diagram:
+>
+> ![Question 2](/images/functions-quiz-2.png)
+
+A --> Signal, B --> Update, C --> Read, D --> Compute.
+
+#### Question 3
+> A read function is:
+>
+> Select one:
+> * activated by an actor in the application domain and displys relevant parts of the model
+> * activated by a signal function and displys information about the application domain
+> * activated by an event in the problem domain and displays relevant parts of the model
+> * activated in the model and displays a calculation
+
+Activated by an actor in the application domain and displys relevant parts of the model.
+
+#### Question 4
+> A proposed system shall manage members, instructors, and classes in a gym. The developers have built this class diagram following their analysis of the problem domain:
+>
+> ![Question 2](/images/functions-quiz-2.png)
+>
+> Which pattern(s) are used in the diagram?
+>
+> Select one or more:
+>
+> * Stepwise role
+> * Item-descriptor
+> * Relation
+> * Material
+> * Role
+> * Stepwise relation
+> * Composite
+> * Hierarchy
+
+Relation, Hierarchy, Item-descriptor, and Role.
+
+## Individual Exercises
+#### Section 7.6, exercise 2 (page 149).
+> What is the difference between a function and a use case?
+
+#### Section 7.6, exercise 3 (page 149).
+> What are the four different function types?
+
+#### Section 7.6, exercise 5 (page 149).
+> Which sources are used to identify functions?
+
+#### Section 7.6, exercise 7 (page 149).
+> How can the functional requirements be evaluated?
