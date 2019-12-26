@@ -86,3 +86,562 @@ the course.
 | Generic architecture pattern       | Grundarkitektur          |
 | Client-server architecture pattern | Klient-server arkitektur |
 | Observer pattern                   | Observatørmønster        |
+
+
+# Concepts in OOA&D
+
+### Problem Domain
+
+> That part of a context that is administrated, monitored or controlled by a system.
+
+The problem domain describes the system's purpose as well as the parts of reality that the system should help administrate, monitor or control. The system models something (the problem domain) and it is operated by users (the application domain).
+
+#### Example: Air Traffic Control System
+
+The problem domain includes, among other things: 
+
+* Planes
+* Flights
+* Departures
+* Runways
+
+A key task in analysis and design is to model what the system will administrate, monitor or control. Controllers use this information rather than direct observation of an aircraft, as a basis for decision-making, thus making it crucial that *the problem domain and the system's model of the problem domain agree completely*. 
+
+
+
+### Application Domain
+
+> The organization that administrates, monitors, or controls a problem domain.
+
+##### Example: Air Traffic Control System
+
+The application domain is part of the air traffic controller's job. This job consists of monitoring and controlling the air traffic using the system's information about these objects. 
+
+A key task in analysis and design is to model how the system will interact with users in the application domain. 
+
+
+
+### Object
+
+> An entity with identity, state, and behaviour.
+
+The meaning of an object changes depending on the context:
+
+#### Analysis
+
+An abstraction of a phenomenon in the system's context, typically described in terms of classes. Object is a single entity with specific identity, state, and behaviour. Describe phenomena outside the system, such as people and things, which are typically independent.
+
+*Behaviour:* Expressed by the events it performs or experiences.
+
+##### Example: Customer Object | Analysis
+
+Certain people are customers and they are treated as single entities. The object's identity expresses how the user differentiates from other objects in the context. 
+
+*Behaviour:* Customer objects are involved in ordering and shipping goods. 
+
+
+
+#### Attribute
+
+An attribute is a descriptive property of a class or event. We use attributes to represent states in the problem-domain model. 
+
+
+
+### Design
+
+A design object represents part of a single entity's state within the system and make operations available for other system objects. A design object's identity expresses how other objects in the system can recognize it, and thereby gain access to it. Describe phenomena within the system that we can control. 
+
+*Behaviour:* Expressed by the operations it can carry out and make available to other objects in the system. 
+
+##### Example: Customer Object | Design
+
+An object would represent parts of a specific person's history and state within the system.
+
+*Behaviour:* Customer objects can represent information about real-world customers.  
+
+
+
+### Class
+
+> A description of a collection of objects sharing structure, behavioural pattern, and attributes. 
+
+Classes are useful for understanding objects and vitally important for describing them. Instead of describing each particular object, we develop a shared object description for all objects in the same class. 
+
+#### Example: Customer Class
+
+The Customer class might contain specific customer objects, such as the user's mother or neighbour, but the same class will also contain many other customers, each with their unique identity, state, and behaviour. 
+
+
+
+### System Definition
+
+> A concise description of a computerized system expressed in natural language
+
+A system definition expresses fundamental properties for system development and use. It describes the system in context, what information it should contain, which functions it should provide, where it is to be used, and which development conditions apply. 
+
+The intention of such a definition is to explicate different interpretations and possibilities. The system definition you finally select provides an indispensable foundation for continuing analysis and design activities. 
+
+
+
+### The FACTOR Criterion
+
+A highly iterative process. The goal is to get the customer and the users to answer the question: Is this the system you want? 
+
+The FACTOR Criterion consists of six elements:
+
+1. *Functionality:* The system functions that support the application-domain tasks.
+2. *Application domain:* Those parts of an organization that administrate, monitor, or control a problem domain.
+3. *Conditions:* The conditions under which the system will be developed and used.
+4. *Technology:* Both the technology used to develop the system and the technology to which the system will run.
+5. *Objects:* The main objects in the problem domain.
+6. *Responsibility:* The system's overall responsibility in relation to its context.
+
+
+
+### Rich Picture
+
+An informal drawing that presents the illustrator's understanding of a situation. A rich picture focuses on important aspects of the situation. However, the rich picture should give a broad description of the situation that enables several alternative interpretations. Provides a quick overview of complex and ambiguous situations. They are a good basis for discussion and give us a way to express different interpretations of the same situation. 
+
+Crossed swords in a rich picture indicates conflicts between the old and new organization. The pictures are primarily a tool to help system developers clearly organize their own understanding. At the same time, rich pictures can be a useful tool for facilitating good communication with users. Rich pictures should:
+
+* Contain a lot of information and be open to interpretation
+* Present processes and structures in a coherent, well-balanced way
+* Show at least one problematic area
+* Point at several relevant computerized systems
+* Be rich, but not chaotic
+* Illuminate key aspects of a situation in a way that promotes understanding at many levels
+* Avoid representing data and data processing
+
+
+
+### Events
+
+Specifies the qualities of problem-domain objects. We generally define an event as:
+
+> An instantaneous incident involving one or more objects.
+
+An event is an abstraction of a problem-domain activity or process that is performed or experienced by one or more objects. 
+
+An event can involve several active and passive objects and thereby be common to them all. When a customer deposits money in an account, this event involves both than active customer object (performing the deposit) and a passive account object (experiencing the deposit).
+
+
+
+### Event Table
+
+The class activity produces an event table. The horizontal dimension contains the selected classes. The vertical dimension contains the selected events. A checkmark indicates that objects from the class are involved in the specified event. 
+
+#### Example: Hair Salon 
+
+|              | *Classes*  |             |              |               |        |
+| :----------- | :--------: | :---------: | :----------: | :-----------: | :----: |
+| ***Events*** | *Customer* | *Assistant* | *Apprentice* | *Appointment* | *Plan* |
+| Reserved     |     ✓      |      ✓      |              |       ✓       |   ✓    |
+| Cancelled    |     ✓      |      ✓      |              |       ✓       |        |
+| Treated      |     ✓      |             |              |       ✓       |        |
+| Emplyed      |            |      ✓      |      ✓       |               |        |
+| Resigned     |            |      ✓      |      ✓       |               |        |
+| Graduated    |            |             |      ✓       |               |        |
+| Agreed       |            |      ✓      |      ✓       |               |   ✓    |
+
+
+
+## Structures Between Classes
+
+### Generalisation Structure
+
+Gathers the common properties and behavioural patterns of different classes into more general classes. A generalization structure is a relation between two or more specialization classes and a more general class. 
+
+> A general class (the super class) describes properties common to a group of specialized classes (the subclasses)
+
+For example, the classes "Taxi" and "Private Car" might be specializations of the general class "Passenger Car". Similarly, the class "Vehicle" might be a further generalization of the classes "Passenger Car" and "Truck". 
+
+The structure expresses inheritance: Specialized classes inherit the properties and behaviour pattern of the general class. A generalization structure is drawn as an arrow from the subclass to the super class. 
+
+
+
+### Cluster Structure
+
+A cluster is a collection of classes that helps us achieve and provide a problem-domain overview.
+
+> A collection of related classes.
+
+Classes within a cluster are usually connected by either a generalization structure or an aggregation structure. The graphical notation is a file folder that encloses the classes. 
+
+
+
+## Structures Between Objects
+
+### Aggregation
+
+An aggregation structure is a relation between two or more objects. It expresses that one object is a fundamental and defining part of the other.
+
+> A superior object (the whole) consists of a number of inferior objects (the parts).
+
+Aggregation structure is drawn as a lien between the classes of the whole and the parts, where the line is annotated with a rhomb at the class that models the whole. 
+
+### Association
+
+An association structure is also a relation between two or more objects, but it differs from aggregation in that associated objects are not a defining property of an object. 
+
+> A meaningful relation between a number of objects.
+
+Association structure is drawn as a simple line between the relevant classes. Association is often used when aggregation would imply a too strong relation.
+
+
+
+
+
+
+
+### The Hierarchy Pattern
+
+Many problem domains include objects that are organized into a hierarchy with two or more levels and relationships exist among other objects on different levels. 
+
+
+
+### The Item-Descriptor Pattern
+
+The distinction between items and their description. The item-descriptor pattern is particularly useful in systems that administrate different kinds of descriptions, such as contracts, insurance policies, and product specifications. 
+
+##### Example: Library
+
+Books have descriptions and keywords to facilitate search, and numbers to determine where they are located in the library For each book, there is at least one copy. Each copy has its own identity and is treated as a separate entity, but all copies share the properties described by the related book object. 
+
+
+
+### Event Trace
+
+An event trace is unique for a specific object; it is the precise event sequence that the object is involved in during a time interval. 
+
+> A sequence of events involving a specific object
+
+For example, an object of the class "Customer" might have the following event trace during its lifetime: 
+
+*Account opened > amount deposited > amount withdrawn > amount deposited > account closed*
+
+
+
+### Behavioural Pattern
+
+The focus in object-oriented problem-domain analysis is on objects, but for practical reasons, we describe groups of objects by common class definitions. Accordingly, we refrain from describing the behaviour of every object in the problem domain. Instead, we describe a behavioural pattern for object classes.
+
+> A description of possible event traces for all objects in a class.
+
+When we make behavioural patterns, we have the following - sometimes conflicting - goals: 
+
+* The behavioural pattern should be sufficiently precise to describe all legal, and thus illegal, event traces.
+* The behavioural pattern should provide an overview and thus be as simple as possible. 
+
+We can usually avoid the potential conflict by excluding very specialized and detailed aspects of the behaviour pattern from the diagram. 
+
+
+
+### Fundamental Structures
+
+#### Sequence
+
+> Events in a set occur one by one. 
+
+Sequence is expressed by making the events lead through several states, where each state has only one event leaving it. The events must occur in the order that the sequence specifies, indicated by the direction of the arrows.
+
+The first event that leads to the creation or birth of an object. Similarly, the last event describes when a problem-domain object dies or disappears.  
+
+#### Selection
+
+> Exactly one out of a set of events occur. 
+
+Selection is expressed by making all possible events lead out of the same state. 
+
+#### Iteration
+
+> An event occurs zero or more times.
+
+Iteration is expressed by making an event lead back to its original state. Can be either indirect or direct iteration. 
+
+An object's event trace includes an arbitrary number of number of repetitions of the sequence, indicating that the object toggles several times between them. 
+
+
+
+### Statechart Diagram
+
+This dynamic notation is generally used to describe dynamics involving a finite number of states and a finite number of transitions between them. In addition, the graphical notation lets you name the states of an object.
+
+Typically, the transitions in a statechart diagram occurs as a result of problem-domain events. 
+
+
+
+### Actor
+
+> An abstraction of users or other systems that interact with the target system.
+
+Actors are abstraction of people and other systems that activate a target system's functions. In a user-case description, we should indicate whether the actor is mechanical or human. A specific person or system can appear in different roles. 
+
+
+
+### Use Case
+
+Provides an overview of the system requirements from the users' perspective and provide a foundation for defining and evaluating the more basic function and interface requirements. 
+
+A use case is an abstraction of an interaction with the target system. It determines a delimited use of a part of the system. A use case can be initialized by an actor or by the target system. 
+
+
+
+### Actor Table
+
+An actor table looks similar to the event table. The main difference is that the phenomena occur in different domains. An actor is someone or something that interacts physically with the system, such as a clerk. A use case describes the interaction between an actor and the system, such as a clerk entering an order. 
+
+
+
+### Interface
+
+> Facilities that make a system's model and functions available to actors
+
+Human actors and computerized systems have widely differing behaviours. We distinguish between two types of interface:
+
+#### User Interface
+
+> An interface to users.
+
+A good user interface is adapted to the user's work tasks and their conception of the system. User-interface quality, commonly called usability, is thus not an absolute, objective measure. 
+
+#### System Interface
+
+> An interface to other systems.
+
+A system interface must offer the necessary features. How they are offered is less important. 
+
+
+
+### Criterion
+
+> A preferred property of an architecture
+
+Below is a list of classical criteria for software quality. A useful guideline for design should accentuate a few simple, essential criteria; those criteria should reflect your specific design conditions.
+
+Which criteria you emphasize, and how you balance conflicting criteria depends on your situation. This is summarized in the following principle:
+
+> A good design balances several criteria
+
+
+
+| *Criterion*    | *Measure of*                                                 |
+| -------------- | ------------------------------------------------------------ |
+| Usable         | The system's adaptability to the organizational, work-related, and technical contexts. |
+| Secure         | The precautions against unauthorized access to  data and facilities |
+| Efficient      | The economical exploitation of the technical platform's facilities. |
+| Correct        | The fulfilment of requirements.                              |
+| Reliable       | The fulfilment of the required precision in function execution. |
+| Maintainable   | The cost of locating and fixing system defects.              |
+| Testable       | The cost of ensuring that the deployed system performs its intended function. |
+| Flexible       | The cost of modifying the developed system.                  |
+| Comprehensible | The effort needed to obtain a coherent understanding of the system. |
+| Reusable       | The potential for using system parts in other related systems. |
+| Portable       | The cost of moving the system to another technical platform. |
+| Interoperable  | The cost of coupling the system to other systems.            |
+
+
+
+### Component Architecture
+
+The component architecture defines the overall system structure, as summarized in the following definition:
+
+> A system structure composed of interconnected components
+
+We define a component: 
+
+> A collection of program parts that constitutes a whole and has well-defined responsibilities.
+
+The definition is broad. We can consider everything from a single class to a subsystem to the whole system as a component. In essence, separate components should address separate concerns. Separation adds to the comprehensibility and increases system flexibility. 
+
+
+
+### Process Architecture
+
+The purpose of process architecture design is to structure execution on a physical level. 
+
+> A system-execution structure composed of interdependent processes.
+
+
+
+### Conditions
+
+> The technical, organizational, and human opportunities and limits involved in performing a task.
+
+It is crucial to understand the boundaries for the design of a system's architecture. Conditions should be virtually invariable terms, and not just unconscious expressions of a tradition. 
+
+
+
+**Technical**
+
+* Existing hardware, basic software, and systems
+
+* Reuse of patterns and existing components. 
+
+* Use of purchased standard components.
+
+  
+
+**Organizational**
+
+* Contractual arrangements.
+* Plans for continued development.
+* Division of work between the developers.
+
+
+
+**Human**
+
+* Design competence.
+* Experience with similar systems.
+* Experience with technical platform.
+
+
+
+### Model Component
+
+A model component's main responsibility is to hold the objects that represent the problem domain. Whenever something relevant happens in the problem domain, the model-component objects should change state accordingly. 
+
+For example, in an accounting system, you might separate the accounts model from the budget model. 
+
+
+
+### Function Component
+
+The main responsibility of a function component is to provide the model's functionality. 
+
+In an architecture with layered functionality, the layer immediately above the model component uses the model and provides more advanced functionality to the next layer. The top layer of functionality provides functionality directly to the interface components. At each level, the functions become more advanced and more specific to the application domain.
+
+
+
+### Coupling
+
+Coupling expresses that change in one class or component necessitates change in another class or component. 
+
+> A measure of how closely two classes or components are connected. 
+
+Coupling is a negative property, that should be minimized in design. Coupling can take one of the following forms: 
+
+* Outside coupling: A class or component refers directly to the public properties of another class or component. 
+* Inside coupling: An operation refers directly to other, private properties in the same class.
+* Coupling from below: A specialized class refers directly to private properties in the super class. 
+* Sideways coupling: A class refers directly to private properties in another class. 
+
+These four forms of coupling range from low to full coupling. You can generally obtain low coupling by using outside coupling and avoiding sideways coupling. 
+
+
+
+### Cohesion
+
+Cohesion expresses that a class or component constitutes a whole with essential relations between its parts.
+
+> A measure of how well a class or component is tied together. 
+
+Cohesion is a positive property that should be pursued in the design of classes and components. Lack of cohesion means that the relations between the parts are somewhat accidental. Attempts to split up cohesive classes or components lead to a high degree of coupling. 
+
+These properties point to high cohesion when looking at classes and objects:
+
+* Operations constitute a functional whole.
+* Attributes and object structures describe objects with well-defined states.
+* Operations use each other.
+
+The following features point to cohesive components: 
+
+* Component classes are conceptually related.
+* Structural relations among classes are primarily generalizations and aggregations.
+* Key operations can be carried out within the component. 
+
+
+
+
+
+## Patterns
+
+### Structure
+
+#### The Role Pattern
+
+Used to model a situation in which a single person can have several different roles in the problem domain. This structure lets a person change roles dynamically over time. For example, a person may start as a customer and later be hired as an employee. 
+
+The right side of the below figure shows the general role pattern. A person object aggregates zero or more role objects, where each role object is from one of the classes Role~1~, Role~2~,... Role~n~. Properties and behaviour common to all the role classes are described in the abstract class "Role". 
+
+If the different role classes have nothing in common, we use a simplified pattern without a separate role class. 
+
+
+
+#### The Relation Pattern
+
+The purpose of the pattern is to relate two parties to each other through a relation that carries its own properties. 
+
+The relation is owned by a "Party~1~" object and associated to a "Party~2~" object. Objects from both parties can have many relations, but each of them must be represented by exactly one relation object. 
+
+
+
+### Basic Behaviour Patterns
+
+#### The Stepwise Relation Pattern
+
+We use the stepwise relation pattern when certain problem-domain objects are related to the elements of a hierarchy in a stepwise or sequential manner. In addition, it will have a behavioural pattern for each class that forms a level in the hierarchy. 
+
+Finally, it will have a behavioural pattern for the member class, which defines the order in which a member is assigned to elements on different levels of the hierarchy.
+
+#### The Stepwise Role Pattern
+
+The stepwise role pattern describes interaction between several objects over time, but this pattern focuses on the horizontal dimension in a class diagram rather than the vertical dimension. 
+
+You can use this pattern to describe how the behaviour of a whole changes as its parts become active. 
+
+#### The Composite Pattern
+
+The composite pattern offers a way to describe the creation and destruction of a hierarchy using a detailed structure that is unknown at model-development time. An example of such a structure is the list of contents in a written document, a chart of financial-system accounts, or a list of pieces in a manufacturing process. 
+
+The key point in this pattern is that the top-level behaviour requires some behaviour from the level beneath it, which in turn requires behaviour from the level beneath it, and so on. We thus end up with a recursive description. 
+
+
+
+### Fundamental Use-Case Patterns
+
+#### The Procedural Pattern
+
+Used to ensure business rules are observed. In cash withdrawal, for example, the actor's access right must be established first, and there must be an extra confirmation of the withdrawal amount. 
+
+The use case must follow a strict procedure. The procedural use-case pattern is the general solution to ensuring that many rules are observed. 
+
+#### The Material Pattern
+
+The material use case is good for situations in which there are no business rules governing the usage. The pattern is a use case with few general states, in which most actions can be performed. Any tool may be used in any order. A text editor, for example. The actor can do almost anything in any order. 
+
+
+
+### Components / Architecture Patterns
+
+#### The Layered Architecture Pattern
+
+A layered architecture consists of several components designated as layers. The design of each component describes its responsibilities as well as its upward and downward interfaces. 
+
+The downward interface describes which operations the component can access in the layer below. 
+
+The upward interface describes the operations it makes available to the layer above. 
+
+In general, a dependency (dashed arrow) implies that a change in one component (pointed at) may affect the other component (pointed from). 
+
+
+
+#### The Generic Architecture Pattern
+
+In most cases, it is a good idea to incorporate components that serve as well-defined interfaces to certain parts of the technical platform. With the basic architecture, you can, for example, have an interface to the library that implements the user interface. This library can be encapsulated in a separate user-interface system component. 
+
+
+
+#### The Client-Server Architecture Pattern
+
+The components in a client-server architecture are a server and several clients. The server has a collection of operations that it makes available to the clients. The design is asymmetric in the sense that the server design does not presume any knowledge about the clients, but the clients must know of the server and its public operations. 
+
+It is the server's responsibility to provide what is common to all the clients. It could be a shared database or other shared resources.
+
+
+
+#### The Observer Pattern
+
+The observer pattern can be used when several objects depend on one object's change of state. When the state changes, the dependent objects are notified and updated automatically. 
+
+The observer pattern is useful in separating who knows what about whom. In particular, it is useful for maintaining a strictly layered component architecture. 
