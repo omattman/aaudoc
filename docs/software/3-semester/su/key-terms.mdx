@@ -624,6 +624,26 @@ The upward interface describes the operations it makes available to the layer ab
 
 In general, a dependency (dashed arrow) implies that a change in one component (pointed at) may affect the other component (pointed from). 
 
+##### Variation of the layered architecture pattern
+
+A *closed* architecture means that a given layer can only use operations from the layer immediately adjacent, and the operations that the layer makes available can only be used by the layer immediately adjacent. 
+
+An *open* architecture means that a given layer can use operations from any layer above or below. 
+
+In a *strict* architecture operations in a layer can only use operations in layers below. 
+
+In a *relaxed* architecture, operations in a layer can use operations in layers below and above. 
+
+
+
+This gives four combinations
+
+| Variation combinations |              |
+| ---------------------- | ------------ |
+| Closed-Strict          | Open-Strict  |
+| Closed-Relaxed         | Open-Relaxed |
+
+
 
 
 #### The Generic Architecture Pattern
