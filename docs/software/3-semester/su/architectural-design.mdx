@@ -3,203 +3,290 @@ title: Architectural Design, Criteria and Components
 tableOfContentsDepth: 2
 ---
 
-## The end of analysis
+This lecture presents the first activity in Object-Oriented Design, more precisely you will get:
 
-This lecture is the transition of moving from _analysis_ towards _design_.
+* An overview of the activities in object-oriented design (Part IV)
+* A detailed presentation of the Criteria activity (Chapter 9)
+* A detailed presentation of the Components activity (Chapter 10)
 
-Let us briefly summarize the chapters we have gone through so far:
+## Readings
+Chapter 9 & 10
 
-- System definition used in:
-  - Evaluation of candidates for classes and events (chapter 3)
-  - Finding actors and use cases (chapter 6)
-  - Finding functions (chapter 7)
-- Event table used in:
-  - Finding candidates for structures (chapter 4)
-  - Describring behavioural patterns (chapter 5)
-- Class diagram used in:
-  - Describing behavioural patterns (chapter 5)
-  - Finding interface elements (chapter 8)
-- Actors used in:
-  - Describing use cases (chapter 6)
-- Use cases used in:
-  - Finding functions (chapter 7)
-  - Finding interface elements (chapter 8)
-- Function list used in:
-  - Finding interface elements (chapter 8)
+## Summary of architectural design
 
-## Architectural Design
-
-When referring to the system model, we are referencing the above listed figure.
-This is different from the original application/problem domain model, which is
-needed when we are talking about interfaces, functions and the model within the
-system.
-
-![System model](images/architectural-design-system-model.png)
-
-### Key Concepts
-
-_System_: A collection of components that implements modelling requirements, functions,
-and interfaces.
-
-_Architecture_: A general structure that is later developed further.
-
-### Two Views
-
-![Architectural Design: Two Views](images/architectural-design-two-views.png)
-
-The two views consists of _component_ and _process_ architecture.
-
-#### Component architecture
-
-- classes
-- Stable aspects
-- Related components
-- Logical level
-- Structure for descriptions
-
-#### Process architecture
-
-- Objects
-- Dynamic aspects
-- Coordination of processes
-- Physical level
-- Strucutre for execution
-
-### Objects in Analysis and Design
-
-It is important to state the clear difference of objects depending of the current
-stage of development. In this case analysis and design.
-
-#### Analysis
-
-- Phenomena outside the computer system
-- Identity: identifies an object
-- State: the quality that characterize an object
-- Behaviour: the events an object have performed or suffered
-
-#### Design
-
-- Phenomena inside the computer system
-- Identity: gets acces to an object
-- State: the values of the object's attributes and object structures
-- Behaviour: the operations an object can perform on request and offers to the
-  other objects (methods)
-
-### Activities
-
-![Activites modes](images/architectural-design-activities.png)
-
-## The Criteria activity
-
-### Result
-
-The end result is a collection of prioritized criterias for the given system.
-A collection of criterias could look like something listed below:
-
-![Criteria result](images/architectural-design-criteria-result.png)
-
-It is important to emphasize what is more and less important. Not all
-criterias can be prioritized as equally important.
-
-### Key Concepts
-
-For OOA&D we work with the following key concepts when talking about criterias:
-
-Usability
-
-- The system as a whole
-- The user's needs
-- The technical platform
-
-Flexibility
-
-- Consequences of changes
-- Modular design
-
-Comprehensibility
-
-- Overview
-- Abstraction
-- Use of patterns
-
-### Activities
+### Criteria
+In chapter 9 it was discussed how one can specify design criteia in a system development project. The criteria leads to a specification of the design criteria as the below figure shows:
 
 ![Criteria activities](images/architectural-design-criteria-activities.png)
 
-## The Components activity
+#### Purpose
+To set design priorities.
 
-### Result
+#### Concept
+* Criterion: A preferred property of an architecture.
+* Conditions: The technical, organizational, and human opportunities and limits involved in performing a task.
 
-The final result of creating and organizing components is a _structural perspective_,
-which _separates concerns in a system_ to _emphasize comprehensibility and flexibility_.
+#### Principles
+* _A good design has no major weaknesses_. A single flaw can be enough to invalidate a design. A good design thus strives to achieve good properties and, at the same time, avoid bad ones.
+* _A good design balances several criteria_. A good design must meet overall criteria. Because these criteria can be conflicting, prioritizing all criteria is essential.
+* _A good design is usable, flexible, and comprehensible_. The system's usability is determined by tensions between the system's technical qualities and its applicability to the user's work. Flexibility and comprehensibility help ease design and implementation work.
 
-![Components result](images/architectural-design-components-result.png)
+#### Results
+A collection of prioritized criteria. A collection of criteria could look like something listed below:
 
-### Key concepts
+![Criteria result](images/architectural-design-criteria-result.png)
 
-#### Component
 
-A list of components can be seen as a collection of program parts, which functions
-as LEGO blocks to build the system. It constitutes a totality and has a
-well-defined responsibility.
-
-Component wise is the smallest possible a **class** and the largest is a **system**.
-
-As an example on the below image we see a component that has the responsibility
-for reading the buttons and updating the display
-
-![Components result](images/architectural-design-component-example.png)
-
-#### Activites
+### Components
+Chapter 10 discussed component architecture design.
 
 ![Components activities](images/architectural-design-components-activites.png)
 
-### Patterns
+#### Purpose
+To create a comprehensible and flexible system structure.
 
-#### The Layered Architecture
+#### Concept
+* Component architecture: A system structure of interconnected components.
+* Component: A collection of program parts that constitues a whole and has well-defined responsibilities.
+
+#### Principles
+* _Reduce complexity by separating concerns_. The component architecture should be comprehensible. Using architectural patterns makes the architecture easier to understand. Reducing complexity also eases understanding; this is achieved by separating concerns into different components.
+* _Reflect stable context structures_. The component architecture must be useful and valid in the future. To achieve this, the architecture should reflect stable aspects of the problem and application domains. At the same time, the component architecture should be flexibile towards a context's unstable aspects.
+* _Reuse existing components_. Using components developed for reuse or for earlier versions of the system, or components bought off-the-shelf from a competent vendor, is an effective way to reduce the programming effort. Such components come in various forms; the right ones let you integrate previous experience and good solutions into your architecture. This contributes to a better design and less programming work.
+
+#### Results
+A class diagram with specifications of the complex components.
+
+![Components result](images/architectural-design-components-result.png)
+
+
+## Good Design
+The principle of good design not having any major weaknesses captures a basic goal of object-oriented design: __To describe a system in a way that eliminates all essential uncertanties__. It helps us prioritize criteria that should govern the design activity.
+
+<Note>
+  <strong>Criterion:</strong> A preferred property of an architecture.
+</Note>
+
+Below is a list, which is recommended to set priorities for architectural design:
+
+| Criterion      | Measure of                                                                           |
+|----------------|--------------------------------------------------------------------------------------|
+| Usable         | The system adaptability to the organizational, work-related, and technical contexts. |
+| Secure         | The precautions against unauthorized access to data and facilities.                  |
+| Efficient      | The economical exploitation of the technical platform's facilities.                  |
+| Correct        | The fulfillment of reqeuirements.                                                    |
+| Reliable       | The fulfillment of the required precision in function execution.                     |
+| Maintainable   | The cost of locating and fixing system defects.                                      |
+| Testable       | The cost of ensuring that the deployed system performs its intended function.        |
+| Flexible       | The cost of modifying the deployed system.                                           |
+| Comprehensible | The effort needed to obtain a coherent understanding of the system.                  |
+| Reuseable      | The potential for using system parts in other related systems.                       |
+| Portable       | The cost of moving the system to another technical platform.                         |
+| Interoperable  | The cost of coupling the system to other systems.                                    |
+
+Where __usable__, __flexible__, and __comprehensible__ are the main take aways from the list of criterion. A useful guideline for design should accentutate a few simple, essential criteria; those criteria should reflect your specific design conditions.
+
+<Note>
+  <strong>Conditions:</strong> The technical, organizational, and human opportunities and limits involved in performing a task.
+</Note>
+
+## Consider General Criteria
+The _usability_ criterion specifies that a system's ultimate quality depends on how it works in context. _Flexibility_ specifies that a system's architecture accommodate changing organizational and technical conditions. _Comprehensibility_ specifies that, given the growing complexity of computerized systems, models and descriptions must be easy to understand.
+
+### Usability
+To evaluate a design's usability we must apply two complementary viewpoints:
+
+1. The extent to which the design satisfies the user's needs.
+2. The extent to which the design fits the technical platform.
+
+You should base your design on __experiments to learn how the target system can satisfy users' needs and requirements__. This is typically in the form of prototypes.
+
+### Flexibility
+Because most designs are based on decisions that will later change, you should try to minimize the consequences of such changes. The notion for this is __modularity__, achieved by means of encapsulation.
+
+If you know exactly what needs to be constructured and know that no changes will occur, you can create and efficient and specialized solution. But, if there are uncertanties, it is wise to choose components that can be used in a variety of contexts. By this we mean that modularity is preferred in development of systems.
+
+### Comprehensibility
+The fundamentatl tool for achieving comprehensibility is __abstraction__. It simplifies our thinking by collecting several elements in one concept. Three primary abstraction mechanisms are used in object-oriented design: __classification__, __generalization__, and __modularization__. These forms of abstraction correspond to the concepts _class_, _generalization structure_, and _component_.
+
+<Note>
+  Comprehensibility can be increased by <strong>grouping responsibilities</strong>. Flexibility through modularization is closely tied to comprehensibility through the grouping of responsibilities.
+</Note>
+
+## Prioritize Criteria
+Having considered the general object-oriented criteria and specific conditions, one can now prioritize which criteia should govern the design activity. In doing so, this helps one convert OOA&D to a specific strategy for the project, which supports the planning of evaluation activities, and helps deciding when the process is complete. The below figure serves as a checklist in this process.
+
+| Criterion      | Very important | Important | Less important | Irrelevant | Easily fulfilled |
+|----------------|----------------|-----------|----------------|------------|------------------|
+| Usable         |                |           |                |            |                  |
+| Secure         |                |           |                |            |                  |
+| Efficient      |                |           |                |            |                  |
+| Correct        |                |           |                |            |                  |
+| Reliable       |                |           |                |            |                  |
+| Maintainable   |                |           |                |            |                  |
+| Testable       |                |           |                |            |                  |
+| Flexible       |                |           |                |            |                  |
+| Comprehensible |                |           |                |            |                  |
+| Reuseable      |                |           |                |            |                  |
+| Portable       |                |           |                |            |                  |
+| Interoperable  |                |           |                |            |                  |
+
+## System components
+From now on the following sections are concerned with chapter 10 regarding components.
+
+The component architecture defines the overall system structure.
+
+<Note>
+  <strong>Component architecture:</strong> A system structure composed of interconnected components.
+</Note>
+
+In our method, we call the program parts that structure the classes as "components". A component is defined as:
+
+<Note>
+  <strong>Component:</strong> A collection of program parts that constitutes a whole and has well-defined responsibilities. Component wise is the smallest possible a _class_ and the largest is a _system.
+</Note>
+
+The below image is an example of a component that has the responsibility for reading the buttons and updating the display:
+
+![Components result](images/architectural-design-components-result.png)
+
+The __definition of a component is intentionally broad__. We can consider everything from a single class to a subsystem to the whole system as a component. A component is a limited part of a system and usually contains more than one class. Our focus is on a __component's responsibility in relation to other components__. In this sense, responsibility is as important for components as it is for classes.
+
+<Note>
+  Separate components should address separate concerns.
+</Note>
+
+Separating the concerns into different components add to the comprehensibility as discussed in the [comprehensibility criteria](#comprehensibility). Furthmore, it also increases the flexibility of the system.
+
+## Explore Architectural Patterns
+Patterns can help us make consistent design decisions, which ultimately enhances the system.
+
+### The Layered Architecture Pattern
 
 ![Layerered architecture](images/architectural-design-layered-architecture.png)
 
-The **layer** describes a component's responsibility by the oprations it provides
-to a layer above and those that are applied from the layer below.
+A layered architecture consists of several components, designed as __layers__. The downward interface describes which operations the component can access in the layer below. The upward interface describes the operations it makes available to the layer above.
 
-The **part** is that there is no substantial interaction with other parts in the
-same layer.
+In the above figure, the layers are described as components, and the dashed arrows show __dependencies__. In general a dependency implies that a change in one component (pointed at) may affect the other component (pointed from). The __typical dependency is that a layer uses the layer below__.
 
-For **closed architecture** we only apply operations from an adjacent layer.
+You can further supplement the vertical decomposition of the layered architecture with a horizontal decomposition into __subcomponents__, which are designated __parts__. A part is defined by not having essential interaction with other parts of the same layer. The above figure illutrates this usage of decomposing components into parts.
 
-For **open architecture** we apply opeartions from any other layer.
+#### Variation of the layered architecture pattern
+We distinguish between a __closed__ and an __open__ architecture, and between a __strict__ and a __relaxed__ architecture. This gives us four combinations:
 
-When working with **strict architecture** one should only apply operations
-from a layer below.
+* Closed-Strict & Closed-Relaxed.
+* Open-Strict & Open-Relaxed.
 
-In **relaxed architecture** you should apply operations from the layers both
-above and below.
+<Note>
+  <strong>Closed architecture:</strong> We only apply operations from the layer immediately adjacent (i-1 or i+1), and the operations that the layer makes avilable can only be used by the layer immediately adjacent (i+1 or i-1).
+  <br /><br />
+  <strong>Open architecture:</strong> A given layer can use operations from any layer abve or below.
+  <br /><br />
+  <strong>Strict architecture:</strong> Operations in a layer can only use operations in layers below.
+  <br /><br />
+  <strong>Relaxed architecture:</strong> Operations in a layer can use operations in layers below and above.
+</Note>
 
-For **strict architecture** one should apply operations on the layer placed both
-above and below the actual layer.
-
-### The Generic Architecture
+### The Generic Architecture Pattern
+It is often possible to decompose the interface layer into two separate parts: user interface and system interface. The below figure illustrates this simple and basic architecture.
 
 ![Generic architecture](images/architectural-design-generic-architecture.png)
 
-The **generic architecture** reflects the actual division of the context into
+The __generic architecture__ reflects the actual division of the context into
 problem domain and application domain. An example of this would be a single
 DanKort terminal.
 
+### The Client-Server Architecture Pattern
+The components in a __client-server architecture__ are a server and several clients. The server has a collection of operations that it makes available to the clients.
+
+![Client-Server Pattern](/images/architectural-design-client-server-pattern.png)
+
+It is the server's responsibility to provide what is common to all the clients. It could be a shared database or other shared resources.
+
+## Define Subsystems
+Large systemt must be divided into several independent __subsystems__ that communicate with each other. Although each subsystem is a part of the total system, one could view it as an independent system with its own mode, functions, and interfaces. This means that when one is decomposing the system into subsystems, one is actually distributing the total model, functionality and interface among several smaller systems.
+
+![Subsystems](/images/architectural-design-subsystems.png)
+
+A way of connecting subsystems is to relax the dependency (the dashed arrows) on the system interface.
+
+It is not a good idea to let the function component communicate with other subsystems, as this could seriously jeopardize the component's responsibility. Giving a component two main responsibilities reduces its definition and thus its cohesiveness internally. On the other hand, to separate a strongly cohesive component into two components will create __high coupling between them__, which is not desired.
+
+## Identify Components
+In system or subsystem design, we usually start with the layered architecture pattern using __interface__, __function__, and __model__ components. We then extend this basic architecture with various decompositions by looking at the three primary concerns - the model, functions, and interface - together.
+
+The below figure summarizes the design concerns:
+
+| Concern           | Model                                               | Function                                                             | Interface                                                        |
+|-------------------|-----------------------------------------------------|----------------------------------------------------------------------|------------------------------------------------------------------|
+| Responsibility    | The problem-domain model                            | The functionality of the model                                       | The interaction between functionality and users or other systems |
+| Contextual issues | Incohesive or complex problems domains              | Need for incohesive or complex functionality                         | Incohesive or complex usage; incohesive or complex actors        |
+| Exemplars         | Accounting, reservations, inventory, administration | Payroll, signal processing, cruise control, prediction monitoring    | Browsing, games, presentation monitoring                         |
+| Special needs     | Databases                                           | Model-related functions, application-related functions, cryptography | Screens, windows, buttons, print-outs, devices, communication    |
+
+### Model
+A model component's main responsibility is to hold the objects that represent the problem domain. Whenever __something relevant happens in the problem domain__, the model-component objects should change state accordingly.
+
+System, and hence model components, characterized by high complexity include those for accounting, reservations, and inventory. In such systems the __main purpose is to track changes__. The complexity lies in the objects and their relationships. If some objects are unrelated, you might want to separate them into different components.
+
+<Note>
+  In most systems, there is a <strong>database component</strong> underneath the model component. The database component encapsulates the specific database, its organization, and its features.
+</Note>
+
+### Function
+<Note>
+  The main responsibility of a function component is to provide the model's functionality.
+</Note>
+
+If there is a clear demarcation between parts of functionality, you can design this into the architecture as parts in a function component.
+
+Systems that rely heavily on the function component are typically control systems or monitoring system used for __prediction__.
+
+### Interface
+<Note>
+  The main responsibility of an interface component is to handle the interaction between the actors and the functionality.
+</Note>
+
+If usage is incohesive or complex you should consider decomposing the interface components into parts. Basically, you can choose between the parts and layers. Adding parts is useful when the usage is incohesive; __adding layers is useful when usage is very complex__.
+
+## Quiz
+
+#### Question 1
+
+
+#### Question 2
+
+
+#### Question 3
+
+
+#### Question 4
+
+
+#### Question 5
+
+
+#### Question 6
+
+
+
 ## Individual Exercises
 
-### Exercise 9.2 (page 188)
+#### Section 9, exercise 2 (page 188)
+> Why is it important to set design criteria for each project?
 
-### Exercise 9.5 (page 188)
+#### Section 9, exercise 5 (page 188)
+> What are criteria used for in a systems development project?
 
-### Exercise 10.3 (page 209)
+#### Section 10, exercise 3 (page 209)
+> Why should the architecture reflect stable structures in the context?
 
-### Exercise 10.5 (page 209)
+#### Section 10, exercise 5 (page 209)
+> What are the characteristic features of the client-server architecture pattern?
 
 ## Group Exercises
 
-### Exercise 7 (page 188)
+#### Exercise 7 (page 188)
 
 > Consider the design of a specific system with respect to each of the classical
 > criteria in figure 9.1 (page 180). How can you practically assess the system's quality
@@ -223,7 +310,7 @@ DanKort terminal.
 | Interoperable  |                |           |                | X          |                  |
 | Additional     |                |           |                |            | X                |
 
-### Exercise 8 (page 189)
+#### Exercise 8 (page 189)
 
 > Analyze the general criteria for design in Figure 9.1. Identify those pairs
 > of criteria that can be combined and that conflict or need to be balanced.
@@ -235,10 +322,10 @@ The possible pairs of criteria:
 - Combine Interoperable, Reusable, Portable and Flexible
 - Combine Maintainable & Comprehensible
 
-### Exercise 1 on project
+#### Exercise 1 on project
 
 > Conduct the activity criteria for your project
 
-### Exercise 2 on project
+#### Exercise 2 on project
 
 > Conduct the activity components for you project
