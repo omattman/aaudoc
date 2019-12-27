@@ -180,7 +180,7 @@ We distinguish between a __closed__ and an __open__ architecture, and between a 
 <Note>
   <strong>Closed architecture:</strong> We only apply operations from the layer immediately adjacent (i-1 or i+1), and the operations that the layer makes avilable can only be used by the layer immediately adjacent (i+1 or i-1).
   <br /><br />
-  <strong>Open architecture:</strong> A given layer can use operations from any layer abve or below.
+  <strong>Open architecture:</strong> A given layer can use operations from any layer above or below.
   <br /><br />
   <strong>Strict architecture:</strong> Operations in a layer can only use operations in layers below.
   <br /><br />
@@ -252,80 +252,122 @@ If usage is incohesive or complex you should consider decomposing the interface 
 ## Quiz
 
 #### Question 1
+> Which are the general criteria for design that OOA&D focuses on:
+>
+> Select one or more:
+>
+> * Usable
+> * Testable
+> * Efficient
+> * Comprehensible
+> * Flexible
+> * Correct
 
+* Usable
+* Comprehensible
+* Flexible
 
 #### Question 2
+> For the system controlling the train traffic at Aalborg Station, the following criteria is/are very important:
+>
+> Select one or more:
+>
+> * Interoperable
+> * Usable
+> * Reliable
+> * Correct
+> * Efficient
 
+* Reliable
+* Correct
 
 #### Question 3
+> Which architectural pattern is this?
+>
+> ![Generic architecture](images/architectural-design-generic-architecture.png)
+>
+> Select one:
+>
+> * The generic architecture pattern
+> * The general architecture pattern
+> * The layered achitecture pattern
+> * The client-server architecture pattern
 
+The generic architecture pattern
 
 #### Question 4
+> Which of the following statements are true?
+>
+> Select one or more:
+>
+> * In an closed-strict architecture a layer can use operations from the layers immediately below and above
+> * In a closed-strict architecture a layer can only use operations from the layer immediately below
+> * In an closed-relaxed architecture a layer can use operations from the layer immediately above
+> * In an closed-relaxed architecture a layer can use operations from the layers immediately above and below
+> * In an open-relaxed architecture a layer can only use operations from layers below
+> * In an open-strict architecture a layer can use operations from all layers above
+> * In an open-strict architecture a layer can use operations from all layers below
+> * In an open-relaxed architecture a layer can use operations from all layers above and below
 
+* In a closed-strict architecture a layer can only use operations from the layer immediately below
+* In an closed-relaxed architecture a layer can use operations from the layer immediately above
+* In an closed-relaxed architecture a layer can use operations from the layers immediately above and below
+* In an open-strict architecture a layer can use operations from all layers below
+* In an open-relaxed architecture a layer can use operations from all layers above and below
 
 #### Question 5
+> Which statements are true for the client-server architecture?
+>
+> Select one or more:
+>
+> * A client never contains functionality
+> * The architecture of both the client and the server consist of layers
+> * The clients' responsibility is to provide information to the server(s)
+> * Both the client and server can provide interface
+> * A server does not necessarily contain parts of the model
+> * The server's responsibility is to provide what is common for the clients
 
+* The architecture of both the client and the server consist of layers
+* Both the client and server can provide interface
+* The server's responsibility is to provide what is common for the clients
 
 #### Question 6
+> Consider this system definition
+>
+> An IT system to keep track of bicycles, their owners, and reports of stolen bicycles. The system shall increase the number of solved cases of bike theft by making information about bicycles and their insurance status, owners, and stolen bicycle reports available to the general public, insurance companies, the police, and municipal workers responsible for cleaning streets and bicycle parking lots.
+>
+> The system is based on a centralized register with information about bicycles etc., and computers and mobile devices (tablets, smartphones) to register and search for information. All bicycles in the system will have barcode labels to supplement the mandatory frame number. The system must protect information about bicycle owners from unauthorized access.
+>
+> Which of the following belong in the Problem Domain (PD), the Application Domain (AD) (or both) for the system
+>
+> * Bicycle thief
+> * Citizen
+> * Label with barcode
+> * Bicycle owner
+> * Bicycle shop
+> * Insurance company
+> * Smartphone
+> * Bicycle
+> * Police officer
 
-
+* Bicycle thief --> Neither PD nor AD
+* Citizen --> AD
+* Label with barcode --> PD
+* Bicycle owner --> Both PD and AD
+* Bicycle shop --> Neither PD nor AD
+* Insurance company --> Both PD and AD
+* Smartphone --> AD
+* Bicycle --> PD
+* Police officer --> AD
 
 ## Individual Exercises
 
-#### Section 9, exercise 2 (page 188)
+#### Exercise 2 (page 188)
 > Why is it important to set design criteria for each project?
 
-#### Section 9, exercise 5 (page 188)
+To set design criteria captures a basic goal of object-oriented design: To describe a system in a way that eliminates all essential uncertainties. This helps us navigate the design activity in two ways. It puts emphasis on quality evaluations based on reviews and experiments, and helps us prioritize criteria that should govern the design activity.
+
+#### Exercise 5 (page 188)
 > What are criteria used for in a systems development project?
 
-#### Section 10, exercise 3 (page 209)
-> Why should the architecture reflect stable structures in the context?
-
-#### Section 10, exercise 5 (page 209)
-> What are the characteristic features of the client-server architecture pattern?
-
-## Group Exercises
-
-#### Exercise 7 (page 188)
-
-> Consider the design of a specific system with respect to each of the classical
-> criteria in figure 9.1 (page 180). How can you practically assess the system's quality
-> with respect to each of the criteria? Indicate the expected outcome of such
-> an assessment for each of the criteia. Suggest design improvements based
-> on this assessment.
-
-| Criterion      | Very important | Important | Less important | Irrelevant | Easily fulfilled |
-| -------------- | -------------- | --------- | -------------- | ---------- | ---------------- |
-| Usable         | X              |           |                |            |                  |
-| Secure         |                |           | X              |            |                  |
-| Efficient      |                |           | X              |            |                  |
-| Correct        |                | X         |                |            |                  |
-| Reliable       |                |           | X              |            |                  |
-| Maintainable   |                |           |                | X          |                  |
-| Testable       |                | X         |                |            |                  |
-| Flexible       |                |           |                | X          |                  |
-| Comprehensible |                | X         |                |            |                  |
-| Reuseable      |                |           |                | X          |                  |
-| Portable       |                |           |                | X          |                  |
-| Interoperable  |                |           |                | X          |                  |
-| Additional     |                |           |                |            | X                |
-
-#### Exercise 8 (page 189)
-
-> Analyze the general criteria for design in Figure 9.1. Identify those pairs
-> of criteria that can be combined and that conflict or need to be balanced.
-
-The possible pairs of criteria:
-
-- Comprehensible & Usable
-- Efficient conflicts with everything else
-- Combine Interoperable, Reusable, Portable and Flexible
-- Combine Maintainable & Comprehensible
-
-#### Exercise 1 on project
-
-> Conduct the activity criteria for your project
-
-#### Exercise 2 on project
-
-> Conduct the activity components for you project
+Same as the above answer.
