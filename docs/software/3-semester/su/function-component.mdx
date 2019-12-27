@@ -3,73 +3,135 @@ title: Function Component
 tableOfContentsDepth: 2
 ---
 
-## The Function Component activity
+This lecture presents the second activity in Component Design, more precisely you will get:
+
+1. A detailed presentation of the Function Component activity
+
+## Readings
+Chapter 13
+
+## Summary of function component
+Behavior in an object-oriented system is described as operations on the system's classes. The behavior thus described can be activated through the relevant class' objects. Given this, you must implement all functions in terms of operations.
+
+![Function component activities](images/function-component-activities.png)
+
+The above figure shows the subactivies in function design. First, you design the functions as operations based on their type. This subactivity leads to a collection of operations that can implement the system's functionality as defined in application-domain analysis, and, in particular, as it was expressed in the function list. Secondly, you explore one of several patterns that can help you implement functions as operations. Finally, you specify the complex operations.
+
+### Purpose
+To determine the implementation of functions.
+
+### Principles
+* Function component: A part of a system that implements functional requirements.
+* Operation: A process property specified in a class and activated through the class' objects.
+
+### Concepts
+* Base the design on function types.
+* Specify complex operations.
 
 ### Results
+A class diagram with operations and specifications of complex operations. We have our model from the application domain analysis which consists of classes and its possible attributes. From this we implement the function component, which is a specification from the already generated function list. To explain this, one should extend with operations realizing requirements to functions from the analysis of the application domain.
 
-We have our model from the application domain analysis, which consists
-of classes and its possible attributes. From this we implement the function
-component, which is a specification from the already generated function list.
-To explain this, one should extend with operations realizing requirements to
-functions from the analysis of the application domain.
 
-> **Definition**: Operation: A Process property specified in a class and activated
-> through the class' object.
+#### Primary result
+A class diagram for the function component and an extension of the model component's class diagram.
 
-![Specification of the function component result](images/function-component-specification.png)
+![Class diagram with operations and specifications of complex operations](/images/function-component-primary-result.png)
 
-### Responsibility
+#### Secondary result
+A specification of each complex operation.
 
-**Component**: A collection of program parts that constitutes a whole and has well-defined
-responsibilities.
+![Secondary result: Specification of the function component result](images/function-component-specification.png)
 
-**Responsibility of the function component**: Make the model component available as a resource to actors.
+## Designing the Function Component
+The purpose of the function component is to __give the user interface and other system components access to the model__. The function componen is thus a __link between the model and usage__. The definition is:
 
-### Activities
+<Note>
+  <strong>Function component:</strong> A part of a system that implements functional requirements.
+</Note>
 
-![Specification of the function component activities](images/function-component-activities.png)
+Functions are designed and __implemented using operations__ in the system's classes. An __operation__ is a description of behavior that can be activated through an object. Operations can be perceived as procedures.
 
-## Design Function as Operations
+<Note>
+  <strong>Operation:</strong> A process property specified in a class and activated through the class' object.
+</Note>
 
-![Central questions in a design based on function types](images/function-component-operations.png)
+In design, we __implement functions as operations on classes__.
+
+## Design Functions as Operations
+The [four function types](/software/3-semester/su/functions/#function-types) that we used in application-domain analysis also plays a central role in designing functions as operations on classes in the model and function components.
+
+If you cannot identify a funcion's primary type, you might be able to __break it down into several functions__ that are easier to categorize.
+
+We use specific design questions for each of the four types: update, read, compute, and signal. The below figure examines the four function types, looking at them like patterns since each function type has specific design considerations.
+
+| Function type       	| Central questions                                                                                                                                                                                                                                                                                                        	|
+|---------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| Common to all types 	| How should the function be implemented as operations in different classes?<br/><br/>How is the main operation activated and what input data does it use?<br/><br/>Which objects and connections are involved in performing the operations, and how are they identified?<br/><br/>What is the feedback from the main operation? 	|
+| Update              	| How can you determine if the update is legal?                                                                                                                                                                                                                                                                            	|
+| Read                	| Which attributes and connections should be read, and how are these found?                                                                                                                                                                                                                                                	|
+| Compute             	| Which algorithm should be carried out?                                                                                                                                                                                                                                                                                   	|
+| Signal              	| Which rules apply to the signaling?                                                                                                                                                                                                                                                                                      	|
 
 ### Update
+Update functions are directly linked to problem-domain events. When a relevant problem-domain event occurs it should leave a trace in the model through an update function.
 
-Update functions are directly linked to problem domain events. An update function receives input data
-that describes the events, and its primary output data is the model update.
+<Note>
+  An update function receives input data that describes the event, and its primary ouput data is the model update.
+</Note>
+
+You can __identify the relevant objects and attributes__ by looking at the triggering event. During model-component design, one of the essential questions is how to create objects and attributes to remember events. __It is this set of objects and attributes that should be updated__.
+
+The below figure shows the update operation and how the output data also can be returned to the place where the function was activated.
 
 ![Update operation](images/function-component-update.png)
 
 ### Read
+A read function reflects the need of a user or another system to get information from the model. The system is viewed as a database, in which the desired information can be found as attributes.
 
-A read function reflects the need os a user or another system to get information from the model.
-The system is viewed as a database, in which the desired information can be found as attributes.
-A read function receives input data describing the desired reading. Typically, the input data
-will be one or more attribute values, which might also be input data describing how the read
-should be done.
+<Note>
+  A read function receives input data describing the desired reading. The actual data is read in the model, and the desired output data is returned to the place where the function was called.
+</Note>
+
+Typically, the __input data will be one or more attribute values__, which can be used to identify the objects to read.
+
+The below figure shows, the actual data is read in the model, and the desired output data is returned to the place where the function was called.
 
 ![Read operation](images/function-component-read.png)
 
 ### Compute
+A compute function signifies that a user or another system needs data processing, which may involve a reading of the model.
 
-A compute function signifies that a user or another system needs data processing, which may involve
-reading of the model. Input data ti a compute function include both the numbers that are part of the
-computation and attributes that describe those model objects that are relevant to the computation.
-Output data from the function is the results, which is returned to the user or the system that
-activated the computation.
+<Note>
+  Input data to a compute function include both the numbers that are part of the computation and attributes that describe those model objects that are relevant to the computation. Output data from the function is the result of the computations, and is returned to the user or system that activated the computation.
+</Note>
+
+The computation will often be __combined with an update function__, which registers the computation's consequences for the relevant model objects.
+
+To carry out the compute function, you must define the following: input data; which objects, attributes, and connections in the model should be read; the decomposition of the main operation; and the results. An example of a compute function is seen below.
 
 ![Compute operation](images/function-component-compute.png)
 
 ### Signal
+Signal functions express requirements about monitoring or control. Typically, you must describe certain states and relations between objects that trigger a signal.
 
-Signal functions express requirements about monitoring or control. In many cases, a signal function
-does not receive special input data. The primary input data comes from the model, and the function
-gets its basic data by continuously reading the model. Output data from the function is either
-a message to a user in the application domain or a control impulse directly to a device.
+<Note>
+  The primary input data comes from the model, and the function gets its basic data by continuously reading the model. Output data from the function is either a message to a user in the application domain or a control impulse directly to a device in the problem domain.
+</Note>
+
+In designing the operations that realize a signaling function, you must decide the following: the __threshold values or rules__ that might help activate a signal function; which objects, attributes, and connections should be evaluated; the decomposition of the main operation; and the resulting signal. Examples of thresholds are constants such as `10 km` and `2000 feet` and these must be changeable if other rules apply.
+
+An example of a signal function is seen below:
 
 ![Signal operation](images/function-component-signal.png)
 
-## Patterns
+<Note>
+  A signal function should follow an <strong>active</strong> or <strong>passive</strong> pattern.
+</Note>
+
+An active signal function can be implemented by an operation that is permantly active and that regularly evaluates its rules and if necessary, sends out a signal. A passive signal function can be implemented by an operation that is basically inactive since it is activated by the update of particular events.
+
+
+## Explore Patterns
 
 The patterns listed in the following section specifies how functions can be realized as a set of operations
 
@@ -84,6 +146,10 @@ operations:
 
 ![Pattern: Model-Class](images/function-component-model-class.png)
 
+<Note>
+  This pattern is particularly useful when an operation accesses only a single object or simple aggregate structure. You should this place opreations for updating a private event in the class that the event is attached to.
+</Note>
+
 ### Function-Class Placement
 
 Some operations cannot be placed on a class in the model. Typically functions that operate
@@ -91,6 +157,10 @@ on several objects. A new class is then designed in the function component. That
 contains the operation that realizes the function.
 
 ![Pattern: Function-Class](images/function-component-function-class.png)
+
+<Note>
+  When an operation involves several objects from different model-component classes, the model-class placement pattern is not as useful. We use function-class placement when responsibility for the operation cannot be clearly placed in a model class.
+</Note>
 
 ### Strategy
 
@@ -105,54 +175,134 @@ each specialization.
 A signal function can be active or passive. An active function can be realized in an active object.
 The function is then realized with its own control.
 
+## Specify Complex Operations
+You should describe complex operations in greater detail so that no essential uncertainties remain in your design.
+
+<Note>
+  It is recommended that you avoid unnecessary detail by implicitly assuming the most obvious operations and merely naming other simple operations.
+</Note>
+
+Three description forms are relevant for detailed specification of operations: __operation specification__, __sequence diagram__, and __statechart diagram__. We will only cover the operation specification form since this covers the specifiation to its fullest.
+
+### Operation Specification
+The below figure shows an example of an operation specification:
+
+![Operation specification](/images/function-component-operation-specification.png)
+
+The most important aspect of the specification is the __effect__. The operation's effect describes __the condition that should be fulfilled__ when the operation has been executed.
+
 ## Quiz
+
+#### Question 1
+> What are the results of the problem-domain analysis?
+>
+> Select one or more:
+>
+> * State-chart diagrams describing use cases
+> * State-chart diagrams describing the behavior of objects in classes
+> * A component architecture
+> * An event table
+> * An actor table
+> * A class diagram describing classes and structure
+
+* A class diagram describing classes and structure
+* State-chart diagrams describing the behavior of objects in classes
+* An event table.
+
+#### Question 2
+> A system to be used to control train traffic at Aalborg Railway Station: Which statements are correct?
+>
+> Select one or more:
+>
+> * A train sensor on the rails is not an object and neither part of the PD nor part of the AD because it is just an input device
+> * A signal post and its signal can be part of the AD
+> * A signal post and its signal can be part of both PD and AD, but it depends on which functions we require
+> * A train sensor on the rails can be part of the PD
+> * A signal post and its signal is part of the PD
+> * A signal post and its signal cannot be part of PD and AD at the same time
+> * A train sensor on the rails is part of the AD
+
+* A train sensor on the rails is not an object and neither part of the PD nor part of the AD because it is just an input device
+* A signal post and its signal can be part of the AD
+* A signal post and its signal can be part of both PD and AD, but it depends on which functions we require
+* A train sensor on the rails can be part of the PD
+* A signal post and its signal is part of the PD
+
+#### Question 3
+> Which are function types?
+>
+> Select one or more:
+>
+> * Update
+> * Read
+> * Find
+> * Signal
+> * Compute
+> * Process
+
+* Update
+* Read
+* Signal
+* Compute
+
+#### Question 4
+> An operation is a process property:
+>
+> Select one:
+>
+> * Specified in a class and activated through the class’ objects.
+> * Specified in the model component and activated through the behavior pattern of a class.
+> * Specified in the model component and activated through a class’ objects.
+> * Specified in a class and activated through the behavior pattern of the class.
+
+Specified in a class and activated through the class' objects.
 
 ## Individual Exercises
 
-### Exercise 1 (page 271)
+#### Exercise 1 (page 271)
 
 > What is the responsibility of the function component?
 
-### Exercise 4 (page 271)
+The purpose of the function component is to give the user interface and other system components access to the model. The function componen is thus a link between the model and usage. You can read more in [designing the function component](#designing-the-function-component).
+
+#### Exercise 4 (page 271)
 
 > What considerations are involved in implementing update functions?
 
-### Exercise 5 (page 271)
+The update must be legal with respect to the state of all the involved objects. Thus, the operation must reflect the behavioral patterns identified in analysis, as they determine the legal event traces for class' objects. The operation should check at every update to see if the given event is allowed according to the current state of the involved objects. This check should, in principle, take place every time you wish to register a certain object's event.
+
+#### Exercise 5 (page 271)
 
 > What considerations are involved in implementing read functions?
 
-### Exercise 6 (page 271)
+You should desribe which operations are needed to implement the read. In particular, you must decide what the results are of the participating operations. One could carry out a predecessor analysis, in which you can determine the desired results, then determine what you need from the preceding operations, and so forth.
+
+#### Exercise 6 (page 271)
 
 > What considerations are involved in implementing compute functions?
 
-### Exercise 7 (page 271)
+To carry out the compute function, you must define the following: input data; which objects, attributes, and connections in the model should be read; the decomposition of the main operation; and the results. Furthermore, the model will usually provide the input data, however, model data is not always includes, which is why the read part in [the compute figure](#compute) is labelled with orange arrows and boxes.
+
+#### Exercise 7 (page 271)
 
 > What considerations are involved in implementing signal functions?
 
-### Exercise 8 (page 271)
+The central question in designing a signal function's implementation is which change in state will trigger the signal. If it is a certain event, then the signal function is simple. However, the triggering state is typicallyt a complex relation among several objects over time. You should define the triggering state by a rule or condition that should be fulfilled. Identifying this is an anlysis task. You also have to determine the possible variations on the rule, as they are very important to the choice of implementation.
+
+#### Exercise 8 (page 271)
 
 > When are operations placed on classes in the model component?
 
-### Exercise 9 (page 271)
+The operations are placed on classes in the model component when an operation accesses only a single object or simple aggregate structure.
+
+Operations for updating basic attributes also deal with only one object. Therefore, you should also place them in the class that contains the attributes.
+
+
+#### Exercise 9 (page 271)
 
 > When are operations placed on classes in the function component?
 
-## Group Exercises
+We use function-class placement when responsibility for the operation cannot be clearly placed in a model class.
 
-### Exercise 14 (page 271)
+Generally, you should define one or more function-component classes as containing operations that realize functions. We call such classes function managers, and they typically do not contain significant attributes. During execution, one class' object will exist, and the functions are activated on this object.
 
-> Consider the analysis of the Hair Salon System (Chapter 20). List the functions that should
-> be implemented using the model-class placement and the function-class placement pattern
-> respectively.
-
-**NOTE**: For this exercise we will look at the Butlr project instead.
-
-### Exercise 17 (page 271)
-
-> _Teaching Administration_. Continue your considerations of the system for monitoring student
-> activities in a university department (see Exercise 3.15). Design the function component
-> and make a detailed specification of one of the complex functions.
-
-### Start design of function component
-
-> Start on the design of the function component for your project
