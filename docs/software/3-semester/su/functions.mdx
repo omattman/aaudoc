@@ -63,7 +63,7 @@ Function analysis consists of **three subactivites**: find functions, specify co
 ![Function Subacitvities](/images/functions-subactivities.png)
 
 ## Find Functions
-The sources for identifying functions are partly the problem-domain description, as expressed by uts classes and events, and partly the application-domain description, as expressed by its use cases.
+The sources for identifying functions are partly the problem-domain description, as expressed by its classes and events, and partly the application-domain description, as expressed by its use cases.
 
 <Note>
   <strong>Classes</strong> typically give rise to read and update functions. <strong>Events</strong> lead to requirements for update functions. <strong>Use cases</strong> give rise to all types of functions.
@@ -183,14 +183,28 @@ Activated by an actor in the application domain and displys relevant parts of th
 Relation, Hierarchy, Item-descriptor, and Role.
 
 ## Individual Exercises
-#### Section 7.6, exercise 2 (page 149).
+#### Exercise 2 (page 149).
 > What is the difference between a function and a use case?
 
-#### Section 7.6, exercise 3 (page 149).
+Use cases capture actors, users, methods, domain knowledge, unique techniques, etc. Use cases can lead to complete packaged solutions. Functional approach capture product categories, product variants, market differentiations. Functional approach can help develop finely tuned release strategies where functionality is developed and layered over previous releases.
+
+Another way to describe is that use cases is more an user-oriented spec and functional approach is a developer spec. From a language and communication perspective, it is said that use cases approach leads to easier to understand documentation that is already cast in the end-users' language idioms. On the other hand, functional approach is what makes the system complete and integrated whole.
+
+#### Exercise 3 (page 149).
 > What are the four different function types?
 
-#### Section 7.6, exercise 5 (page 149).
+Update, read, compute, and signal.
+
+#### Exercise 5 (page 149).
 > Which sources are used to identify functions?
 
-#### Section 7.6, exercise 7 (page 149).
+The sources for identifying functions are partly the problem-domain description, as expressed by its classes and events, and partly the application-domain description, as expressed by its use cases.
+
+Classes typically give rise to read and update functions. Events lead to requirements for update functions. Use cases give rise to all types of functions.
+
+#### Exercise 7 (page 149).
 > How can the functional requirements be evaluated?
+
+The function list expresses the target system’s functionality. You must ensure that the required functionality is consistent with the list of functions, that the functions are mutually consistent, and that each function expresses and appropriate level of abstraction.
+
+The best way to evaluate is to compare the function list with the model. The model must include precisely that information about the objects that the functions need; no more, no less. That is, if the model contains objects, structures, or events that are never used by any of the functions, then either the model contains too much or some functions are missing.
