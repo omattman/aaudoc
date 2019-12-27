@@ -3,119 +3,283 @@ title: Introduction and System Choice
 tableOfContentsDepth: 2
 ---
 
-The first lectures gives an introduction to the course and its content, and presents
-the first activity of the method. More precisely you will get:
+The first lecture gives an introduction to the course and its content, and presents the first activity of the method. More precisely you will get:
 
-1. A general presentation of the key activites in systems development, with examples.
-2. A presentation and discussion of the main concepts of the OOA&D method.
-3. A Presentation of the System Choice activity in OOA&D.
+1. An overview of the course, lectures and examination form
+2. A general presentation of the key activities in systems development, with examples
+3. A presentation and discussion of the main concepts of the OOA&D method
+4. A presentation of the System Choice activity in OOA&D
 
 ## Readings
 
 Chapter 1 & 2.
 
-## Objects in Analysis and Design
+## Summary of the OOA&D method
+OOA&D covers the four perspectives through four main activities, shown in the below figure:
 
-### Analysis
-
-Phenomena **outside the computer system**. Makes use of "identity" to identify an object, but also its behavior,
-which tracks the events an object has performed or suffered.
-
-### Design (and implementation)
-
-Phenomena **inside the computer system**. Makes use of "identity" to get acces to an object, whereas the
-behavior keeps track of the operations an object can perform on request and offers to other objects.
-
-## The OOA&D Method
+![OOA&D four activities](/images/introduction-ooad-activity.png)
 
 ### Purpose
-
-- To determine system requirements.
-- To produce a system design without significnat uncertainties.
-- To understand a system, its context, and the conditions for its implementation.
+* To determine system requirements.
+* To produce a system design without significant uncertainties.
+* To understand a system, its context, and the conditions for its implementations.
 
 ### Concepts
+* Object: An entity with identity, state, and behavior.
+* Class: A description of a collection of objects sharing structure, behavioral pattern, and attributes.
+* Problem domain: That part of a context that is administrated, monitored, or controlled by a system.
+* Application domain: The organization that administrates, monitors, or controls the problem domain.
+* System: A collection of components that implements modeling requirements, functions, and interfaces.
 
-- Objects
-- Classes
-- Problem domain: That part of a context that is administrated, monitored, or controlled by a system
-- Application domain: The organization that administrates, monitors, or controls a problem domain.
-- System: A collection of components that implements modelling requirement functions, and interfaces.
 
 ### Principles
+OOA&D builds on four general anlysis and design principles:
 
-- Model the context.
-- Emphasize the architecture.
-- Reuse patterns.
-- Tailor the method to suit specific project.
+* _Model the context_. Useful systems fit their context. It is therefore essential to model both the application domain and the problem domain during analysis and design.
+* _Emphasize the architecture_. An easy-to-understand architecture facilitates collaboration between designers and programmers. A flexible architecture makes system modification and improvements more affordable.
+* _Reuse patterns_. Building on well-established ideas and pretested components improved system quality and development-process productivity.
+* _Tailor the method to suit specific objects_. Each development effort has its own unique challenges. OOA&D must be tailored to the specific needs of a given analysis and design situation.
 
 ### Results
+The tangible result of analysis and design is documentation, which helps you practically manage the actual analysis and design activities. Documentation helps create continuity during system development, and thus must be of high quality.
 
-- An analysis document and a design document.
 
-## Individual Exercises
+## Summary of system choice
+The activity of system choice describes how to systematically examine project challenges and options, and how to obtain relevant and precise information as a basis for analysis and design.
 
-### Complete Quiz 1
+![System choice activity](/images/introduction-system-choice-activity.png)
+
+### Purpose
+To agree on the overall system characteristics.
+
+### Concept
+System definition: A concice description of a computerized system expressed in natural language.
+
+### Principles
+* Appreciate the situation.
+* Cultivate new ideas.
+* Define alternative systems.
+
+### Result
+A system definition that fulfills the FACTOR criterion.
+
+
+## System Definition
+At the beginning of a development project, we must try to find interpretations that emphasize the important challenges. To do so, we can explicate and debate alternative system definitions:
+
+<Note>
+  <strong>System definition:</strong> A concise description of a computerized system expressed in natural language.
+</Note>
+
+A system definition expresses __fundamental properties for system development and use__. It describes the system in context, what information it should contain, which functions it should provide, where it is to be used, and which development conditions apply.
+
+<Note>
+  A system definition should be brief and precise, and contain the most fundamental decisions about the system.
+</Note>
+
+We will introduce the __FACTOR criterion__ for system definitions. Each of the six letters refers to a key element in system definition.
+
+## Describe the Situation
+Our understanding of the users' situation must be rich and abundant. By working with __rich pictures__ we can explicate important user views of a situation, facilite debate, and get an overview of the situation quickly. The main take away from this is to __obtain an overview__.
+
+### Rich Pictures
+<Note>
+  A rich picture focuses on important aspects of the situation. Rich pictures should give a broad description of the situation that enables several alternative interpretations.
+</Note>
+
+A rich picture is an informal drawing that present the illustrator's understanding of a situation. The below figure shows an example of a rich picture:
+
+![Rich picture](/images/introduction-rich-picture.png)
+
+## The FACTOR Criterion
+The FACTOR criterion consists of six elements:
+
+* __Functionality__: The system functions that support the application-domain tasks.
+* __Application domain__: Those parts of an organization that administrate, monitor, or control a problem domain.
+* __Conditions__: The conditions under which the system will be developed and used.
+* __Technology__: Both the technology used to develop the system and the technology on which the system will run.
+* __Objects__: The main objects in the problem domain.
+* __Responsibility__: The system's overall responsibility in relation to its context.
+
+An example of a FACTOR criteria is listed below:
+
+* __Functionality:__ A system that allows an employee of Dania Academy to place an order of
+specific food products and quantities. They should be able to choose when and where the
+order should be delivered, as well as a purpose, project number and a person responsible
+for approving the funds needed (budgeteers). Once an order has been placed, the system
+should ensure that the kitchen personnel receives it and is able to confirm or reject
+it. The kitchen should be able to gather a quick overview of orders and filter them based
+on delivery time. They should also be able to print orders, allowing for easier handling in
+and around the kitchen. Once an order has been completed by the kitchen, the person
+responsible for approving funds should be able to do so within the system, at which point
+the order should be forwarded to a bookkeeper. The bookkeeper should be able to export
+all necessary information about orders to a spreadsheet.
+* __Application Domain:__ The system will be used by the chef, budgeteers, bookkeepers and
+employees acting as customers purchasing catering.
+* __Conditions:__ The system will be developed for multiple types of users situated at Dania
+Academy. These users involve the chef, budgeteers, bookkeepers, and the employees at
+Dania Academy who acts as customers when ordering catering from the chef. The setting
+for the chef using the system will be in the canteen whereas the other above-mentioned
+people will be in an office. The chef and employees are assumed to have largely varying
+experience with IT systems. The system should thus be intuitive and user-friendly for the
+varying types of users. The development will be in close cooperation withDania Academy
+to ensure that the system suits their workflow and needs.
+* __Technology:__ The system will run on the Windows Platform with connection to a MySQL
+Server. The solution will be developed using C#.
+* __Objects:__ Administrator, chef, budgeteer, bookkeeper, booker, order, and food type.
+* __Responsibility:__ The systems primary responsibility is to handle all orders of catering
+within the organisation and make sure that they are sent between the relevant people.
+The system should also deliver a structured visualisation of the ordered catering, making
+it easier for the users to bookkeep and manage the orders.
+
+## Quiz
 
 #### Question 1
 
 > What is design?
+>
+> Select one or more:
+>
+> * Determining the operations an object can carry out and make available to other objects in the system
+> * Determination of the events an object performs or experiences
+> * Determination of a phenomenon in the IT-system
+> * Determining how to get access to an object
+> * Identification of objects
+> * Determination of a phenomenon in the context of the IT-system
 
-Determining how to get access to an object, Determination of a phenomenon in the IT-system, Determining the operations an object can carry out and make available to other objects in the system
+* Determining the operations an object can carry out and make available to other objects in the system
+* Determination of a phenomenon in the IT-system
+* Determining how to get access to an object
 
 #### Question 2
 
 > A system for boat reservations. A reservation consists of the name of the renter, the size of the boat (max. number of passengers) and a period.
 >
 > Which of the following may be part of the application domain?
+>
+> Select one or more:
+>
+> * Passenger
+> * Renter
+> * The owner of the boat rental
+> * Log-in
+> * IT-system with clients and server
+> * Boat
 
-The owner of the boat rental, Renter, IT-system with clients and server
+* Renter
+* The owner of the boat rental
+* IT-system with clients and server
 
 #### Question 3
 
 > What is a system?
+>
+> Select one:
+>
+> * A collection of components that implements requirements, the application domain and interfaces
+> * A collection of components that implements requirements, functions and design
+> * A collection of components that implements problem domains, functions and interfaces
+> * A collection of components that implements requirements, functions and interfaces
 
-A collection of components that implements requirements, functions and interfaces
+* A collection of components that implements requirements, functions and interfaces
 
 #### Question 4
 
 > A system for boat reservations in a boat rental company. A reservation contains the name of ther renter, boat size (max. number of passengers) and a period.
 >
 > Which of the following can be classes in the problem domain?
+>
+> Select one or more:
+>
+> * Owner of the rental company
+> * Boat
+> * Renter
+> * Server
+> * Log-in
+> * Passenger
 
-Boat, Renter
+* Boat
+* Renter
 
 #### Question 5
 
 > The purpose(s) of OOA&D is/are?
+>
+> Select one or more:
+>
+> * To implement a system
+> * To create interaction with customers
+> * To determine systems requirements
+> * To establish a basis for implementation
 
-To determine systems requirements, to establish a basis for implementation
+* To determine systems requirements
+* To establish a basis for implementation
 
 #### Question 6
 
 > What is/are the purpose(s) of analysis?
+>
+> Select one or more:
+>
+> * Understand a system in relation to its context
+> * Understand the system in relation to its technical platform
+> * Realization of a design on a technical platform
+> * Determine technical solutions
+> * Determine system requirements
 
-Understand a system in relation to its context, Determine system requirements
+* Understand a system in relation to its context
+* Determine system requirements
 
 #### Question 7
 
 > The FACTOR criterion covers the following items:
+>
+> Select one or more:
+>
+> * Responsibility
+> * Relations
+> * Functionality
+> * Actors
+> * Customers
 
-Responsibility, Functionality
+* Responsibility
+* Functionality
 
 #### Question 8
 
 > Which knowledge areas can rich pictures help clarify?
+>
+> Select one or more:
+>
+> * Concrete experience with the new system
+> * Overview of technological options
+> * Relevant structures on user’s work
+> * Concrete experience with user’s work
+> * Visions and design proposals
 
-Concrete experience with user’s work, Relevant structures on user’s work
+* Relevant structures on user’s work
+* Concrete experience with user’s work
 
 #### Question 9
 
 > What are the sub-activities of system choice?
+>
+> Select one or more:
+>
+> * User stories
+> * Interview
+> * Ideas
+> * Situation
+> * Systems
+> * FACTOR
 
-Situation, Ideas, Systems
+* Ideas
+* Situation
+* Systems
 
-### Section 1.9, Exercise 1
+## Individual Exercises
+
+#### Exercise 1 (page 19)
 
 > What is the difference between objects and classes?
 
@@ -129,14 +293,14 @@ identity, state, and behaviour. Opposed to objects acting as a single entity wil
 object, the class functions as a shared object description for all objects in the same
 class.
 
-### Section 1.9, Exercise 4
+#### Exercise 4 (page 19)
 
 > Why should systems developers understand the context of the systems they are designing?
 
 A key task in analysis and design is to model what the system will administrate,
 monitor, or control. System developers should analyze the problem domain, both to understand the system's context and to learn how to usefully representing it to the system's users. A second key task in analysis and design is to model how the system will interact with users in the application domain. This includes identifying all user groups and understanding both what they will use the system for and how each group will interact with the system in different situations. However, users and system developers interpret things in different ways thus system development requires a common understanding between the developer and user. OOA&D focuses on this challenge.
 
-### Section 1.9, Exercise 5
+#### Exercise 5 (page 19)
 
 > How can you distinguish between a system's problem domain and application domain?
 > Can they partly overlap?
@@ -148,7 +312,7 @@ The system's context can be viewed from two complementary perspectives: the syst
 
 To establish a clear separation between the two you could think of it as being: The problem domain is part of the real world and consists of entities that exists in the real world. The application domain consists of software entities in the implementation of the solution. However, they need to be tighly connected to fully resemble the problem domain.
 
-### Section 2.10, Exercise 2
+#### Exercise 2 (page 43)
 
 > What is a system definition and how is it used?
 
@@ -166,7 +330,7 @@ The result of the second subactivity is a collection of ideas, but in order to e
 
 The purpose of the third and final subactivity is to choose the actual system to develop. After thoroughly creating and evaluating new ideas based on Rich Pictures, exemplars, or prototypes, it is time to decide on an actual system definition. The definition describes a totality, or a whole. It will therefore express emergent, system-focus properties, rather than detailed, component-oriented properties.
 
-### Section 2.10, Exercise 9
+#### Exercise 9 (page 43)
 
 > What are the elements in the FACTOR criterion for system definition?
 
