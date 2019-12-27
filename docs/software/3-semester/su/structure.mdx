@@ -183,13 +183,19 @@ This pattern is utilised to establish distinction between items and their descri
 
 The structures must be simple, especially at the top levels. It is seen as good practice to avoid unnescessary generalization and aggregations to keep it as clean and descriptive as possible. This is also the reason for why one should avoid objects changing class, since this require a total rework of the structure.
 
-## Quiz 3
+## Quiz
 
 #### Question 1
 
 > Which pattern is this?
 >
 > ![Quiz 1](/images/structure-quiz-1.png)
+>
+> Select one:
+> * Relation pattern
+> * Descriptor-item pattern
+> * Role pattern
+> * Hierarchy Pattern
 
 It is a Descriptor-item pattern.
 
@@ -206,32 +212,66 @@ It is a Descriptor-item pattern.
 #### Question 3
 
 > Generalization is a structure that expresses that:
+>
+> Select one or more:
+>
+> * We have a “relates” relation
+> * Specialized classes inherit properties from a super class
+> * We have a “consists-of” relation
+> * We have an “is-a” relation
+> * The problem-domain is divided into smaller subdomains
 
-Specialized classes inherit properties from a super class, we have
-and 'is-a' relation.
+* Specialized classes inherit properties from a super class
+* We have and 'is-a' relation.
 
 #### Question 5
 
 > The following is/are object structure(s)
+>
+> Select one or more:
+>
+> * Event
+> * Cluster
+> * Generalization
+> * Association
+> * Aggregation
 
-Association & Aggregation.
+* Association
+* Aggregation
 
 #### Question 5
 
 > The Role Pattern
+>
+> Select one or more:
+>
+> * Is a pattern concerned with behavior
+> * Let’s a person change roles dynamically
+> * Is a pattern concerned with structure
+> * Relate two parties to each other
+> * Describes a whole and an item
 
-- Is a pattern concerned with structure.
-- Let's a person change roles dynamically.
+- Let's a person change roles dynamically
+- Is a pattern concerned with structure
 
 #### Question 6
 
 > The following is/are class structure(s)
+>
+> Select one or more:
+>
+> * Generalization
+> * Association
+> * Aggregation
+> * Event
+> * Cluster
 
-Cluster & Generalization.
+* Generalization
+* Cluster
 
 ## Individual Exercises
 
-#### Section 4.8, exercise 3
+#### Exercise 3 (page 89)
 
 > Why is multiplicity only specified on object structures?
 
@@ -244,40 +284,10 @@ as a number and a `*` is used to represent multiplicity of many.
 This is why it is only specified on object structures since it defines
 relationship between objects of classes.
 
-#### Section 4.8, exercise 5
+#### Exercise 5 (page 89)
 
 > What is the meaning of inheritance? How is it described?
 
 Inheritance is a feature that represents the "is a" relationship between different
 classes. Inheritance allows a class to have the same behavior as another class and
 extend or tailor that behavior to provide special action for specific needs.
-
-#### Section 3.6, exercise 14
-
-> Review the class diagram in Chapter 20 using the criteria for systematic
-> structure evaluation from this chapter. Are the structural relations appropriately
-> described? Suggest possible alternatives.
-
-#### Section 4.8, exercise 16
-
-> _Mobile Phone_. Continue your considerations of the system for a simple mobile phone
-> (see Exercise 3.14). Describe structural relations between classes and objects in a
-> class diagram.
-
-## Group Exercises
-
-#### Compare solutions
-
-#### Section 4.8, exercise 17
-
-> _Teaching administration_. Continue your considerations of the system for
-> monitoring student activities in a university department (see Exercise 3.15).
-> Describe structural relations between classes and objects in a class diagram.
-
-![Exercise 17](/images/structure-exercise-17.png)
-
-#### Section 4.8, exercise 18
-
-> _Elevator control_. Continue your considerations of the system to control elevator
-> movement in a building (see Exercise 3.16). Describe structural relations between
-> classes and objects in a class diagram.
