@@ -12,13 +12,39 @@ This lecture presents the first activity in Object-Oriented Analysis, more preci
 
 Chapter 3 and pages 385-392 (until the subsection on Structure)
 
-## The Class Activity
-
-![Activities regarding classes](/images/classes-activities.png)
+## Summary of classes
+To model the problem domain, we start with the class activity and its fundamental question: Which objects and events should we include in the model and which should we leave out? To answer this question, we study the problem domain and talk with users to gain insight into how they understand it. Through this process, we determine which phenomena are important in the concrete context of the problem. The system definition helps us do this.
 
 Abstraction, classification, and selection are the primary tasks in the class activity.
 
+![Activities regarding classes](/images/classes-activities.png)
+
+### Purpose
+To select the elements of a problem-domain model.
+
+### Concepts
+* Object: An entity with identity, state, and behavior.
+* Class: A description of a collection of objects sharing structure, behavioral pattern, and attributes.
+* Event: An instantaneous incident involving one or more objects.
+
+### Principles
+* Classify objects in the problem domain.
+* Characterize objects through their events.
+* Have an open mind, but select critically.
+
+### Results
 Class activity produces an [event table](#event-table).
+
+|           | Customer | Assistant | Apprentice | Appointment | Plan |
+| --------- | -------- | --------- | ---------- | ----------- | ---- |
+| reserved  | ✓        | ✓         |            | ✓           | ✓    |
+| cancelled | ✓        | ✓         |            | ✓           |      |
+| treated   | ✓        |           |            | ✓           |      |
+| employed  |          | ✓         | ✓          |             |      |
+| resigned  |          | ✓         | ✓          |             |      |
+| graduated |          |           | ✓          |             |      |
+| agreed    |          | ✓         | ✓          |             | ✓    |
+
 
 ## Classification of Objects and Events
 
@@ -28,21 +54,23 @@ Different users means different interpretations. Multiple users do not necessari
 
 The aim in system development is to change the user organization by improving its products and services.
 
-In OOA&D we use the concepts _object_ and _event_ to understand phenomena in the problem domain. We do not see anything else but these concepts when we look at the problem domain; not processes, entities, or anything else.
+In OOA&D we use the concepts __object__ and __event__ to understand phenomena in the problem domain. We do not see anything else but these concepts when we look at the problem domain; not processes, entities, or anything else.
 
 ### Object
 
 The object concept is the focus of the [class activity](#the-class-activity).
 
-An **Object** is an entity with identity, state, and behaviour.
+<Note>
+  <strong>Object:</strong> An entity with identity, state, and behaviour.
+</Note>
 
-Entity: To call something an object it must be describeable as an entity. The more tangible the easier. For example, it is easier to consider a person entity than an organization.
+__Entity:__ To call something an object it must be describeable as an entity. The more tangible the easier. For example, it is easier to consider a person entity than an organization.
 
-Identity: An object's identity is the property that separates it from all other objects. **All objects must have an entity**, which means we must be able to define it as distinguishable from all other objects. This could for example be a unique id number.
+__Identity:__ An object's identity is the property that separates it from all other objects. **All objects must have an entity**, which means we must be able to define it as distinguishable from all other objects. This could for example be a unique id number.
 
-State: An object's state consists of both its static properties and the dynamic or static values we assign to these properties.. A customer with a property `Name` can change dynamically, but the customers social security number do not change and therefore is a static value.
+__State:__ An object's state consists of both its static properties and the dynamic or static values we assign to these properties.. A customer with a property `Name` can change dynamically, but the customers social security number do not change and therefore is a static value.
 
-Behaviour: An object's behaviour is that sequence of events that it actively performs and passively experiences during its lifetime. An example of these events could be a bank customer's behaviour when they open and close their acconts.
+__Behaviour:__ An object's behaviour is that sequence of events that it actively performs and passively experiences during its lifetime. An example of these events could be a bank customer's behaviour when they open and close their acconts.
 
 The key point is that we can identify and delimit the object as an indepent entity for instances we have tangible objects as a customer, a clerk, a contract, and less tangible objects such as an organization or a resource.
 
@@ -50,15 +78,19 @@ The key point is that we can identify and delimit the object as an indepent enti
 
 Events specify the qualities of problem domain objects.
 
-A **Event** is an instanttaneous incident involving one or more objects.
+<Note>
+  <strong>Event:</strong> An instanttaneous incident involving one or more objects.
+</Note>
 
-An event is always seen as an _atomic_ unit that cannot be broken down into sub-events. If it happens we need sub-events we include these and omit the super-event.
+An event is always seen as an __atomic unit that cannot be broken down into sub-events__. If it happens we need sub-events we include these and omit the super-event.
 
 ### Class
 
 In the object-oriented approach, abstraction is directly supported by the class concept. The class concept refers to and describes all the objects in a specific class, as expressed in this definition.
 
-A **Class** is a description of a collection of objects sharing structure, behavioural pattern, and attributes.
+<Note>
+  <strong>Class:</strong> A description of a collection of objects sharing structure, behavioural pattern, and attributes.
+</Note>
 
 Classes have their own identity, state, and behaviour.
 
@@ -75,7 +107,7 @@ To improve the process of selecting class candidates, consider both:
 
 An object will typically be described by a noun. For example prospective users of a bank account system might use the nouns: _customer, account, money, loan, interest, debit, credit, teller, copy machine, banj box, meeting room,_ and _annual accounts_.
 
-The classes you select will become the core of your problem-domain model. Thus, you should name your candidate classes carefully. It is recommended that you use names that:
+__The classes you select will become the core of your problem-domain model__. Thus, you should name your candidate classes carefully. It is recommended that you use names that:
 
 - Are simple and readable
 - Originate in the problem domain.
@@ -103,7 +135,7 @@ To successfully model the problem-domain elements you need a rich list of event 
 - General types.
   Focusing on verbs relates naturally to object behaviour.
 
-In choosing the verb form for event names, there are three possible options: _present tense, past tense,_ and _present participle_. All brings their pros and cons.
+In choosing the verb form for event names, there are three possible options: __present tense, past tense,__ and __present participle__. All brings their pros and cons.
 
 Prospective users of a bank's account system might use the following verbs: _account opened, amount deposited, loan granted, customer informed, meeting room reserved, application signed_.
 
@@ -183,68 +215,136 @@ clearly clarifies the major classes and events in the problem domain.
 
 It functions as a checklist, to indicate the different events of the defined classes.
 
-## Quiz 2
+## Quiz
 
 #### Question 1
 
 > The following are core principles of the class activity:
+>
+> Select one or more:
+>
+> * Describe the classes in the program
+> * Classify objects in the problem domain
+> * Classify objects in the application domain
+> * Make an event table
 
-Make an event table, Classify objects in the problem domain
+* Classify objects in the problem domain
+* Make an event table
 
 #### Question 2
 
 > A system to be used to control train traffic at Aalborg Railway Station: Which of the following are events?
+>
+> Select one or more:
+>
+> * A conductor cheks a ticket
+> * A train crossing the rail bridge across the fjord
+> * A passenger exiting the train
+> * A train passing a signal
+> * A train shifting track
+> * A train passing a rail sensor
+> * A passenger entering the train
+> * A train stopping at Aalborg Nord
+> * A ticket machine issues a ticket
 
-A train passing a signal, A train passing a rail sensor, A train shifting track, A train crossing the rail bridge across the fjord, A train stopping at Aalborg Nord
+* A train crossing the rail bridge across the fjord
+* A train passing a signal
+* A train shifting track
+* A train passing a rail sensor
+* A train stopping at Aalborg Nord
 
 #### Question 3
 
 > An object in the problem domain is defined as an entity with:
+>
+> Select one or more:
+>
+> * State
+> * Pattern
+> * Behavior
+> * Identity
+> * Critical mass
 
-Identity, State, Behavior
+* State
+* Behavior
+* Identity
 
 #### Question 4
 
 > A system to be used to control train traffic at Aalborg Railway Station: Which statements are correct?
+>
+> Select one or more:
+>
+> * A train sensor on the rails is part of the AD
+> * A train sensor on the rails is not an object and neither part of the PD nor part of the AD because it is just an input device
+> * A train sensor on the rails can be part of the PD
+> * A signal post and its signal can be part of both PD and AD, but it depends on which functions we require
+> * A signal post and its signal cannot be part of PD and AD at the same time
+> * A signal post and its signal can be part of the AD
+> * A signal post and its signal is part of the PD
 
-- A signal post and its signal is part of the PD
-- A signal post and its signal can be part of the AD
-- A signal post and its signal can be part of both PD and AD, but it depends on which functions we require
-- A train sensor on the rails can be part of the PD
 - A train sensor on the rails is not an object and neither part of the PD nor part of the AD because it is just an input device
+- A train sensor on the rails can be part of the PD
+- A signal post and its signal can be part of both PD and AD, but it depends on which functions we require
+- A signal post and its signal can be part of the AD
+- A signal post and its signal is part of the PD
 
 #### Question 5
 
 > What are the results of the problem-domain analysis?
+>
+> Select one or more:
+>
+> * State-chart diagrams describing the behavior of objects in classes
+> * An actor table
+> * State-chart diagrams describing use cases
+> * A component architecture
+> * A class diagram describing classes and structure
+> * An event table
 
-- A class diagram describing classes and structure
 - State-chart diagrams describing the behavior of objects in classes
+- A class diagram describing classes and structure
 - An event table
 
 #### Question 6
 
 > An event in problem domain analysis is:
+>
+> Select one or more:
+>
+> * A mechanism
+> * An object
+> * An incident involving one or more objects
+> * Atomic
+> * Instantaneous
 
-- Atomic
 - An incident involving one or more objects
+- Atomic
 - Instantaneous
 
 #### Question 7
 
 > The system's model of the problem domain is:
+>
+> Select one or more:
+>
+> * Keeps tracks of user interface problems
+> * Provides information to users in the application domain about the problem domain
+> * Represents the state of the problem domain
+> * Contains a list of all the users of the system
 
-- Represents the state of the problem domain
 - Provides information to users in the application domain about the problem domain
+- Represents the state of the problem domain
 
 ## Individual Exercises
 
-#### Section 3.6, exercise 4
+#### Exercise 4 (page 67)
 
 > What is a common event?
 
 A common event is an instantaneous incident involving one or more objects.
 
-#### Section 3.6, exercise 9
+#### Exercise 9 (page 67)
 
 > What are the basic criteria for selecting classes and events?
 
@@ -269,26 +369,13 @@ When evaluating your event candidates, you should be able to answer:
 
 An event should be defined as instantaneous in order to make it clear when it has occured.
 
-#### Section 3.6, exercise 10
+#### Exercise 10
 
 > What is the result of the class activity?
 
-As one would be writing down many candidates will provide one with a better overall picture. If this incidence does not occur, then one might reject relevant candidates too soon. It is important to have a broad range of potential candidates as it opens up a lot of edge cases and thereby select the correct classes to be the core of your problem-domain.
-
-#### Section 3.6, exercise 15
-
-> _Teaching administration_. Consider a system for monitoring student activities in a university department. The department
-> offers its students courses and thesis projects. Each course follows one of several graded exams. The department must track all its
-> activities, the teachers responsible for the activity, the student participating in the activity, and the results of the activity exams.
->
-> Add details and assumptions as needed and address the following problems. List class candidates in the teaching administration system.
-> Evaluate the the candidates systematically and produce the resulting event table.
+The result of the class activity is an [event table](#event-table).
 
 ## Group Exercises
-
-#### Compare and discuss the results of individual exercises 4 and 6.
-
-> Compare and discuss the results of individual exercises 4 and 6.
 
 #### Section 3.6, exercise 16.
 
@@ -336,11 +423,3 @@ As one would be writing down many candidates will provide one with a better over
 | Lys slukket          |          | ✓ |  |
 | Elevator efterspurgt | ✓        |  | ✓ |
 | Elevator ankommet    | ✓        |  | ✓ |
-
-#### Start the analysis on your project (if you have chosen it)
-
-> Make a first system definition by carrying out the activities described in Chapter 2.
-
-> Carry out the Classes activity as described in Chapter 3.
-
-> Reconsider your first system definition: was it useful for selecting classes and events or does it have to be refined.
