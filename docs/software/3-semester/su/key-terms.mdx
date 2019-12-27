@@ -6,7 +6,7 @@ title: Key Terms in OOA&D
 
 ### Problem Domain
 
-> That part of a context that is administrated, monitored or controlled by a system.
+<Note>That part of a context that is administrated, monitored or controlled by a system.</Note>
 
 The problem domain describes the system's purpose as well as the parts of reality that the system should help administrate, monitor or control. The system models something (the problem domain) and it is operated by users (the application domain).
 
@@ -25,7 +25,7 @@ A key task in analysis and design is to model what the system will administrate,
 
 ### Application Domain
 
-> The organization that administrates, monitors, or controls a problem domain.
+<Note>The organization that administrates, monitors, or controls a problem domain.</Note>
 
 ##### Example: Air Traffic Control System
 
@@ -37,7 +37,7 @@ A key task in analysis and design is to model how the system will interact with 
 
 ### Object
 
-> An entity with identity, state, and behaviour.
+<Note>An entity with identity, state, and behaviour.</Note>
 
 The meaning of an object changes depending on the context:
 
@@ -77,7 +77,7 @@ An object would represent parts of a specific person's history and state within 
 
 ### Class
 
-> A description of a collection of objects sharing structure, behavioural pattern, and attributes.
+<Note>A description of a collection of objects sharing structure, behavioural pattern, and attributes.</Note>
 
 Classes are useful for understanding objects and vitally important for describing them. Instead of describing each particular object, we develop a shared object description for all objects in the same class.
 
@@ -89,7 +89,7 @@ The Customer class might contain specific customer objects, such as the user's m
 
 ### System Definition
 
-> A concise description of a computerized system expressed in natural language
+<Note>A concise description of a computerized system expressed in natural language.</Note>
 
 A system definition expresses fundamental properties for system development and use. It describes the system in context, what information it should contain, which functions it should provide, where it is to be used, and which development conditions apply.
 
@@ -132,7 +132,7 @@ Crossed swords in a rich picture indicates conflicts between the old and new org
 
 Specifies the qualities of problem-domain objects. We generally define an event as:
 
-> An instantaneous incident involving one or more objects.
+<Note>An instantaneous incident involving one or more objects.</Note>
 
 An event is an abstraction of a problem-domain activity or process that is performed or experienced by one or more objects.
 
@@ -165,7 +165,7 @@ The class activity produces an event table. The horizontal dimension contains th
 
 Gathers the common properties and behavioural patterns of different classes into more general classes. A generalization structure is a relation between two or more specialization classes and a more general class.
 
-> A general class (the super class) describes properties common to a group of specialized classes (the subclasses)
+<Note>A general class (the super class) describes properties common to a group of specialized classes (the subclasses).</Note>
 
 For example, the classes "Taxi" and "Private Car" might be specializations of the general class "Passenger Car". Similarly, the class "Vehicle" might be a further generalization of the classes "Passenger Car" and "Truck".
 
@@ -177,7 +177,7 @@ The structure expresses inheritance: Specialized classes inherit the properties 
 
 A cluster is a collection of classes that helps us achieve and provide a problem-domain overview.
 
-> A collection of related classes.
+<Note>A collection of related classes.</Note>
 
 Classes within a cluster are usually connected by either a generalization structure or an aggregation structure. The graphical notation is a file folder that encloses the classes.
 
@@ -189,7 +189,7 @@ Classes within a cluster are usually connected by either a generalization struct
 
 An aggregation structure is a relation between two or more objects. It expresses that one object is a fundamental and defining part of the other.
 
-> A superior object (the whole) consists of a number of inferior objects (the parts).
+<Note>A superior object (the whole) consists of a number of inferior objects (the parts).</Note>
 
 Aggregation structure is drawn as a lien between the classes of the whole and the parts, where the line is annotated with a rhomb at the class that models the whole.
 
@@ -197,7 +197,7 @@ Aggregation structure is drawn as a lien between the classes of the whole and th
 
 An association structure is also a relation between two or more objects, but it differs from aggregation in that associated objects are not a defining property of an object.
 
-> A meaningful relation between a number of objects.
+<Note>A meaningful relation between a number of objects.</Note>
 
 Association structure is drawn as a simple line between the relevant classes. Association is often used when aggregation would imply a too strong relation.
 
@@ -227,7 +227,7 @@ Books have descriptions and keywords to facilitate search, and numbers to determ
 
 An event trace is unique for a specific object; it is the precise event sequence that the object is involved in during a time interval.
 
-> A sequence of events involving a specific object
+<Note>A sequence of events involving a specific object.</Note>
 
 For example, an object of the class "Customer" might have the following event trace during its lifetime:
 
@@ -239,7 +239,7 @@ For example, an object of the class "Customer" might have the following event tr
 
 The focus in object-oriented problem-domain analysis is on objects, but for practical reasons, we describe groups of objects by common class definitions. Accordingly, we refrain from describing the behaviour of every object in the problem domain. Instead, we describe a behavioural pattern for object classes.
 
-> A description of possible event traces for all objects in a class.
+<Note>A description of possible event traces for all objects in a class.</Note>
 
 When we make behavioural patterns, we have the following - sometimes conflicting - goals:
 
@@ -254,7 +254,7 @@ We can usually avoid the potential conflict by excluding very specialized and de
 
 #### Sequence
 
-> Events in a set occur one by one.
+<Note>Events in a set occur one by one.</Note>
 
 Sequence is expressed by making the events lead through several states, where each state has only one event leaving it. The events must occur in the order that the sequence specifies, indicated by the direction of the arrows.
 
@@ -262,13 +262,13 @@ The first event that leads to the creation or birth of an object. Similarly, the
 
 #### Selection
 
-> Exactly one out of a set of events occur.
+<Note>Exactly one out of a set of events occur.</Note>
 
 Selection is expressed by making all possible events lead out of the same state.
 
 #### Iteration
 
-> An event occurs zero or more times.
+<Note>An event occurs zero or more times.</Note>
 
 Iteration is expressed by making an event lead back to its original state. Can be either indirect or direct iteration.
 
@@ -286,7 +286,7 @@ Typically, the transitions in a statechart diagram occurs as a result of problem
 
 ### Actor
 
-> An abstraction of users or other systems that interact with the target system.
+<Note>An abstraction of users or other systems that interact with the target system.</Note>
 
 Actors are abstraction of people and other systems that activate a target system's functions. In a user-case description, we should indicate whether the actor is mechanical or human. A specific person or system can appear in different roles.
 
@@ -308,19 +308,19 @@ An actor table looks similar to the event table. The main difference is that the
 
 ### Interface
 
-> Facilities that make a system's model and functions available to actors
+<Note>Facilities that make a system's model and functions available to actors.</Note>
 
 Human actors and computerized systems have widely differing behaviours. We distinguish between two types of interface:
 
 #### User Interface
 
-> An interface to users.
+<Note>An interface to users.</Note>
 
 A good user interface is adapted to the user's work tasks and their conception of the system. User-interface quality, commonly called usability, is thus not an absolute, objective measure.
 
 #### System Interface
 
-> An interface to other systems.
+<Note>An interface to other systems.</Note>
 
 A system interface must offer the necessary features. How they are offered is less important.
 
@@ -328,13 +328,13 @@ A system interface must offer the necessary features. How they are offered is le
 
 ### Criterion
 
-> A preferred property of an architecture
+<Note>A preferred property of an architecture.</Note>
 
 Below is a list of classical criteria for software quality. A useful guideline for design should accentuate a few simple, essential criteria; those criteria should reflect your specific design conditions.
 
 Which criteria you emphasize, and how you balance conflicting criteria depends on your situation. This is summarized in the following principle:
 
-> A good design balances several criteria
+<Note>A good design balances several criteria.</Note>
 
 
 
@@ -359,11 +359,11 @@ Which criteria you emphasize, and how you balance conflicting criteria depends o
 
 The component architecture defines the overall system structure, as summarized in the following definition:
 
-> A system structure composed of interconnected components
+<Note>A system structure composed of interconnected components.</Note>
 
 We define a component:
 
-> A collection of program parts that constitutes a whole and has well-defined responsibilities.
+<Note>A collection of program parts that constitutes a whole and has well-defined responsibilities.</Note>
 
 The definition is broad. We can consider everything from a single class to a subsystem to the whole system as a component. In essence, separate components should address separate concerns. Separation adds to the comprehensibility and increases system flexibility.
 
@@ -373,13 +373,13 @@ The definition is broad. We can consider everything from a single class to a sub
 
 The purpose of process architecture design is to structure execution on a physical level.
 
-> A system-execution structure composed of interdependent processes.
+<Note>A system-execution structure composed of interdependent processes.</Note>
 
 
 
 ### Conditions
 
-> The technical, organizational, and human opportunities and limits involved in performing a task.
+<Note>The technical, organizational, and human opportunities and limits involved in performing a task.</Note>
 
 It is crucial to understand the boundaries for the design of a system's architecture. Conditions should be virtually invariable terms, and not just unconscious expressions of a tradition.
 
@@ -431,7 +431,7 @@ In an architecture with layered functionality, the layer immediately above the m
 
 Coupling expresses that change in one class or component necessitates change in another class or component.
 
-> A measure of how closely two classes or components are connected.
+<Note>A measure of how closely two classes or components are connected.</Note>
 
 Coupling is a negative property, that should be minimized in design. Coupling can take one of the following forms:
 
@@ -448,7 +448,7 @@ These four forms of coupling range from low to full coupling. You can generally 
 
 Cohesion expresses that a class or component constitutes a whole with essential relations between its parts.
 
-> A measure of how well a class or component is tied together.
+<Note>A measure of how well a class or component is tied together.</Note>
 
 Cohesion is a positive property that should be pursued in the design of classes and components. Lack of cohesion means that the relations between the parts are somewhat accidental. Attempts to split up cohesive classes or components lead to a high degree of coupling.
 
