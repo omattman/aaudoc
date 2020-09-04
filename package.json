@@ -49,7 +49,7 @@
     "lodash": "^4.17.15",
     "lodash.startcase": "^4.4.0",
     "mousetrap": "^1.6.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "prism-react-renderer": "^0.1.7",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
